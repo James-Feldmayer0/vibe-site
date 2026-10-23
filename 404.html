@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 — Page Not Found | jamesfeldmayer.com</title>
+<meta name="robots" content="noindex">
+<style>
+  :root {
+    --bg: #0a0e14;
+    --fg: #d6e2f0;
+    --dim: #6b7a8d;
+    --accent: #5eead4;
+    --accent2: #a78bfa;
+    --border: #1e293b;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg); color: var(--fg); min-height: 100vh;
+    font-family: "SF Mono", "Cascadia Code", "JetBrains Mono", Menlo, Consolas, monospace;
+    display: flex; align-items: center; justify-content: center; padding: 1.5rem;
+    background-image:
+      radial-gradient(600px 400px at 15% 10%, rgba(94,234,212,0.06), transparent 60%),
+      radial-gradient(700px 500px at 85% 90%, rgba(167,139,250,0.06), transparent 60%);
+  }
+  .term {
+    background: #05080c; border: 1px solid var(--border); border-radius: 10px;
+    max-width: 560px; width: 100%; font-size: 0.9rem; overflow: hidden;
+  }
+  .term-bar {
+    background: #0d1420; padding: 0.5rem 1rem; color: var(--dim);
+    font-size: 0.75rem; border-bottom: 1px solid var(--border);
+  }
+  .term pre { padding: 1.4rem 1.5rem; line-height: 1.8; overflow-x: auto; }
+  .c { color: var(--dim); } .g { color: var(--accent); } .r { color: #f87171; } .v { color: var(--accent2); }
+  a { color: var(--accent); text-decoration: none; border-bottom: 1px dotted var(--accent); }
+  a:hover { border-bottom-style: solid; }
+</style>
+</head>
+<body>
+  <div class="term">
+    <div class="term-bar">bash — 80×24</div>
+    <pre><span class="g">james@feldmayer:~$</span> curl https://jamesfeldmayer.com<span class="c">$URL</span>
+
+<span class="r">404 Not Found</span>
+
+<span class="c">// this route doesn't exist in the codebase</span>
+<span class="c">// it probably never will — good guess though</span>
+
+<span class="c"># where do you want to go?</span>
+<span class="g">→</span> <a href="/">/</a>                     <span class="v">[site index]</span>
+<span class="g">→</span> <a href="/vibe/">/vibe</a>                 <span class="v">[vibe coding setup]</span>
+<span class="g">→</span> <a href="/adsplosion/">/adsplosion</a>             <span class="v">[the app]</span>
+<span class="g">→</span> <a href="/tickets/">/tickets</a>               <span class="v">[tickets]</span></pre>
+  </div>
+</body>
+</html>

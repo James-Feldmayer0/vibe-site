@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tickets & the Ticket Loop | jamesfeldmayer.com</title>
+<meta name="description" content="Tickets page on jamesfeldmayer.com, and documentation of the autonomous ticket loop that resolves GitHub issues automatically.">
+<style>
+  :root {
+    --bg: #0a0e14;
+    --fg: #d6e2f0;
+    --dim: #6b7a8d;
+    --accent: #5eead4;
+    --accent2: #a78bfa;
+    --card: #111823;
+    --border: #1e293b;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg); color: var(--fg); min-height: 100vh;
+    font-family: "SF Mono", "Cascadia Code", "JetBrains Mono", Menlo, Consolas, monospace;
+    line-height: 1.7;
+    background-image:
+      radial-gradient(600px 400px at 15% 10%, rgba(94,234,212,0.06), transparent 60%),
+      radial-gradient(700px 500px at 85% 90%, rgba(167,139,250,0.06), transparent 60%);
+  }
+  .wrap { max-width: 780px; margin: 0 auto; padding: 4rem 1.5rem 5rem; }
+  .prompt { color: var(--dim); font-size: 0.9rem; }
+  .prompt b { color: var(--accent); font-weight: normal; }
+  h1 { font-size: clamp(1.8rem, 5vw, 2.6rem); font-weight: 600; margin: 0.75rem 0 0.5rem; }
+  .tagline { color: var(--dim); margin-bottom: 2.5rem; }
+  section { margin-bottom: 2.5rem; }
+  h2 { font-size: 1rem; font-weight: 600; color: var(--accent); margin-bottom: 1rem; letter-spacing: 0.04em; text-transform: uppercase; }
+  h2::before { content: "// "; color: var(--dim); }
+  .term { background: #05080c; border: 1px solid var(--border); border-radius: 10px; font-size: 0.85rem; overflow: hidden; }
+  .term-bar { background: #0d1420; padding: 0.5rem 1rem; color: var(--dim); font-size: 0.75rem; border-bottom: 1px solid var(--border); }
+  .term pre { padding: 1.2rem 1.4rem; overflow-x: auto; }
+  .c { color: var(--dim); } .g { color: var(--accent); } .v { color: var(--accent2); } .r { color: #f87171; }
+  code { color: var(--accent2); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 1.2rem 1.4rem; }
+  .card h3 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.35rem; }
+  .card p { color: var(--dim); font-size: 0.88rem; }
+  a.link { color: var(--accent); text-decoration: none; border-bottom: 1px dotted var(--accent); }
+  a.link:hover { border-bottom-style: solid; }
+  footer { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border); color: var(--dim); font-size: 0.85rem; }
+  footer a { color: var(--accent); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="prompt">james@feldmayer:~$ <b>./tickets.sh --docs</b></div>
+  <h1>Tickets</h1>
+  <p class="tagline">GitHub issues get resolved automatically on this box. Here's how the loop works.</p>
+
+  <section>
+    <h2>Status</h2>
+    <div class="term">
+      <div class="term-bar">bash — 80×24</div>
+      <pre><span class="g">james@feldmayer:~$</span> tickets --list
+<span class="c">// no open tickets right now — the queue is empty</span>
+<span class="c">// file one at github.com/James-Feldmayer0/Adsplosion/issues</span>
+<span class="c">// it gets picked up within ~30 seconds</span></pre>
+    </div>
+  </section>
+
+  <section>
+    <h2>How the Ticket Loop Works</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>The poller <span>— ticket-daemon.sh</span></h3>
+        <p>A systemd service (<code>ticket-loop.service</code>) runs a bash loop that wakes every <b>30 seconds</b>, lists open issues on <code>James-Feldmayer0/Adsplosion</code> via the GitHub API, and skips anything that's a PR. No new tickets → one cheap API call, zero tokens, back to sleep.</p>
+      </div>
+      <div class="card">
+        <h3>The dispatcher <span>— headless pi</span></h3>
+        <p>Each new issue is handed to a headless <code>pi -p</code> run: an AI agent with shell access, the site files, the repo, and the GitHub token. It reads the ticket, makes the change, and talks back to the issue it came from.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>The Flow</h2>
+    <div class="term">
+      <div class="term-bar">ticket-loop.sh — poll cycle</div>
+      <pre><span class="c"># every 30 seconds:</span>
+<span class="g">1. fetch</span>  <span class="v">GET /issues?state=open</span>   <span class="c">(PRs filtered out)</span>
+<span class="g">2. guard</span>  flock — a slow run never overlaps the next poll
+<span class="g">3. dispatch</span> pi -p <span class="c">(one agent session per ticket, with rules)</span>
+<span class="g">4. agent</span>   implement → verify live → comment on the issue
+<span class="g">5. close</span>   state=closed, state_reason=completed <span class="c">— only if verified</span></pre>
+    </div>
+  </section>
+
+  <section>
+    <h2>Guardrails</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Verify before close</h3>
+        <p>The agent must check its own work — <code>curl</code> the live site or run the app — before a ticket may be closed. No "edited the file, done."</p>
+      </div>
+      <div class="card">
+        <h3>Never guesses</h3>
+        <p>Ambiguous ticket? The agent posts a comment asking for clarification and stops — it does not close, and it does not improvise a guess.</p>
+      </div>
+      <div class="card">
+        <h3>Attempt cap</h3>
+        <p>Each ticket gets max <b>2</b> agent attempts. Repeated failures leave the issue open and untouched, flagged for a human.</p>
+      </div>
+      <div class="card">
+        <h3>Scope discipline</h3>
+        <p>Site pages (<code>/var/www/vibe</code>) deploy directly; repo changes are committed and pushed via SSH. Unrelated systems stay untouched.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Ops</h2>
+    <div class="term">
+      <div class="term-bar">bash — 80×24</div>
+      <pre><span class="c"># where things live</span>
+<span class="v">/root/ticket-loop.sh</span>      <span class="c"># poller: discover + dispatch</span>
+<span class="v">/root/ticket-daemon.sh</span>    <span class="c"># 30s wrapper loop</span>
+<span class="v">/etc/systemd/system/ticket-loop.service</span>
+<span class="v">/root/ticket-loop.log</span>     <span class="c"># poll feed (auto-trimmed)</span>
+<span class="v">/root/ticket-loop/issue-N.log</span> <span class="c"># full agent transcript per ticket</span>
+
+<span class="c"># commands</span>
+<span class="g">systemctl status ticket-loop</span>   <span class="c"># is it alive?</span>
+<span class="g">tail -f /root/ticket-loop.log</span>  <span class="c"># watch polls live</span></pre>
+    </div>
+  </section>
+
+  <section>
+    <h2>Failures</h2>
+    <div class="card">
+      <h3>/logs <span>— the failure board</span></h3>
+      <p>Every poll cycle pumps the poller log, service journal, and agent transcripts to <a class="link" href="/logs/">/logs</a> — regenerated automatically, so it's never more than 30 seconds stale. Failures show as a red banner; historic ones stay highlighted but don't trip the alarm. Secrets are redacted.</p>
+    </div>
+  </section>
+
+  <footer>
+    <a href="/">← back to the index</a> · queue: <a class="link" href="https://github.com/James-Feldmayer0/Adsplosion/issues">github.com/James-Feldmayer0/Adsplosion/issues</a>
+  </footer>
+</div>
+</body>
+</html>

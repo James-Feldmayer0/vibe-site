@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>jamesfeldmayer.com — Site Index</title>
+<meta name="description" content="The index of pages on jamesfeldmayer.com.">
+<style>
+  :root {
+    --bg: #0a0e14;
+    --fg: #d6e2f0;
+    --dim: #6b7a8d;
+    --accent: #5eead4;
+    --accent2: #a78bfa;
+    --card: #111823;
+    --border: #1e293b;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg); color: var(--fg); min-height: 100vh;
+    font-family: "SF Mono", "Cascadia Code", "JetBrains Mono", Menlo, Consolas, monospace;
+    line-height: 1.7;
+    background-image:
+      radial-gradient(600px 400px at 15% 10%, rgba(94,234,212,0.06), transparent 60%),
+      radial-gradient(700px 500px at 85% 90%, rgba(167,139,250,0.06), transparent 60%);
+  }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 4rem 1.5rem 5rem; }
+  .prompt { color: var(--dim); font-size: 0.9rem; }
+  .prompt b { color: var(--accent); font-weight: normal; }
+  h1 { font-size: clamp(1.8rem, 5vw, 2.6rem); font-weight: 600; margin: 0.75rem 0 0.5rem; }
+  .tagline { color: var(--dim); margin-bottom: 2.5rem; }
+  h2 { font-size: 1rem; font-weight: 600; color: var(--accent); margin-bottom: 1rem; letter-spacing: 0.04em; text-transform: uppercase; }
+  h2::before { content: "// "; color: var(--dim); }
+  .pages { display: flex; flex-direction: column; gap: 0.75rem; }
+  a.page {
+    display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+    background: var(--card); border: 1px solid var(--border); border-radius: 10px;
+    padding: 1.1rem 1.4rem; text-decoration: none; color: var(--fg);
+    transition: border-color .15s;
+  }
+  a.page:hover { border-color: var(--accent); }
+  a.page .cmd { color: var(--accent2); white-space: nowrap; }
+  a.page .desc { color: var(--dim); font-size: 0.9rem; }
+  footer { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border); color: var(--dim); font-size: 0.85rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="prompt">james@feldmayer:~$ <b>ls ~/site</b></div>
+  <h1>Site Index</h1>
+  <p class="tagline">Everything that lives on this domain, in one place.</p>
+
+  <section>
+    <h2>Pages</h2>
+    <div class="pages">
+      <a class="page" href="/vibe/">
+        <span class="cmd">/vibe</span>
+        <span class="desc">the vibe coding setup — how this site gets built and shipped</span>
+      </a>
+      <a class="page" href="/adsplosion/">
+        <span class="cmd">/adsplosion</span>
+        <span class="desc">Suika Game — a physics fruit-merging game</span>
+      </a>
+      <a class="page" href="/solar-punk/">
+        <span class="cmd">/solar-punk</span>
+        <span class="desc">Solar Punk — the solar-powered fruit-picking drone</span>
+      </a>
+      <a class="page" href="/tickets/">
+        <span class="cmd">/tickets</span>
+        <span class="desc">tickets page + docs for the autonomous ticket loop</span>
+      </a>
+      <a class="page" href="/blog/">
+        <span class="cmd">/blog</span>
+        <span class="desc">post-mortems, design notes, and things I shipped</span>
+      </a>
+      <a class="page" href="/notes/">
+        <span class="cmd">/notes</span>
+        <span class="desc">a page of notes</span>
+      </a>
+      <a class="page" href="/logs/">
+        <span class="cmd">/logs</span>
+        <span class="desc">live system logs — failures highlighted, auto-refreshes every 30s</span>
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 jamesfeldmayer.com — vibes included, uptime best-effort
+  </footer>
+</div>
+</body>
+</html>

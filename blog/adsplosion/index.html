@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adsplosion Post-Mortem | jamesfeldmayer.com</title>
+<meta name="description" content="A post-mortem on Adsplosion — the ad-parody fruit-merge game — the concept, what didn't work, and the ideas for making the jokes land.">
+<style>
+  :root {
+    --bg: #0a0e14;
+    --fg: #d6e2f0;
+    --dim: #6b7a8d;
+    --accent: #5eead4;
+    --accent2: #a78bfa;
+    --card: #111823;
+    --border: #1e293b;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg); color: var(--fg); min-height: 100vh;
+    font-family: "SF Mono", "Cascadia Code", "JetBrains Mono", Menlo, Consolas, monospace;
+    line-height: 1.7;
+    background-image:
+      radial-gradient(600px 400px at 15% 10%, rgba(94,234,212,0.06), transparent 60%),
+      radial-gradient(700px 500px at 85% 90%, rgba(167,139,250,0.06), transparent 60%);
+  }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 4rem 1.5rem 5rem; }
+  .prompt { color: var(--dim); font-size: 0.9rem; }
+  .prompt b { color: var(--accent); font-weight: normal; }
+  h1 { font-size: clamp(1.8rem, 5vw, 2.4rem); font-weight: 600; margin: 0.75rem 0 0.5rem; line-height: 1.25; }
+  .meta { color: var(--dim); font-size: 0.85rem; margin-bottom: 2.5rem; }
+  .meta a { color: var(--accent); text-decoration: none; }
+  .meta a:hover { text-decoration: underline; }
+  h2 { font-size: 1.05rem; font-weight: 600; color: var(--accent); margin: 2.5rem 0 0.75rem; letter-spacing: 0.03em; }
+  h2::before { content: "// "; color: var(--dim); }
+  p { margin-bottom: 1.1rem; }
+  p b { color: var(--accent2); font-weight: 600; }
+  ul { margin: 0 0 1.1rem 1.2rem; }
+  li { margin-bottom: 0.5rem; }
+  ul ul { margin: 0.5rem 0 0.2rem 1.2rem; }
+  ul ul li { color: var(--dim); }
+  pre {
+    background: var(--card); border: 1px solid var(--border); border-radius: 10px;
+    padding: 1.2rem 1.4rem; margin: 1.5rem 0; overflow-x: auto;
+    font-size: 0.85rem; line-height: 1.6; color: var(--fg);
+    white-space: pre-wrap;
+  }
+  footer { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border); color: var(--dim); font-size: 0.85rem; }
+  footer a { color: var(--accent); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="prompt">james@feldmayer:~$ <b>cat ~/blog/adsplosion.md</b></div>
+  <h1>Adsplosion Post-Mortem</h1>
+  <p class="meta">October 22, 2026 — design notes on <a href="/adsplosion/">/adsplosion</a></p>
+
+  <h2>Concept: Ad Parody Game</h2>
+  <p>I thought it would be funny to make a game where we bombard the user with ads as part of the core gameplay mechanic.</p>
+
+  <p>I like the concept of having the score as my actual earned ad revenue. I don't think that's a compelling user experience. It's important to me that the game is fun to play.</p>
+
+  <p>I love the joke of defeating ads and the final boss being Adsplosion itself.</p>
+
+  <p>I enjoy exploring what Adsplosion could mean:</p>
+  <ul>
+    <li><b>Is Adsplosion a version of the AI singularity that is perfectly aligned with corporate interests?</b>
+      <ul>
+        <li>Adsplosion loses when the users become sufficiently educated and motivated to insulate themselves from ad technology</li>
+        <li>I like the joke of the bots still serving ads to each other after the humans leave but that's not perfect alignment</li>
+      </ul>
+    </li>
+    <li><b>Adsplosion could be an anti-ad terror organisation</b>
+      <ul>
+        <li>Satire about how using ad blocker makes you a terrorist (and supporting Palestine makes you a double terrorist)</li>
+        <li>I think this is superficial</li>
+      </ul>
+    </li>
+  </ul>
+
+  <h2>What didn't work</h2>
+  <p>I chose to use fruit merge mechanics because I like the idea of the screen filling with ads. The style of video ads that I chose to use don't read well at these sizes and there are technical challenges around having video textures with physics in the browser.</p>
+
+  <p>I do enjoy the concept. But I need to align it with a satisfing gameplay loop that allows the jokes to land.</p>
+
+  <h2>Ideas</h2>
+<pre>
+Fake brands and copy
+
+Sleepr Mattress: “Doctors HATE this one trick”
+CryptoBro Pro: “Be your own bank! (Not FDIC insured. Not anything insured.)”
+VPN for your VPN
+“Local singles in your area want to discuss your car’s extended warranty”
+Hot Moms Near You (a stock photo of a lamp)
+A mattress ad for a mattress company that sells pillows
+“Lose 30 lbs by doing nothing! Results not typical. Results not real.”
+Grandma’s secret to a flat stomach (the secret is a lawsuit)
+AI-powered toothbrush: “Now with subscription”
+NFT of a cookie banner
+
+Fake interface tricks
+
+A close button that is actually a second ad
+An X so tiny it needs a magnifier, and the magnifier is also an ad
+“Skip Ad in 5” that goes to 1, then resets to 10
+A “Sponsored” label that is itself sponsored by another sponsor
+A fake “Virus detected!” alert with a fake progress bar
+A fake Windows error dialog whose “OK” button does nothing
+A cookie banner with “Accept All” in huge green and “Reject” as a single gray pixel
+A “close” button that moves away like a cursed cartoon
+A “Your call is important to us” hold-music popup
+
+Urgency and manipulation
+
+“Only 1 left! (We have 40,000 of them.)”
+A countdown timer that is clearly just a random number generator
+“12 people are viewing this right now” (the number is always 12)
+“Wait! Before you go...” popups that appear when you stay
+A guilt-trip decline button: “No thanks, I enjoy being poor”
+“You are visitor #1,000,000! Claim your prize!” (you’re always visitor #1,000,000)
+
+Escalating tiers, funniest at the end
+
+Tracking pixel, which is invisible but has a tiny “$0.0001” popup
+Cookie banner
+Newsletter popup (“Join 3 other subscribers”)
+Unskippable video ad about skipping ads
+“You’ve won an iPhone!” full-screen ad
+Final boss: an ad for the game itself, “Adsplosion, now with more ads”
+
+Sound and feel
+
+Cash register ding on every payout
+Ads that autoplay a muffled, distant 2008 jingle
+Notification sounds from apps you don’t own
+A dial-up modem screech for a big combo
+A “Sponsored” voice that says “this score brought to you by...” mid-game
+
+Meta jokes (the best ones, I think)
+
+The game interrupts itself with a fake ad for a fake game
+A pause menu that says “Watch an ad to unpause”
+A game-over screen: “Watch an ad to continue (it’s the same ad you just watched)”
+A “Remove ads for $4.99” button that adds more ads
+A settings toggle labeled “Ad personalization” that makes the ads more personal (“Hey Dave, still thinking about that toaster?”)
+A fake loading bar that stalls at 99% and offers premium to skip the wait
+</pre>
+
+  <footer>
+    <a href="/blog/">← back to blog</a>
+  </footer>
+</div>
+</body>
+</html>
