@@ -1,0 +1,3 @@
+# Generated on every ticket-loop poll cycle by ops/logs-page.py.
+# Treat as a build artifact: it only mirrors /root/ticket-loop.log.
+logs/index.html
