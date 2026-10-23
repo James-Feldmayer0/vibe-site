@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nobody Tells You When the Cool Stuff Is On | jamesfeldmayer.com</title>
-<meta name="description" content="Why finding out what's on in your city is three problems in a trench coat, the Facebook events paradox, and the boring one-page fix that gets friends actually going.">
+<meta name="description" content="A Sydney things-to-do dashboard artifact, and the pitch: discovery is scattered, Facebook Events is a great database behind a cringe app, and the fix is one boring page plus a group-chat habit.">
 <style>
   :root {
     --bg: #0a0e14;
@@ -35,8 +35,15 @@
   h2::before { content: "// "; color: var(--dim); }
   p { margin-bottom: 1.1rem; }
   p b { color: var(--accent2); font-weight: 600; }
+  figure { margin: 0 0 2rem 0; }
+  figure img {
+    width: 100%; border: 1px solid var(--border); border-radius: 10px;
+    background: var(--card);
+  }
+  figcaption { color: var(--dim); font-size: 0.85rem; margin-top: 0.6rem; }
   ul { margin: 0 0 1.1rem 1.2rem; }
   li { margin-bottom: 0.5rem; }
+  li b { color: var(--accent2); font-weight: 600; }
   footer { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border); color: var(--dim); font-size: 0.85rem; }
   footer a { color: var(--accent); text-decoration: none; }
 </style>
@@ -44,51 +51,22 @@
 <body>
 <div class="wrap">
   <div class="prompt">james@feldmayer:~$ <b>cat ~/blog/finding-the-good-stuff.md</b></div>
-  <h1>Nobody Tells You When the Cool Stuff Is On</h1>
-  <p class="meta">October 23, 2026 — on event discovery, Facebook, and actually going</p>
+  <h1>Nobody tells you when the cool stuff is on</h1>
+  <p class="meta">October 23, 2026 — a Sydney dashboard and the pitch behind it</p>
 
-  <p>Every city has this problem: the good stuff is happening <b>right now</b>, and you find out about it three days later. A laneway festival you'd have loved. A vintage pop-up that was one train stop away. A farmers market that's been running every Saturday for a decade, quietly, while you slept in.</p>
-  <p>The internet has more event information than ever, and somehow it's harder than ever to actually use it. Here's the shape of the problem, and what I've been doing about it.</p>
+  <figure>
+    <img src="sydney-dashboard.jpg" alt="A Claude artifact: a Sydney things-to-do dashboard filtered to this weekend, with cards for Parramatta Lanes, Hawkeye Vintage pop-up, Bondi Markets, and Carriageworks Farmers Market">
+    <figcaption>The Sydney: things-to-do dashboard — this weekend filter, culture/food tags, stars and map links.</figcaption>
+  </figure>
 
-  <h2>The discovery problem is actually three problems</h2>
-  <p><b>1. The information is scattered.</b> Council websites, ticketing platforms, venue Instagram accounts, community noticeboards, that one newsletter someone's aunt runs. No single source has everything, and the good weird stuff — the free stuff, the one-weekend-only stuff — lives in the least centralised corners.</p>
-  <p><b>2. Even when you find something, the timing is fuzzy.</b> "Saturdays" is great, but which Saturdays? Is the pop-up this weekend or next? Half the listings out there don't tell you clearly when something <i>ends</i>, which is the detail that actually matters when you're deciding whether to go this weekend or "soon".</p>
-  <p><b>3. Knowing is not going.</b> This is the big one. You find something cool, you think "we should do that", and then it dies in a group chat as a screenshot with no date attached. Discovery without a plan is just entertainment.</p>
-
-  <h2>The Facebook problem</h2>
-  <p>Let's be honest about where a lot of this information actually lives: <b>Facebook Events</b>. It's still, annoyingly, the single biggest event database in most cities. Community festivals, garage sales, club nights, market schedules — it's all in there.</p>
-  <p>The problem is that actually <i>using</i> Facebook in 2026 means wading through an app that's mostly ads, Reels of strangers, and your uncle's opinions. Nobody wants that. The events are great; the venue is cringe.</p>
-  <p>Which is why the fantasy version is: quietly scrape the events out of Facebook, ignore Facebook entirely, and put the results somewhere clean. A simple list. Filtered by "this weekend" and "free". No feed, no notifications, no engagement. Just: here is what's on, here is when it ends, here is a map link, go with your friends.</p>
-  <p>Is scraping Facebook against their terms of service? Almost certainly. Is it technically annoying? Increasingly so — they've made it deliberately hostile to anything that isn't their own crawler. But there are gentler paths: official event APIs where they exist, event aggregators that already license the data, council and venue RSS feeds, even just a small script that checks a handful of pages you care about. The spirit of the idea — <i>extract the signal, leave the platform behind</i> — is very achievable even if the letter of "scrape Facebook directly" is a nightmare.</p>
-
-  <h2>What actually works: build the boring version</h2>
-  <p>Here's the thing I've landed on. You don't need a platform. You need a page.</p>
+  <p><b>Blog post written: finding-the-good-stuff.md.</b> "Nobody tells you when the cool stuff is on" — the angle:</p>
   <ul>
-    <li>A single list of things to do, each with a <b>clear end date</b> (or "Sundays", honestly labelled as a regular, not a dated event)</li>
-    <li>Filter chips: <b>this weekend / coming up / always on</b>, and <b>outdoors / food / music / culture</b></li>
-    <li>A <b>star</b> on every card, because shortlisting is how planning starts</li>
-    <li>An <b>"Open in Maps"</b> link, because the friction between "that sounds nice" and knowing where to meet is real</li>
-    <li>The whole thing is one artifact/HTML file I can share with a link</li>
+    <li><b>Framing:</b> the problem isn't a lack of events, it's that discovery is scattered, timing is fuzzy, and knowing ≠ going</li>
+    <li><b>The Facebook bit:</b> calls out that FB Events is still the biggest event database but the venue is cringe — so the cool move is quietly scraping the events out and leaving the platform behind. I kept it honest: direct scraping is a ToS/technical nightmare, but the spirit of it (extract the signal, official APIs, aggregators, council feeds) is very doable</li>
+    <li><b>The fix:</b> a boring single-page dashboard with filters, stars for shortlisting, and Maps links — basically the artifact in your screenshot, argued as a pattern</li>
+    <li><b>Practical bits:</b> the "never drop an event without an end date + link" group-chat rule, star-voting to pick plans, and a field guide of sources that still work (council pages, venue mailing lists, regulars/fixtures, the friend who's a human RSS feed)</li>
   </ul>
-  <p>That's it. No accounts, no feed, no infinite scroll. It takes maybe an hour to set up and an hour a month to refresh, and it has genuinely changed the ratio of "things we talked about going to" to "things we actually went to".</p>
-
-  <h2>The group chat rule</h2>
-  <p>One habit change does most of the work: <b>never drop an event suggestion without an end date and a link.</b></p>
-  <p>"Sick, this weekend" is not a plan. "This runs until Sunday, here's the map pin, I'm thinking Saturday 11am, who's in?" is a plan. When the calendar detail is attached from the start, the group chat stops being a graveyard of screenshots and starts being a launch pad.</p>
-  <p>If you use the shortlist trick it's even better: everyone stars what they're keen on, the ones with two or three stars are the plan. Voting without a meeting. It's shockingly effective for something so dumb.</p>
-
-  <h2>A field guide to actually finding events</h2>
-  <p>Beyond scraping, the honest sources that still work:</p>
-  <ul>
-    <li><b>Your council's "what's on" page</b> — dry but complete, and it covers the free local stuff nobody else lists</li>
-    <li><b>Venue mailing lists</b> — pick five venues you actually like; five emails a fortnight is a good price</li>
-    <li><b>The market/regulars</b> — farmers markets, night noodle markets, gallery late nights: these don't get "listed" because they're not events, they're fixtures. Write them down once and they're always-on inventory for bored weekends</li>
-    <li><b>Word of mouth, deliberately</b> — ask one friend who always knows. There's one in every group. Buy them a coffee and mine them for listings like the human RSS feed they are</li>
-  </ul>
-
-  <h2>The point</h2>
-  <p>Cities are not boring. The information layer is boring. Once you compress "what's on, when does it end, how do we get there" into one clean page and a group-chat habit, going out with friends stops requiring research stamina and starts requiring nothing but a star and a Saturday.</p>
-  <p>The cool stuff was always on. Now you know when.</p>
+  <p>Happy to personalise it (your city, an actual list of go-to events), make it shorter/punchier, or convert it to HTML for the blog.</p>
 
   <footer>
     <a href="/blog/">← back to blog</a>
