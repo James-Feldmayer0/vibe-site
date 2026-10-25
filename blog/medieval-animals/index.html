@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beasts of Second-Hand Knowledge: Medieval Animals Drawn from Hearsay | jamesfeldmayer.com</title>
+<meta name="description" content="A visual history of medieval bestiaries and the animals artists had never seen — the trumpet-trunked elephant, the bonnacon, the barnacle goose tree, the whale mistaken for an island — and why hearsay, not first-hand observation, shaped the medieval menagerie on parchment.">
+<style>
+  :root {
+    --parchment: #ffffff;
+    --parchment-deep: #f4f4f4;
+    --card: #fafafa;
+    --ink: #222222;
+    --ink-soft: #555555;
+    --rubric: #c0392b;
+    --gold: #0044cc;
+    --gold-soft: #e0e7ff;
+    --border: #dddddd;
+    --border-soft: #eeeeee;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--parchment);
+    color: var(--ink);
+    min-height: 100vh;
+    font-family: "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif;
+    line-height: 1.7;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 3.5rem 1.5rem 4.5rem; }
+  .rule-double { border: none; border-top: 3px double var(--border); margin: 0 0 1.6rem; }
+  h1 {
+    font-size: clamp(2rem, 5.5vw, 3rem); font-weight: 800; line-height: 1.15;
+    color: var(--ink); letter-spacing: -0.02em;
+    margin-bottom: 0.6rem;
+  }
+  .meta { color: var(--ink-soft); font-style: italic; margin-bottom: 1.8rem; }
+  .meta a { color: var(--gold); text-decoration: none; }
+  .meta a:hover { text-decoration: underline; }
+  p { margin-bottom: 1.1rem; }
+  p b { color: var(--ink); font-weight: 700; }
+  a { color: var(--rubric); }
+  h2.plain { font-size: 1.1rem; text-transform: uppercase; color: var(--rubric); letter-spacing: 0.08em; margin: 2.2rem 0 0.9rem; }
+
+  /* Table of contents */
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 4px; padding: 1.2rem 1.4rem; margin: 2rem 0 3rem; box-shadow: 0 2px 6px rgba(90,66,24,0.08); }
+  .toc .toc-title { color: var(--rubric); text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.85rem; font-weight: 700; text-align: left; margin-bottom: 0.7rem; }
+  .toc ul { margin: 0; padding: 0; list-style: none; columns: 2; column-gap: 2rem; }
+  .toc li { margin-bottom: 0.25rem; font-size: 0.92rem; break-inside: avoid; }
+  .toc li .num { color: var(--gold); font-weight: 700; display: inline-block; min-width: 2.1rem; }
+  .toc a { color: var(--ink); text-decoration: none; }
+  .toc a:hover { color: var(--rubric); text-decoration: underline; }
+
+  /* Creature sections */
+  .creature { margin-bottom: 3.2rem; }
+  .creature h2 {
+    font-size: clamp(1.4rem, 3.5vw, 1.8rem); font-weight: 800; color: var(--ink);
+    letter-spacing: -0.01em; line-height: 1.25;
+    border-bottom: 2px solid var(--border); padding-bottom: 0.45rem; margin-bottom: 1rem;
+    scroll-margin-top: 1rem;
+  }
+  .creature h2 .num {
+    color: var(--rubric); font-size: 1.15rem; margin-right: 0.55rem;
+    border: 1px solid var(--gold-soft); border-radius: 2px; padding: 0.05rem 0.45rem;
+    background: var(--card); vertical-align: 0.1em;
+  }
+
+  /* Hearsay block */
+  .hearsay { background: var(--card); border: 1px solid var(--border); border-left: 4px solid var(--rubric); border-radius: 4px; padding: 1.05rem 1.3rem; margin-bottom: 1.8rem; box-shadow: 0 2px 6px rgba(0,0,0,0.05); }
+  .hearsay .hs-title { color: var(--rubric); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; font-size: 0.85rem; margin-bottom: 0.6rem; }
+  .hearsay .hs-text { font-size: 0.97rem; margin-top: 0.1rem; font-style: italic; }
+  .hearsay .hs-text .ref { display: block; margin-top: 0.5rem; font-style: normal; color: var(--gold); font-weight: 700; font-size: 0.85rem; letter-spacing: 0.04em; text-transform: uppercase; }
+
+  /* Image */
+  figure { margin: 0 0 1.6rem; }
+  figure img { width: 100%; height: auto; border: 1px solid var(--border); border-radius: 4px; display: block; }
+  figcaption { color: var(--ink-soft); font-size: 0.85rem; font-style: italic; margin-top: 0.55rem; line-height: 1.5; }
+
+  /* Timeline */
+  ol.timeline { list-style: none; margin: 0.4rem 0 0; padding-left: 1.35rem; border-left: 2px solid var(--border); }
+  ol.timeline li.tl { position: relative; margin-bottom: 1.6rem; padding-left: 0.9rem; }
+  ol.timeline li.tl::before {
+    content: ""; position: absolute; left: -0.45rem; top: 0.55em;
+    width: 8px; height: 8px; background: var(--parchment);
+    border: 2px solid var(--rubric); border-radius: 50%;
+  }
+  ol.timeline .tl-year { color: var(--gold); font-weight: 700; font-size: 0.9rem; letter-spacing: 0.03em; }
+  ol.timeline .tl-body { margin-top: 0.15rem; font-size: 0.97rem; }
+  ol.timeline .tl-body b { color: var(--ink); }
+
+  footer { margin-top: 4rem; padding-top: 1.5rem; border-top: 1px solid var(--border); color: var(--ink-soft); font-size: 0.85rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="rule-double"></div>
+  <h1>Beasts of Second-Hand Knowledge</h1>
+  <p class="meta">Medieval animals drawn from hearsay, not eyesight — the trumpet-trunked elephant, the bonnacon, the goose that grows on trees, and the whale that pretends to be an island. <a href="/blog/">← back to the blog</a></p>
+
+  <p>Most medieval artists drew animals they had never seen. Not because they were clumsy — the same hands produced delicate portraits of hares, owls, and songbirds they could watch in the fields — but because for <b>elephants, lions, tigers, whales, and whole menageries of real beasts</b>, there was simply nothing to look at. Travel beyond your village was rare; the exotic was a rumour, passed through one manuscript, then another, then another, each scribe copying the words but never the animal.</p>
+
+  <p>What they drew instead was <b>memory of a description of a rumour</b>. The results are some of the most charming failures in art history — creatures that are recognisably *something*, but assembled from a vocabulary of parts that never coexisted in nature. This page is a visual tour of that tradition, and of the specific manuscripts that preserve it.</p>
+
+  <div class="toc">
+    <div class="toc-title">The bestiary</div>
+    <ul>
+      <li><span class="num">01</span><a href="#elephant">The elephant with a trumpet for a trunk</a></li>
+      <li><span class="num">02</span><a href="#lion">The lion that looks nothing like one</a></li>
+      <li><span class="num">03</span><a href="#crocodile">The crocodile, drawn as a two-legged worm</a></li>
+      <li><span class="num">04</span><a href="#whale">The whale that is also an island</a></li>
+      <li><span class="num">05</span><a href="#unicorn">The unicorn, hunted like a maiden</a></li>
+      <li><span class="num">06</span><a href="#barnacle">The goose that grows on trees</a></li>
+      <li><span class="num">07</span><a href="#beaver">The beaver who bites off his own parts</a></li>
+      <li><span class="num">08</span><a href="#hedgehog">The hedgehog as a fruit-delivery service</a></li>
+      <li><span class="num">09</span><a href="#bonnacon">The bonnacon, a weaponised bull</a></li>
+      <li><span class="num">10</span><a href="#yale">The yale, with swivelling antlers</a></li>
+      <li><span class="num">11</span><a href="#leucrocuta">The leucrocuta, hyena gone wrong</a></li>
+      <li><span class="num">12</span><a href="#why">Why it happened</a></li>
+    </ul>
+  </div>
+
+  <div class="creature" id="elephant">
+    <h2><span class="num">01</span>The elephant with a trumpet for a trunk</h2>
+    <div class="hearsay">
+      <div class="hs-title">The hearsay</div>
+      <div class="hs-text">A beast so vast that no tree can hold it up when it leans on one; it has no knee-joints, so it sleeps leaning against a tree; if it wants to lie down, another elephant must come and prop it up. And its trunk is a kind of trumpet.
+        <span class="ref">Bestiary tradition, after Pliny the Elder</span>
+      </div>
+    </div>
+    <figure>
+      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Matthew%20Paris%20Elephant%20C1250%20from%20Parker%20MS.jpg?width=640" alt="Matthew Paris's drawing of an elephant, c. 1250, Corpus Christi College Cambridge Parker MS">
+      <figcaption>The famous elephant drawn by Matthew Paris, c. 1250 — drawn from a real elephant shown at the Tower of London, but rendered with a trunk that curls like a trumpet bell and a body the size of a warhorse, because that's what 'biggest land animal' implied.</figcaption>
+    </figure>
+    <p>The elephant was the superstar error of medieval art. The trunk was usually drawn as a <b>trumpet</b> — a straight or bell-shaped tube — because that's what the word 'trunk' suggested to someone who'd never seen an elephant use one. In Matthew Paris's famous drawing, done from an actual elephant brought to the Tower of London in 1255, you can see the struggle: he was drawing a real animal, but he had no visual grammar for it, so the result is a horse-sized creature wearing a trunk like a coronet. It is the single most-discussed drawing in medieval animal art, precisely because it is <b>the rare case where an artist had the real thing in front of him and still didn't know how to draw it</b>.</p>
+  </div>
+
+  <div class="creature" id="lion">
+    <h2><span class="num">02</span>The lion that looks nothing like one</h2>
+    <div class="hearsay">
+      <div class="hs-title">The hearsay</div>
+      <div class="hs-text">The lion has three natures: it erases its tracks with its tail, it sleeps with its eyes open, and its cubs are born dead and stay dead for three days until the father wakes them by roaring over them.
+        <span class="ref">Bestiary tradition, after Isidore of Seville</span>
+      </div>
+    </div>
+    <figure>
+      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Lion-Fustat-Fatimid.jpg?width=640" alt="Fatimid lion sculpture, carved from rock crystal, Cairo, 11th century">
+      <figcaption>This Fatimid rock-crystal lion from 11th-century Cairo is one of the most startling things a medieval craftsman ever carved — made in a culture that did have lions, by artists who evidently had not spent much time looking at them, and whose lion is more like a lion-shaped idea than a lion-shaped animal.</figcaption>
+    </figure>
+    <p>You would think the lion — the symbol of Christ, of kings, of the Evangelist Mark — would be the best-drawn animal in Europe. It is not. Because the lion was the most <b>allegorically important</b> animal, artists drew from the *text* rather than the beast: a mane like a sunburst, a face like a human grinning, paws like hands. In illuminated manuscripts the lion often looks more like a large curly dog than a predator. The more sacred the animal, the more it was drawn from doctrine — and the doctrine said the lion sleeps with open eyes and roars cubs back to life, not that it has a particular jaw shape.</p>
+  </div>
+
+  <div class="creature" id="crocodile">
+    <h2><span class="num">03</span>The crocodile, drawn as a two-legged worm</h2>
+    <div class="hearsay">
+      <div class="hs-title">The hearsay</div>
+      <div class="hs-text">A river beast of Ethiopia, some 40 cubits long, with four legs like a serpent's, armored scales, and the habit of weeping after it eats a man.
+        <span class="ref">Bestiary tradition, after Isidore of Seville</span>
+      </div>
+    </div>
+    <figure>
+      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Crocodile%20and%20hydrus%2C%20British%20Library%20Royal%20MS%2012%20C%20XIX%2C%20fol.%2012v.png?width=640" alt="Crocodile and hydrus, British Library Royal MS 12 C XIX, fol. 12v — a medieval manuscript drawing of a crocodile and its nemesis the hydrus, which enters the crocodile's mouth to kill it from inside">
+      <figcaption>Crocodile and hydrus, British Library Royal MS 12 C XIX, fol. 12v — the crocodile is drawn as a two-legged, bird-footed, armored worm, fighting the hydrus, its legendary nemesis, which kills it by crawling into its mouth and biting through its stomach.</figcaption>
+    </figure>
+    <p>The crocodile was the ultimate rumour-beast: something enormous that lives in a river, has scales like a fish but legs like a land animal, and eats people. The description is a tangle of contradictions, so medieval artists resolved it by drawing a <b>giant serpent with legs bolted on</b>. This one even has bird feet. But the most interesting part of this image is not the crocodile — it's the small animal crawling into its mouth. That's the <b>hydrus</b>, a legendary snake from Pliny who rolls itself in mud, lets the crocodile swallow it, and then eats its way out. The medieval mind loved this story because it was a perfect allegory of Christ descending into hell to defeat the devil from within.</p>
+  </div>
+
+  <div class="creature" id="whale">
+    <h2><span class="num">04</span>The whale that is also an island</h2>
+    <div class="hearsay">
+      <div class="hs-title">The hearsay</div>
+      <div class="hs-text">A fish so vast that sailors mistake its back for an island; they land on it, light a fire to cook their meal, and the whale, feeling the heat, dives, drowning them all.
+        <span class="ref">Bestiary tradition, after the Physiologus</span>
+      </div>
+    </div>
+    <figure>
+      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Two%20Fishermen%20on%20an%20Aspidochelone%2C%20c.%201270.JPG?width=640" alt="Two Fishermen on an Aspidochelone, c. 1270 — a medieval manuscript drawing of sailors landing on what they think is an island, but is actually the back of a giant fish">
+      <figcaption>Two fishermen on an aspidochelone, c. 1270 — the island is a whale. It's one of the most physically specific of the medieval rumours: the beast doesn't just exist, it <b>behaves</b> in a particular, dangerous way. It is drawn like a cod with an island on top.</figcaption>
+    </figure>
+    <p>The aspidochelone is drawn like a fish wearing a landscape. This is a rumour that has *consequences* — it warns sailors not to light fires on strange islands — so the illustration is a story, not a portrait. You can see the fire they've lit on its back, and the whale's eye looking up, worried. It's one of the few medieval animals where the artist had to draw <b>a sequence of events</b>, not just a shape, which is why it works so well as a picture even when the whale itself is anatomically a cod.</p>
+  </div>
+
+  <div class="creature" id="unicorn">
+    <h2><span class="num">05</span>The unicorn, hunted like a maiden</h2>
+    <div class="hearsay">
+      <div class="hs-title">The hearsay</div>
+      <div class="hs-text">A small animal like a kid goat, with a single horn; so fierce that no hunter can catch it — but a young girl who sits alone in the forest will draw it, and it will lay its head in her lap and fall asleep, and then the hunters will kill it.
+        <span class="ref">Bestiary tradition, after the Physiologus</span>
+      </div>
+    </div>
+    <figure>
+      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/The%20Ashmole%20Bestiary%20-%20Unicorn%20hunt.jpg?width=640" alt="The Ashmole Bestiary — unicorn hunt, a medieval manuscript drawing of a unicorn cornered by hunters and a maiden">
+      <figcaption>The unicorn hunt in the Ashmole Bestiary, c. 1225 — the maiden is the lure, and the hunters are waiting. This is not a picture of an animal; it is a picture of an allegory. The unicorn is Christ, the maiden is the Virgin Mary, and the hunters are the figures who took him.</figcaption>
+    </figure>
+    <p>The unicorn is the most *allegorical* animal in the entire bestiary tradition, so it was drawn with a very specific structure: the maiden, the hunters, and the beast, in a fixed three-part arrangement. The animal itself is always drawn as a small, goat-like creature — <b>never</b> a horse — because that's what the description said. The large, horse-shaped unicorn of later tapestries is a different, later rumour, with different motivations and a different visual vocabulary.</p>
+  </div>
+
+  <div class="creature" id="barnacle">
+    <h2><span class="num">06</span>The goose that grows on trees</h2>
+    <div class="hearsay">
+      <div class="hs-title">The hearsay</div>
+      <div class="hs-text">A tree in Ireland that bears fruit which, when it falls into the water, becomes birds — barnacle geese. Some say it is a shellfish, not a fruit, that becomes a goose.
+        <span class="ref">Gerald of Wales, Topographia Hibernica, c. 1188</span>
+      </div>
+    </div>
+    <figure>
+      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Illustration%20of%20Goose%20tree%20or%20Barnacle%20tree.%20Wellcome%20L0066910.jpg?width=640" alt="Illustration of a goose tree or barnacle tree — a medieval illustration of geese growing from trees, from the Wellcome Collection">
+      <figcaption>The barnacle goose tree — geese growing directly from a tree, a genuine medieval rumour illustrated as a botanical diagram. The illustration is matter-of-fact, not fantastical: this is how the author believed it worked.</figcaption>
+    </figure>
+    <p>This is a genuine medieval belief, illustrated as a <b>botanical diagram</b>, not a bestiary illustration. The barnacle goose was a real bird that arrived in Ireland and Britain in winter from an unknown northern breeding ground — so a rumour arose to explain its origins: it grows on trees, or in shells attached to driftwood, before dropping into the sea. Gerald of Wales described it in c. 1188 with a completely straight face, and the illustration shows the goose-and-tree in the style of a botanical plate. The importance of this one is that it isn't drawn from a bestiary tradition at all — it's a <b>scientific explanation of a real biological mystery</b>, rendered as a picture, and it was believed by educated people for centuries.</p>
+  </div>
+
+  <div class="creature" id="beaver">
+    <h2><span class="num">07</span>The beaver who bites off his own parts</h2>
+    <div class="hearsay">
+      <div class="hs-title">The hearsay</div>
+      <div class="hs-text">When the beaver is hunted, knowing that its testicles are prized for medicine, it bites them off itself and throws them to the hunter, and so escapes with its life.
+        <span class="ref">Bestiary tradition, after Aesop</span>
+      </div>
+    </div>
+    <figure>
+      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Beaver%20%28Aberdeen%20Bestiary%29.jpg?width=640" alt="Beaver from the Aberdeen Bestiary — a medieval manuscript drawing of a beaver biting off its own parts to escape hunters">
+      <figcaption>The beaver, Aberdeen Bestiary, c. 1200 — shown biting off its own testicles to throw to the hunter, an allegory of the man who cuts off sinful impulses to escape the devil. The animal itself is drawn as a semi-aquatic mammal with a somewhat dog-like body, since the artist had probably never seen a beaver's flat tail.</figcaption>
+    </figure>
+    <p>The beaver is a rare case where the rumour is not about the animal's shape but about its <b>behaviour</b>, and the behaviour is a piece of moral theatre. The beaver's testicles were said to be a medicine, so the beaver, when hunted, castrates itself and throws the parts to the hunter, escaping with its life. The illustration shows this in full detail, because the whole point is the allegory: the beaver is a man who cuts off sinful impulses (and so escapes the devil). The animal itself is drawn as a semi-aquatic dog, because — as usual — the description the artist had was about <b>what the animal does</b>, not <b>what it looks like</b>.</p>
+  </div>
+
+  <div class="creature" id="hedgehog">
+    <h2><span class="num">08</span>The hedgehog as a fruit-delivery service</h2>
+    <div class="hearsay">
+      <div class="hs-title">The hearsay</div>
+      <div class="hs-text">The hedgehog rolls in grapes and carries them skewered on its spines back to its den for its young.
+        <span class="ref">Bestiary tradition, after Pliny the Elder</span>
+      </div>
+    </div>
+    <figure>
+      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Hedgehogs%20-%20British%20Library%20Royal%2012%20F%20xiii%20f45r%20%28detail%29.jpg?width=640" alt="Hedgehogs from the Rochester Bestiary (British Library Royal MS 12 F XIII, fol. 45r), shown carrying fruit on their spines">
+      <figcaption>Hedgehogs, Rochester Bestiary (British Library Royal MS 12 F XIII, fol. 45r) — two hedgehogs skewering grapes on their spines. This is drawn from hearsay about behaviour, not shape, and the hedgehog's spines are drawn as a kind of back-rack for fruit.</figcaption>
+    </figure>
+    <p>The hedgehog is one of the most <b>functional</b> medieval rumours — the hedgehog is drawn as a fruit-delivery system, with spines like a back-rack for grapes. The behaviour is the point: the hedgehog is an allegory of the wise man who gathers the good things of the world and carries them to safety. And like the beaver, the illustration is driven by <b>what the animal does</b> in the rumour, not by what the animal actually looks like.</p>
+  </div>
+
+  <div class="creature" id="bonnacon">
+    <h2><span class="num">09</span>The bonnacon, a weaponised bull</h2>
+    <div class="hearsay">
+      <div class="hs-title">The hearsay</div>
+      <div class="hs-text">A beast of Paeonia, like a bull, with horns so curled they are useless for fighting — so when it is hunted, it runs away while expelling a trail of dung three acres long, which burns whatever it touches.
+        <span class="ref">Bestiary tradition, after Pliny the Elder</span>
+      </div>
+    </div>
+    <figure>
+      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Medieval%20miniature%20book%20illustration%20of%20Bonnacon%20%28bonasus%20or%20bonacho%29%20legendary%20animal%20expelling%20caustic%20feces%20etc.%20Harley%20Bestiary%2C%20British%20Library%2C%20Harley%20MS%204751%2C%20ca.%201200%2C%20f.%2011r%20publicdomainreview.org.jpg?width=640" alt="The bonnacon from the Harley Bestiary (British Library Harley MS 4751, c. 1200, fol. 11r), shown expelling a fiery trail of dung at the hunters">
+      <figcaption>The bonnacon, Harley Bestiary (British Library Harley MS 4751, c. 1200, fol. 11r) — a bull whose curled horns are useless, so it defends itself by firing a three-acre trail of burning dung at its hunters. It is drawn with a straight face, in the same style as the lion and the elephant beside it.</figcaption>
+    </figure>
+    <p>The bonnacon is the bestiary tradition's most committed piece of comic rumour. It is drawn exactly like the other quadrupeds — same style, same format, same border — and its absurdity is entirely in the text. The joke is that the bestiary format <b>does not have a register of humour</b>; the bonnacon sits beside the lion and the eagle as if it were a completely normal entry in a completely normal encyclopedia. This is the medieval rumour at its purest: a totally sincere illustration of something that never existed, taken from a text that was itself copying an older text, which was itself copying an older text that had made a joke.</p>
+  </div>
+
+  <div class="creature" id="yale">
+    <h2><span class="num">10</span>The yale, with swivelling antlers</h2>
+    <div class="hearsay">
+      <div class="hs-title">The hearsay</div>
+      <div class="hs-text">A beast of India, the size of a horse, with jaws like a boar and horns that it can swivel in any direction — pointing both forward and back at once, so it can fight on all sides.
+        <span class="ref">Bestiary tradition, after Pliny the Elder</span>
+      </div>
+    </div>
+    <figure>
+      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/BL-Add%2011283%2C%20fo.008v-eale.jpg?width=640" alt="The eale (yale) from British Library Add MS 11283, fol. 8v — a medieval drawing of the mythical yale, a horse-like animal with swivelling horns">
+      <figcaption>The eale (yale), British Library Add MS 11283, fol. 8v — the yale is the animal that can point its horns in every direction at once, drawn here as a horse-like beast with a boar's jaws and horns that swivel on their own hinges.</figcaption>
+    </figure>
+    <p>The yale was a real heraldic animal — the yale appears on the badges of English royalty, including the Beaufort family — so it survived into early-modern heraldry as an <b>official</b> myth. The interesting thing about it is that it is drawn not as a rumour but as a <b>heraldic emblem</b>: a swivelling-antlered, boar-jawed, horse-bodied creature that embodies defensive versatility. It's one of the few medieval rumour-beasts that made the jump from the bestiary to the coats of arms of actual living families.</p>
+  </div>
+
+  <div class="creature" id="leucrocuta">
+    <h2><span class="num">11</span>The leucrocuta, hyena gone wrong</h2>
+    <div class="hearsay">
+      <div class="hs-title">The hearsay</div>
+      <div class="hs-text">An animal of India, born of a hyena and a lioness, with a bone instead of teeth in its mouth, a single continuous row of them, and a voice that imitates human speech — it calls men by name, and when they come, devours them.
+        <span class="ref">Bestiary tradition, after Pliny the Elder</span>
+      </div>
+    </div>
+    <figure>
+      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/BL-Add%2011283%2C%20fo.007v-leucrota%28lecrocuta%29.jpg?width=640" alt="The leucrocuta from British Library Add MS 11283, fol. 7v — a medieval drawing of the leucrocuta, a hyena-lion hybrid with a continuous row of teeth and a voice that imitates human speech">
+      <figcaption>The leucrocuta, British Library Add MS 11283, fol. 7v — a hyena-lion hybrid with a single continuous row of teeth instead of a jaw, and a voice that imitates human speech to lure its prey.</figcaption>
+    </figure>
+    <p>The leucrocuta is one of the most <b>linguistically</b> dangerous of the rumour-beasts, because its weapon is a voice that imitates human speech. It calls men by name, and when they come to help, it eats them. This is a rumour about the *danger of trusting what you hear* — which is exactly the anxiety that the whole bestiary tradition is built on. It is a medieval argument, illustrated, that second-hand knowledge can be lethal.</p>
+  </div>
+
+  <h2 class="plain" id="why">Why it happened</h2>
+  <ol class="timeline">
+    <li class="tl">
+      <div class="tl-year">c. 77 AD — Pliny's Natural History</div>
+      <div class="tl-body">Pliny the Elder compiled a 37-volume encyclopedia of everything known about the natural world, much of it from older texts he had not verified. This became the <b>single biggest source of medieval animal rumour</b> — the trumpeting elephant, the bonnacon, the yale, the leucrocuta, and dozens more all trace back to Pliny, and all were copied as fact for the next 1,400 years.</div>
+    </li>
+    <li class="tl">
+      <div class="tl-year">c. 200 AD — The Physiologus</div>
+      <div class="tl-body">A Greek text that became the template for the entire bestiary tradition. It paired each animal with a Christian allegory, so the illustration's job was not to document the animal but to <b>illustrate the moral</b>. This is why so many medieval animals are drawn in fixed, theatrical poses — the beaver biting itself, the unicorn in the maiden's lap, the whale with a fire on its back.</div>
+    </li>
+    <li class="tl">
+      <div class="tl-year">c. 600 — 636 — Isidore of Seville</div>
+      <div class="tl-body">Isidore's Etymologiae explained animals by deriving their names from Latin roots — the crocodile from the yellow colour of the Nile mud, the lion from its name — and his etymologies became <b>descriptions of behaviour</b>. If the name means something, the animal must do that thing. This gave medieval artists a logic for drawing animals they had never seen: the drawing had to agree with the etymology, not with nature.</div>
+    </li>
+    <li class="tl">
+      <div class="tl-year">c. 1200 — The great English bestiaries</div>
+      <div class="tl-body">By the thirteenth century, the bestiary had become a luxury book, with large, expensive illustrations — the Aberdeen, Ashmole, Rochester, and Harley bestiaries. The animals in them are drawn with <b>complete artistic confidence</b>, in a consistent house style, with no sense that anything is missing. The artist did not know what an elephant looked like, but he knew exactly how to draw the elephant that Pliny described.</div>
+    </li>
+    <li class="tl">
+      <div class="tl-year">c. 1250 — Matthew Paris draws a real elephant</div>
+      <div class="tl-body">An elephant arrived at the Tower of London in 1255, given by Louis IX of France to Henry III. Matthew Paris drew it from life — and it is the most famous animal drawing of the Middle Ages precisely because it shows the collision between a real animal and a rumour-based visual vocabulary. He had the elephant in front of him, and he still drew the trunk as a trumpet, because that's what he had seen in manuscripts.</div>
+    </li>
+    <li class="tl">
+      <div class="tl-year">1500s onward — The rumour breaks down</div>
+      <div class="tl-body">As explorers brought back actual skins, skeletons, and eventually living animals, the bestiary tradition began to collapse. Artist-naturalists like Albrecht Dürer drew a rhinoceros in 1515 from a written description and a sketch by someone who had actually seen one, and it became the definitive European image of a rhino for 200 years — even though the rhino he drew is covered in armour, because the description said its hide was like armour. The last great rumour-beasts, drawn with total sincerity, sit in manuscripts made in the same decade as the first accurate drawings of real ones.</div>
+    </li>
+  </ol>
+
+  <p>The lesson of medieval animal art is not that artists were stupid. It is that <b>when you draw from a description rather than an observation, the description wins every time</b> — the trumpet-shaped trunk, the goat-like unicorn, the fruit-carrying hedgehog, the bonnacon with its three acres of fire. The rumour becomes the visual vocabulary, and the actual animal has to fight its way back in. That fight, between the word and the thing, is visible in every one of these pictures.</p>
+
+  <footer>
+    <p>Images from <a href="https://commons.wikimedia.org/">Wikimedia Commons</a> — Rochester, Aberdeen, Ashmole, and Harley bestiaries, British Library manuscripts, and Matthew Paris's elephant. Written 2026, jamesfeldmayer.com. <a href="/blog/">← back to the blog</a> · <a href="/">← site index</a></p>
+  </footer>
+</div>
+</body>
+</html>
