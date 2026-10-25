@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exploring Artistic Depictions of Biblical Creatures | jamesfeldmayer.com</title>
+<meta name="description" content="A chronology of biblical creatures: every King James description of each creature (with KJV/NIV tabs and a link to the full chapter), then a timeline of its depictions from the ancient Near East (BC) to modern art (AD).">
+<style>
+  :root {
+    --parchment: #f4ecd9;
+    --parchment-deep: #ece1c4;
+    --card: #faf4e4;
+    --ink: #38291c;
+    --ink-soft: #5c4a37;
+    --rubric: #8a2318;
+    --gold: #94742a;
+    --gold-soft: #c2a45c;
+    --border: #c8b58a;
+    --border-soft: #ddd0ae;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--parchment);
+    background-image:
+      radial-gradient(1200px 500px at 20% 0%, rgba(255,252,240,0.55), transparent 65%),
+      radial-gradient(900px 600px at 90% 100%, rgba(148,116,42,0.10), transparent 60%);
+    color: var(--ink);
+    min-height: 100vh;
+    font-family: Georgia, "Iowan Old Style", "Palatino Linotype", "Book Antiqua", "Times New Roman", serif;
+    line-height: 1.75;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 3.5rem 1.5rem 4.5rem; }
+  .rule-double { border: none; border-top: 3px double var(--border); margin: 0 0 1.6rem; }
+  h1 {
+    font-size: clamp(1.9rem, 5vw, 2.7rem); font-weight: 700; line-height: 1.2;
+    color: var(--rubric); font-variant: small-caps; letter-spacing: 0.02em;
+    margin-bottom: 0.6rem;
+  }
+  .meta { color: var(--ink-soft); font-style: italic; margin-bottom: 1.8rem; }
+  .meta a { color: var(--gold); text-decoration: none; }
+  .meta a:hover { text-decoration: underline; }
+  p { margin-bottom: 1.1rem; }
+  p b { color: var(--rubric); font-weight: 700; }
+  a { color: var(--rubric); }
+  h2.plain { font-size: 1.1rem; font-variant: small-caps; color: var(--rubric); letter-spacing: 0.06em; margin: 2.2rem 0 0.9rem; }
+
+  /* Table of contents */
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 4px; padding: 1.2rem 1.4rem; margin: 2rem 0 3rem; box-shadow: 0 2px 6px rgba(90,66,24,0.08); }
+  .toc .toc-title { color: var(--rubric); font-variant: small-caps; letter-spacing: 0.06em; font-size: 1rem; font-weight: 700; text-align: center; margin-bottom: 0.7rem; }
+  .toc ul { margin: 0; padding: 0; list-style: none; columns: 2; column-gap: 2rem; }
+  .toc li { margin-bottom: 0.25rem; font-size: 0.92rem; break-inside: avoid; }
+  .toc li .num { color: var(--gold); font-weight: 700; display: inline-block; min-width: 2.1rem; }
+  .toc a { color: var(--ink); text-decoration: none; }
+  .toc a:hover { color: var(--rubric); text-decoration: underline; }
+
+  /* Creature sections */
+  .creature { margin-bottom: 3.2rem; }
+  .creature h2 {
+    font-size: clamp(1.35rem, 3.5vw, 1.7rem); font-weight: 700; color: var(--ink);
+    font-variant: small-caps; letter-spacing: 0.03em; line-height: 1.25;
+    border-bottom: 3px double var(--border); padding-bottom: 0.45rem; margin-bottom: 1rem;
+    scroll-margin-top: 1rem;
+  }
+  .creature h2 .num {
+    color: var(--rubric); font-size: 1.15rem; margin-right: 0.55rem;
+    border: 1px solid var(--gold-soft); border-radius: 2px; padding: 0.05rem 0.45rem;
+    background: var(--card); vertical-align: 0.1em;
+  }
+
+  /* In the Bible */
+  .inbible { background: var(--card); border: 1px solid var(--border); border-left: 5px solid var(--rubric); border-radius: 4px; padding: 1.05rem 1.3rem; margin-bottom: 1.8rem; box-shadow: 0 2px 6px rgba(90,66,24,0.08); }
+  .inbible .ib-title, .inart .ia-title { color: var(--rubric); font-variant: small-caps; letter-spacing: 0.08em; font-weight: 700; font-size: 1rem; margin-bottom: 0.6rem; }
+  .verse { margin-bottom: 0.85rem; }
+  .verse:last-child { margin-bottom: 0; }
+  .verse .ref { color: var(--gold); font-weight: 700; font-size: 0.88rem; letter-spacing: 0.04em; font-variant: small-caps; }
+  .verse .text { font-size: 0.97rem; margin-top: 0.1rem; }
+
+  /* Timeline */
+  .inart { margin-bottom: 0.5rem; }
+  ol.timeline { list-style: none; margin: 0.4rem 0 0; padding-left: 1.35rem; border-left: 2px solid var(--border); }
+  ol.timeline li.tl { position: relative; margin-bottom: 1.6rem; padding-left: 0.9rem; }
+  ol.timeline li.tl::before {
+    content: ""; position: absolute; left: -1.52rem; top: 0.42rem;
+    width: 0.72rem; height: 0.72rem; border-radius: 50%;
+    background: var(--gold-soft); border: 2px solid var(--gold);
+    box-shadow: 0 0 0 3px var(--parchment);
+  }
+  .tl .era { display: inline-block; color: var(--parchment); background: var(--rubric); font-variant: small-caps; letter-spacing: 0.07em; font-size: 0.76rem; padding: 0.06rem 0.55rem; border-radius: 3px; margin-bottom: 0.2rem; }
+  .tl .date { color: var(--gold); font-weight: 700; font-size: 0.95rem; margin-bottom: 0.15rem; }
+  .tl .work { font-size: 1.02rem; font-weight: 700; margin-bottom: 0.1rem; }
+  .tl .work a { color: var(--ink); text-decoration: none; border-bottom: 1px dotted var(--gold); }
+  .tl .work a:hover { color: var(--rubric); border-bottom-color: var(--rubric); }
+  .tl .byline { color: var(--ink-soft); font-size: 0.88rem; margin-bottom: 0.25rem; }
+  .tl img { max-width: 100%; height: auto; display: block; margin: 0.55rem 0 0.3rem; border: 1px solid var(--border); border-radius: 3px; box-shadow: 0 2px 6px rgba(90,66,24,0.12); }
+  .tl .caption { font-size: 0.76rem; color: var(--ink-soft); margin-bottom: 0.45rem; }
+  .tl .caption a { color: var(--gold); text-decoration: none; }
+  .tl .caption a:hover { text-decoration: underline; }
+  .tl .note { font-size: 0.94rem; color: var(--ink-soft); margin-bottom: 0; }
+  .tl .note b { color: var(--rubric); }
+
+  .arc { font-style: italic; color: var(--ink-soft); border-left: 4px solid var(--gold-soft); padding-left: 0.9rem; margin-top: 1.4rem; }
+  .arc b { color: var(--rubric); font-style: normal; }
+  .arc .arc-label { color: var(--gold); font-style: normal; font-weight: 700; font-variant: small-caps; letter-spacing: 0.06em; }
+
+  .honest { background: var(--parchment-deep); border: 1px dashed var(--border); border-radius: 4px; padding: 0.85rem 1.1rem; margin-bottom: 0.2rem; font-size: 0.94rem; color: var(--ink-soft); }
+  .trans-note { margin-top: 0.7rem; }
+  .sources { margin-top: 1.2rem; }
+
+  footer { margin-top: 3.5rem; padding-top: 1.4rem; border-top: 3px double var(--border); color: var(--ink-soft); font-size: 0.9rem; }
+  footer a { color: var(--rubric); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  @media (max-width: 560px) { .toc ul { columns: 1; } }
+
+  /* Version tabs */
+  .verse .vtabs {
+    margin-top: 0.3rem;
+    display: inline-flex;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .verse .vtab {
+    appearance: none;
+    font-family: Georgia, serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.03em;
+    color: var(--ink-soft);
+    background: var(--parchment-deep);
+    border: none;
+    border-right: 1px solid var(--border);
+    padding: 0.14rem 0.6rem;
+    cursor: pointer;
+  }
+  .verse .vtab:last-child { border-right: none; }
+  .verse .vtab:hover { color: var(--rubric); }
+  .verse .vtab.active { background: var(--rubric); color: var(--parchment); }
+  .verse .text.other { display: none; }
+  .verse .ref a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px dotted var(--gold-soft);
+  }
+  .verse .ref a:hover { color: var(--rubric); border-bottom-color: var(--rubric); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Exploring Artistic Depictions of Biblical Creatures</h1>
+  <p class="meta">October 24, 2026 — a chronology, from the oldest depictions to the modern ones</p>
+  <hr class="rule-double">
+
+  <p>This page is a <b>creature-by-creature chronology</b>. For each creature you get every description the <b>King James Version</b> gives — each verse has <b>KJV / NIV tabs</b> and a link to the <b>full chapter</b> — and then a timeline of how artists have depicted that creature, ordered <b>oldest first</b>, through the most notable works, and on to the modern ones. Dates use <b>BC</b> and <b>AD</b>.</p>
+  <p>The dates tell the real story: some creatures were being painted almost as soon as art survives (the cherubim’s ancestors date to the 9th century BC), while others barely get an image until the printing press. Images come from <b>Wikimedia Commons</b>; where I could not verify a specific image file, the work title links to a Commons search instead of a guess.</p>
+
+  <div class="toc">
+    <div class="toc-title">Table of Contents</div>
+    <ul>
+      <li><span class="num">I.</span><a href="#seraphim">Seraphim</a></li>
+      <li><span class="num">II.</span><a href="#cherubim">Cherubim</a></li>
+      <li><span class="num">III.</span><a href="#four-living-creatures">The four living creatures</a></li>
+      <li><span class="num">IV.</span><a href="#michael-vs-dragon">Michael and the dragon</a></li>
+      <li><span class="num">V.</span><a href="#gabriel">Gabriel</a></li>
+      <li><span class="num">VI.</span><a href="#serpent-of-eden">The serpent of Eden</a></li>
+      <li><span class="num">VII.</span><a href="#fiery-serpents">The fiery serpents</a></li>
+      <li><span class="num">VIII.</span><a href="#leviathan">Leviathan</a></li>
+      <li><span class="num">IX.</span><a href="#behemoth">Behemoth</a></li>
+      <li><span class="num">X.</span><a href="#great-red-dragon">The great red dragon</a></li>
+      <li><span class="num">XI.</span><a href="#beast-from-the-sea">The beast from the sea</a></li>
+      <li><span class="num">XII.</span><a href="#locusts-of-the-abyss">The locusts of the abyss</a></li>
+      <li><span class="num">XIII.</span><a href="#nephilim">The Nephilim</a></li>
+      <li><span class="num">XIV.</span><a href="#satan">Satan</a></li>
+      <li><span class="num">XV.</span><a href="#talking-donkey">Balaam’s talking donkey</a></li>
+      <li><span class="num">XVI.</span><a href="#unicorn">The unicorn (re’em)</a></li>
+      <li><span class="num">XVII.</span><a href="#satyrs">The satyrs (se’irim)</a></li>
+    </ul>
+  </div>
+
+  <section class="creature" id="seraphim">
+    <h2><span class="num">I.</span>Seraphim</h2>
+    <div class="inbible">
+      <div class="ib-title">In the Bible</div>
+      <div class="verse">
+        <div class="ref"><a href="https://www.biblegateway.com/passage/?search=Isaiah+6&version=KJV" target="_blank" rel="noopener" title="Read the full chapter">Isaiah 6:2&nbsp;↗</a></div>
+        <div class="vtabs" role="tablist" aria-label="Bible version for Isaiah 6:2"><button type="button" class="vtab active" data-version="kjv">KJV</button><button type="button" class="vtab" data-version="niv">NIV</button></div>
+        <div class="text" data-version="kjv">“Above it stood the seraphims: each one had six wings; with twain he covered his face, and with twain he covered his feet, and with twain he did fly.”</div>
+        <div class="text other" data-version="niv">“Above him were seraphim, each with six wings: With two wings they covered their faces, with two they covered their feet, and with two they were flying.”</div>
+      </div>
+      <div class="verse">
+        <div class="ref"><a href="https://www.biblegateway.com/passage/?search=Isaiah+6&version=KJV" target="_blank" rel="noopener" title="Read the full chapter">Isaiah 6:6&nbsp;↗</a></div>
+        <div class="vtabs" role="tablist" aria-label="Bible version for Isaiah 6:6"><button type="button" class="vtab active" data-version="kjv">KJV</button><button type="button" class="vtab" data-version="niv">NIV</button></div>
+        <div class="text" data-version="kjv">“Then flew one of the seraphims unto me, having a live coal in his hand, which he had taken with the tongs from off the altar:”</div>
+        <div class="text other" data-version="niv">“Then one of the seraphim flew to me with a live coal in his hand, which he had taken with tongs from the altar.”</div>
+      </div>
+    </div>
+    <div class="inart">
+      <div class="ia-title">In art — oldest to newest</div>
+      <ol class="timeline">
+        <li class="tl">
+          <div class="era">Byzantine</div>
+          <div class="date">c. 537–562 AD</div>
+          <div class="work"><a href="https://commons.wikimedia.org/wiki/File:Seraphim_in_Hagia_Sofia.jpg">Seraphim mosaics of Hagia Sophia</a></div>
+          <div class="byline">Byzantine craftsmen — pendentives under the dome, Istanbul</div>
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Seraphim_in_Hagia_Sofia.jpg?width=640" alt="Byzantine mosaic of a six-winged seraph on the pendentive of Hagia Sophia" loading="lazy">
+          <div class="caption">Image via <a href="https://commons.wikimedia.org/wiki/File:Seraphim_in_Hagia_Sofia.jpg">Wikimedia Commons</a></div>
+          <p class="note"><b>The oldest.</b> The earliest surviving large-scale seraphim. Each has six wings arranged in a cross, two lifted for flight and four wrapped around a hidden body — literal to Isaiah, faceless and burning with colour.</p>
+        </li>
+        <li class="tl">
+          <div class="era">Medieval</div>
+          <div class="date">c. 1295–1300 AD</div>
+          <div class="work"><a href="https://commons.wikimedia.org/wiki/File:Giotto_di_Bondone_-_Legend_of_St_Francis_-_19._Stigmatization_of_St_Francis_-_WGA09145.jpg">Stigmatization of St Francis</a></div>
+          <div class="byline">Giotto — Louvre, Paris (panel); a fresco version is in the Upper Basilica of St Francis, Assisi</div>
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Giotto_di_Bondone_-_Legend_of_St_Francis_-_19._Stigmatization_of_St_Francis_-_WGA09145.jpg?width=640" alt="Giotto, Stigmatization of St Francis, showing the six-winged seraphim above St Francis" loading="lazy">
+          <div class="caption">Image via <a href="https://commons.wikimedia.org/wiki/File:Giotto_di_Bondone_-_Legend_of_St_Francis_-_19._Stigmatization_of_St_Francis_-_WGA09145.jpg">Wikimedia Commons</a></div>
+          <p class="note"><b>Most notable.</b> Medieval mysticism identified the seraph with Christ crucified, and Giotto paints exactly that: a six-winged seraph bearing the wounds of the crucifixion, raining stigmata down on Francis.</p>
+        </li>
+      </ol>
+      <p class="arc"><span class="arc-label">How it changed:</span> <b>from hidden fire to wounded Christ to missing wings.</b> Byzantium kept Isaiah’s literal six-winged faceless seraph; the Middle Ages merged it with the crucified Christ; and in modern fantasy art the seraph has all but vanished — “angels” now get two feathered wings instead of six, which is why Hagia Sophia’s mosaics still startle visitors who expect cupids.</p>
+    </div>
+  </section>
+
+  <section class="creature" id="cherubim">
+    <h2><span class="num">II.</span>Cherubim</h2>
+    <div class="inbible">
+      <div class="ib-title">In the Bible</div>
+      <div class="verse">
+        <div class="ref"><a href="https://www.biblegateway.com/passage/?search=Genesis+3&version=KJV" target="_blank" rel="noopener" title="Read the full chapter">Genesis 3:24&nbsp;↗</a></div>
+        <div class="vtabs" role="tablist" aria-label="Bible version for Genesis 3:24"><button type="button" class="vtab active" data-version="kjv">KJV</button><button type="button" class="vtab" data-version="niv">NIV</button></div>
+        <div class="text" data-version="kjv">“So he drove out the man; and he placed at the east of the garden of Eden Cherubims, and a flaming sword which turned every way, to keep the way of the tree of life.”</div>
+        <div class="text other" data-version="niv">“After he drove the man out, he placed on the east side of the Garden of Eden cherubim and a flaming sword flashing back and forth to guard the way to the tree of life.”</div>
+      </div>
+      <div class="verse">
+        <div class="ref"><a href="https://www.biblegateway.com/passage/?search=Exodus+25&version=KJV" target="_blank" rel="noopener" title="Read the full chapter">Exodus 25:20&nbsp;↗</a></div>
+        <div class="vtabs" role="tablist" aria-label="Bible version for Exodus 25:20"><button type="button" class="vtab active" data-version="kjv">KJV</button><button type="button" class="vtab" data-version="niv">NIV</button></div>
+        <div class="text" data-version="kjv">“And the cherubims shall stretch forth their wings on high, covering the mercy seat with their wings, and their faces shall look one to another; toward the mercy seat shall the faces of the cherubims be.”</div>
+        <div class="text other" data-version="niv">“The cherubim are to have their wings spread upward, overshadowing the cover with them. The cherubim are to face each other, looking toward the cover.”</div>
+      </div>
+      <div class="verse">
+        <div class="ref"><a href="https://www.biblegateway.com/passage/?search=Ezekiel+1&version=KJV" target="_blank" rel="noopener" title="Read the full chapter">Ezekiel 1:6&nbsp;↗</a></div>
+        <div class="vtabs" role="tablist" aria-label="Bible version for Ezekiel 1:6"><button type="button" class="vtab active" data-version="kjv">KJV</button><button type="button" class="vtab" data-version="niv">NIV</button></div>
+        <div class="text" data-version="kjv">“And every one had four faces, and every one had four wings.”</div>
+        <div class="text other" data-version="niv">“but each of them had four faces and four wings.”</div>
+      </div>
+      <div class="verse">
+        <div class="ref"><a href="https://www.biblegateway.com/passage/?search=Ezekiel+10&version=KJV" target="_blank" rel="noopener" title="Read the full chapter">Ezekiel 10:21&nbsp;↗</a></div>
+        <div class="vtabs" role="tablist" aria-label="Bible version for Ezekiel 10:21"><button type="button" class="vtab active" data-version="kjv">KJV</button><button type="button" class="vtab" data-version="niv">NIV</button></div>
+        <div class="text" data-version="kjv">“Every one had four faces apiece, and every one four wings; and the likeness of the hands of a man was under their wings.”</div>
+        <div class="text other" data-version="niv">“Each had four faces and four wings, and under their wings was what looked like human hands.”</div>
+      </div>
+    </div>
+    <div class="inart">
+      <div class="ia-title">In art — oldest to newest</div>
+      <ol class="timeline">
+        <li class="tl">
+          <div class="era">Ancient Near East</div>
+          <div class="date">c. 883–859 BC</div>
+          <div class="work"><a href="https://commons.wikimedia.org/wiki/File:Ancient_Assyria_Lamassu_(Winged_Bull)_from_Nimrud,_9th_C._BC.jpg">Lamassu (winged bull) from Nimrud</a></div>
+          <div class="byline">Assyrian, reign of Ashurnasirpal II — British Museum, London</div>
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Ancient_Assyria_Lamassu_(Winged_Bull)_from_Nimrud,_9th_C._BC.jpg?width=640" alt="Assyrian lamassu, a colossal winged bull with a human head, from Nimrud" loading="lazy">
+          <div class="caption">Image via <a href="https://commons.wikimedia.org/wiki/File:Ancient_Assyria_Lamassu_(Winged_Bull)_from_Nimrud,_9th_C._BC.jpg">Wikimedia Commons</a></div>
+          <p class="note"><b>The oldest by far.</b> Not a cherub, but its ancestor: colossal winged bulls and lions with human heads guarded Assyrian palaces and thrones, and scholars generally trace the Hebrew cherub — a hybrid throne-guardian of God — back to this family of images. Genesis’s cherub is a gatekeeper; this is a gatekeeper in stone.</p>
+        </li>
+        <li class="tl">
+          <div class="era">Renaissance</div>
+          <div class="date">c. 1425 AD</div>
+          <div class="work"><a href="https://commons.wikimedia.org/wiki/File:Masaccio-TheExpulsionOfAdamAndEveFromEden-Restoration.jpg">Expulsion from the Garden of Eden</a></div>
+          <div class="byline">Masaccio — Brancacci Chapel, Santa Maria del Carmine, Florence</div>
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Masaccio-TheExpulsionOfAdamAndEveFromEden-Restoration.jpg?width=640" alt="Masaccio, Expulsion from the Garden of Eden, fresco in the Brancacci Chapel" loading="lazy">
+          <div class="caption">Image via <a href="https://commons.wikimedia.org/wiki/File:Masaccio-TheExpulsionOfAdamAndEveFromEden-Restoration.jpg">Wikimedia Commons</a></div>
+          <p class="note"><b>Most notable.</b> The cherub is here only as a tiny red angel waving the flaming sword above Adam and Eve — the terrifying guardian reduced to a punctuation mark at the garden gate.</p>
+        </li>
+        <li class="tl">
+          <div class="era">Renaissance</div>
+          <div class="date">c. 1512–13 AD</div>
+          <div class="work"><a href="https://commons.wikimedia.org/wiki/File:Raphael-cherubini.jpg">The putti of the Sistine Madonna</a></div>
+          <div class="byline">Raphael — Gemäldegalerie Alte Meister, Dresden (the painting; the two bored winged boys at its foot)</div>
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Raphael-cherubini.jpg?width=640" alt="The two famous winged putti at the foot of Raphael's Sistine Madonna" loading="lazy">
+          <div class="caption">Image via <a href="https://commons.wikimedia.org/wiki/File:Raphael-cherubini.jpg">Wikimedia Commons</a></div>
+          <p class="note"><b>The turning point.</b> Raphael’s two daydreaming winged boys are classical putti, not cherubim — but English speakers have called them “cherubs” for centuries, and this is the picture that rebranded a four-faced throne-guardian of Ezekiel into a chubby toddler.</p>
+        </li>
+      </ol>
+      <p class="arc"><span class="arc-label">How it changed:</span> <b>from monster to mascot.</b> The chain runs Assyrian guardian → four-faced, four-winged bearer of God’s throne → tiny gatekeeper at Eden → winged baby on Valentine’s cards. It is one of the biggest transformations on this page: Ezekiel’s cherubim would be terrifying to meet, and almost nothing of them survives in the popular “cherub”.</p>
+    </div>
+  </section>
+
+  <section class="creature" id="four-living-creatures">
+    <h2><span class="num">III.</span>The four living creatures</h2>
+    <div class="inbible">
+      <div class="ib-title">In the Bible</div>
+      <div class="verse">
+        <div class="ref"><a href="https://www.biblegateway.com/passage/?search=Ezekiel+1&version=KJV" target="_blank" rel="noopener" title="Read the full chapter">Ezekiel 1:10&nbsp;↗</a></div>
+        <div class="vtabs" role="tablist" aria-label="Bible version for Ezekiel 1:10"><button type="button" class="vtab active" data-version="kjv">KJV</button><button type="button" class="vtab" data-version="niv">NIV</button></div>
+        <div class="text" data-version="kjv">“As for the likeness of their faces, they four had the face of a man, and the face of a lion, on the right side: and they four had the face of an ox on the left side; they four also had the face of an eagle.”</div>
+        <div class="text other" data-version="niv">“Their faces looked like this: Each of the four had the face of a human being, and on the right side each had the face of a lion, and on the left the face of an ox; each also had the face of an eagle.”</div>
+      </div>
+      <div class="verse">
+        <div class="ref"><a href="https://www.biblegateway.com/passage/?search=Revelation+4&version=KJV" target="_blank" rel="noopener" title="Read the full chapter">Revelation 4:7&nbsp;↗</a></div>
+        <div class="vtabs" role="tablist" aria-label="Bible version for Revelation 4:7"><button type="button" class="vtab active" data-version="kjv">KJV</button><button type="button" class="vtab" data-version="niv">NIV</button></div>
+        <div class="text" data-version="kjv">“And the first beast was like a lion, and the second beast like a calf, and the third beast had a face as a man, and the fourth beast was like a flying eagle.”</div>
+        <div class="text other" data-version="niv">“The first living creature was like a lion, the second was like an ox, the third had a face like a man, the fourth was like a flying eagle.”</div>
+      </div>
+    </div>
+    <div class="inart">
+      <div class="ia-title">In art — oldest to newest</div>
+      <ol class="timeline">
+        <li class="tl">
+          <div class="era">Early Christian</div>
+          <div class="date">c. 425 AD</div>
+          <div class="work"><a href="https://commons.wikimedia.org/wiki/File:Mausoleum_of_Galla_Placidia_ceiling_mosaics.jpg">Mosaics of the Mausoleum of Galla Placidia</a></div>
+          <div class="byline">Ravenna, Italy — the four pendentives of the dome</div>
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Mausoleum_of_Galla_Placidia_ceiling_mosaics.jpg?width=640" alt="The glowing 5th-century ceiling mosaics of the Mausoleum of Galla Placidia, Ravenna" loading="lazy">
+          <div class="caption">Image via <a href="https://commons.wikimedia.org/wiki/File:Mausoleum_of_Galla_Placidia_ceiling_mosaics.jpg">Wikimedia Commons</a></div>
+          <p class="note"><b>The oldest.</b> Among the earliest surviving depictions of the four creatures as the symbols of the four Evangelists — man, lion, ox and eagle — set into the four pendentives holding up the dome, where they have looked down for some sixteen centuries.</p>
+        </li>
+        <li class="tl">
+          <div class="era">Medieval</div>
+          <div class="date">c. 800 AD</div>
+          <div class="work"><a href="https://commons.wikimedia.org/w/index.php?search=Book+of+Kells+tetramorph+evangelist+symbols">Evangelist symbols in the Book of Kells</a></div>
+          <div class="byline">Insular monks — Trinity College Library, Dublin</div>
+          <p class="note"><b>Most notable.</b> The four creatures become inseparable from the Gospels themselves: man for Matthew, lion for Mark, ox for Luke, eagle for John, woven into the most famous decorated book of the Middle Ages.</p>
+        </li>
+        <li class="tl">
+          <div class="era">Gothic</div>
+          <div class="date">c. 1145–55 AD</div>
+          <div class="work"><a href="https://commons.wikimedia.org/wiki/File:Chartres2006_092.jpg">Royal Portal, Christ in Majesty</a></div>
+          <div class="byline">Anonymous sculptors — Chartres Cathedral, France</div>
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Chartres2006_092.jpg?width=640" alt="Royal Portal of Chartres Cathedral, with Christ in Majesty surrounded by the tetramorph" loading="lazy">
+          <div class="caption">Image via <a href="https://commons.wikimedia.org/wiki/File:Chartres2006_092.jpg">Wikimedia Commons</a></div>
+          <p class="note">In stone now: Christ in majesty ringed by the four creatures, carved over the cathedral’s main door so every worshipper walked under Revelation’s throne-room.</p>
+        </li>
+        <li class="tl">
+          <div class="era">Renaissance</div>
+          <div class="date">c. 1518 AD</div>
+          <div class="work"><a href="https://commons.wikimedia.org/wiki/File:%22Vision_of_Ezekiel%27.jpg">Vision of Ezekiel</a></div>
+          <div class="byline">Raphael — Palazzo Pitti, Florence</div>
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/%22Vision_of_Ezekiel%27.jpg?width=640" alt="Raphael, Vision of Ezekiel, showing the prophet beneath the vision of God amid the four living creatures" loading="lazy">
+          <div class="caption">Image via <a href="https://commons.wikimedia.org/wiki/File:%22Vision_of_Ezekiel%27.jpg">Wikimedia Commons</a></div>
+          <p class="note">Raphael goes back to Ezekiel’s own vision: God borne aloft by the four creatures in full flight, the prophet flung back by the wind of it.</p>
+        </li>
+      </ol>
+      <p class="arc"><span class="arc-label">How it changed:</span> <b>from vision to logo.</b> Ezekiel’s composite beings were simplified into four separate creatures by early Christian times, spent a thousand years as the Evangelists’ emblems in mosaic, ink and stone, and finally dissolved into heraldry — the winged lion of St Mark still flies over Venice. In modern art the tetramorph survives almost only in churches.</p>
+    </div>
+  </section>
+
+  <section class="creature" id="michael-vs-dragon">
+    <h2><span class="num">IV.</span>Michael and the dragon</h2>
+    <div class="inbible">
+      <div class="ib-title">In the Bible</div>
+      <div class="verse">
+        <div class="ref"><a href="https://www.biblegateway.com/passage/?search=Revelation+12&version=KJV" target="_blank" rel="noopener" title="Read the full chapter">Revelation 12:7&nbsp;↗</a></div>
+        <div class="vtabs" role="tablist" aria-label="Bible version for Revelation 12:7"><button type="button" class="vtab active" data-version="kjv">KJV</button><button type="button" class="vtab" data-version="niv">NIV</button></div>
+        <div class="text" data-version="kjv">“And there was war in heaven: Michael and his angels fought against the dragon; and the dragon fought and his angels,”</div>
+        <div class="text other" data-version="niv">“Then war broke out in heaven. Michael and his angels fought against the dragon, and the dragon and his angels fought back.”</div>
+      </div>
+      <div class="verse">
+        <div class="ref"><a href="https://www.biblegateway.com/passage/?search=Revelation+12&version=KJV" target="_blank" rel="noopener" title="Read the full chapter">Revelation 12:9&nbsp;↗</a></div>
+        <div class="vtabs" role="tablist" aria-label="Bible version for Revelation 12:9"><button type="button" class="vtab active" data-version="kjv">KJV</button><button type="button" class="vtab" data-version="niv">NIV</button></div>
+        <div class="text" data-version="kjv">“And the great dragon was cast out, that old serpent, called the Devil, and Satan, which deceiveth the whole world: he was cast out into the earth, and his angels were cast out with him.”</div>
+        <div class="text other" data-version="niv">“The great dragon was hurled down—that ancient serpent called the devil, or Satan, who leads the whole world astray. He was hurled to the earth, and his angels with him.”</div>
+      </div>
+    </div>
+    <div class="inart">
+      <div class="ia-title">In art — oldest to newest</div>
+      <ol class="timeline">
+        <li class="tl">
+          <div class="era">Byzantine</div>
+          <div class="date">6th century AD</div>
+          <div class="work"><a href="https://commons.wikimedia.org/w/index.php?search=Byzantine+ivory+archangel+Michael+British+Museum">Ivory leaf of the Archangel Michael</a></div>
+          <div class="byline">Constantinople — British Museum, London</div>
+          <p class="note"><b>The oldest.</b> The earliest monumental Michael is a courtier, not a warrior: robed, holding an orb, no dragon anywhere. The battle of Revelation 12 took centuries to become an image.</p>
+        </li>
+        <li class="tl">
+          <div class="era">Renaissance</div>
+          <div class="date">c. 1503–05 AD</div>
+          <div class="work"><a href="https://commons.wikimedia.org/wiki/File:St_Michael_Raphael.jpg">St Michael Vanquishing Satan</a></div>
+          <div class="byline">Raphael — Louvre, Paris</div>
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/St_Michael_Raphael.jpg?width=640" alt="Raphael, St Michael Vanquishing Satan, Louvre" loading="lazy">
+          <div class="caption">Image via <a href="https://commons.wikimedia.org/wiki/File:St_Michael_Raphael.jpg">Wikimedia Commons</a></div>
+          <p class="note"><b>Most notable.</b> A slim, elegant young knight in armour pins a writhing demon — the dragon of Revelation rewritten as a personal duel.</p>
+        </li>
+        <li class="tl">
+          <div class="era">Baroque</div>
+          <div class="date">c. 1636 AD</div>
+          <div class="work"><a href="https://commons.wikimedia.org/wiki/File:GuidoReni_MichaelDefeatsSatan.jpg">St Michael the Archangel</a></div>
+          <div class="byline">Guido Reni — Santa Maria della Concezione dei Cappuccini, Rome</div>
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/GuidoReni_MichaelDefeatsSatan.jpg?width=640" alt="Guido Reni, St Michael the Archangel trampling Satan, Rome" loading="lazy">
+          <div class="caption">Image via <a href="https://commons.wikimedia.org/wiki/File:GuidoReni_MichaelDefeatsSatan.jpg">Wikimedia Commons</a></div>
+          <p class="note">Reni’s Michael tramples Satan with beautiful contempt — the painting the artist reportedly signed with the face of his enemy, which tells you what the dragon had become: a stand-in for real people.</p>
+        </li>
+        <li class="tl">
+          <div class="era">Modern</div>
+          <div class="date">1956–58 AD</div>
+          <div class="work"><a href="https://commons.wikimedia.org/wiki/File:St_Michael's_victory_over_the_Devil_by_Sir_Jacob_Epstein,_Coventry_Cathedral.jpg">St Michael’s Victory over the Devil</a></div>
+          <div class="byline">Jacob Epstein — bronze at the entrance of the new Coventry Cathedral, England</div>
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/St_Michael's_victory_over_the_Devil_by_Sir_Jacob_Epstein,_Coventry_Cathedral.jpg?width=640" alt="Jacob Epstein's bronze St Michael and the Devil outside Coventry Cathedral" loading="lazy">
+          <div class="caption">Image via <a href="https://commons.wikimedia.org/wiki/File:St_Michael's_victory_over_the_Devil_by_Sir_Jacob_Epstein,_Coventry_Cathedral.jpg">Wikimedia Commons</a></div>
+          <p class="note"><b>Modern.</b> Set beside a cathedral built after the 1940 bombing of Coventry, Epstein’s angel is a gaunt, angular figure pinning a horned demon — Revelation’s war in heaven made monumental in a city that had just lived through one.</p>
+        </li>
+      </ol>
+      <p class="arc"><span class="arc-label">How it changed:</span> <b>from courtier to knight to monument.</b> Byzantine Michael is a serene official; Renaissance and Baroque Michael is a duellist, his dragon shrinking to a demon underfoot; the modern Michael is carved in bronze for a city rebuilding after war — the creature’s meaning moves with the century.</p>
+    </div>
+  </section>
+
+  <section class="creature" id="gabriel">
+    <h2><span class="num">V.</span>Gabriel</h2>
+    <div class="inbible">
+      <div class="ib-title">In the Bible</div>
+      <div class="verse">
+        <div class="ref"><a href="https://www.biblegateway.com/passage/?search=Daniel+9&version=KJV" target="_blank" rel="noopener" title="Read the full chapter">Daniel 9:21&nbsp;↗</a></div>
+        <div class="vtabs" role="tablist" aria-label="Bible version for Daniel 9:21"><button type="button" class="vtab active" data-version="kjv">KJV</button><button type="button" class="vtab" data-version="niv">NIV</button></div>
+        <div class="text" data-version="kjv">“Yea, whiles I was speaking in prayer, even the man Gabriel, whom I had seen in the vision at the beginning, being caused to fly swiftly, touched me about the time of the evening oblation.”</div>
+        <div class="text other" data-version="niv">“while I was still in prayer, Gabriel, the man I had seen in the earlier vision, came to me in swift flight about the time of the evening sacrifice.”</div>
+      </div>
+      <div class="verse">
+        <div class="ref"><a href="https://www.biblegateway.com/passage/?search=Luke+1&version=KJV" target="_blank" rel="noopener" title="Read the full chapter">Luke 1:26&nbsp;↗</a></div>
+        <div class="vtabs" role="tablist" aria-label="Bible version for Luke 1:26"><button type="button" class="vtab active" data-version="kjv">KJV</button><button type="button" class="vtab" data-version="niv">NIV</button></div>
+        <div class="text" data-version="kjv">“And in the sixth month the angel Gabriel was sent from God unto a city of Galilee, named Nazareth,”</div>
+        <div class="text other" data-version="niv">“In the sixth month of Elizabeth’s pregnancy, God sent the angel Gabriel to Nazareth, a town in Galilee,”</div>
+      </div>
+      <div class="verse">
+        <div class="ref"><a href="https://www.biblegateway.com/passage/?search=Luke+1&version=KJV" target="_blank" rel="noopener" title="Read the full chapter">Luke 1:28&nbsp;↗</a></div>
+        <div class="vtabs" role="tablist" aria-label="Bible version for Luke 1:28"><button type="button" class="vtab active" data-version="kjv">KJV</button><button type="button" class="vtab" data-version="niv">NIV</button></div>
+        <div class="text" data-version="kjv">“And the angel came in unto her, and said, Hail, thou that art highly favoured, the Lord is with thee: blessed art thou among women.”</div>
+        <div class="text other" data-version="niv">“The angel went to her and said, ‘Greetings, you who are highly favored! The Lord is with you.’”</div>
+      </div>
+    </div>
+    <div class="inart">
+      <div class="ia-title">In art — oldest to newest</div>
+      <ol class="timeline">
+        <li class="tl">
+          <div class="era">Early Christian</div>
+          <div class="date">4th century AD</div>
+          <div class="work"><a href="https://commons.wikimedia.org/wiki/File:Catacomb_of_Priscilla_-_Annunciation.jpg">Annunciation fresco, Catacomb of Priscilla</a></div>
+          <div class="byline">Rome — underground burial galleries</div>
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Catacomb_of_Priscilla_-_Annunciation.jpg?width=640" alt="Early Christian Annunciation fresco from the Catacomb of Priscilla, Rome" loading="lazy">
+          <div class="caption">Image via <a href="https://commons.wikimedia.org/wiki/File:Catacomb_of_Priscilla_-_Annunciation.jpg">Wikimedia Commons</a></div>
+          <p class="note"><b>The oldest.</b> The earliest surviving Annunciation, painted underground: Gabriel is a small, plain, robed figure addressing Mary — the scene is there, the glory is not.</p>
+        </li>
+        <li class="tl">
+          <div class="era">Renaissance</div>
+          <div class="date">c. 1443 AD</div>
+          <div class="work"><a href="https://commons.wikimedia.org/wiki/File:Angelico_-_Annunciation_-_San_Marco_north_corridor.jpg">Annunciation, Convent of San Marco</a></div>
+          <div class="byline">Fra Angelico — north corridor fresco, Florence</div>
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Angelico_-_Annunciation_-_San_Marco_north_corridor.jpg?width=640" alt="Fra Angelico, Annunciation fresco, north corridor of San Marco, Florence" loading="lazy">
+          <div class="caption">Image via <a href="https://commons.wikimedia.org/wiki/File:Angelico_-_Annunciation_-_San_Marco_north_corridor.jpg">Wikimedia Commons</a></div>
+          <p class="note"><b>Most notable.</b> Painted on the corridor wall where monks walked to their cells, Gabriel bows with folded wings under a loggia — courtesy, not spectacle.</p>
+        </li>
+        <li class="tl">
+          <div class="era">Renaissance</div>
+          <div class="date">c. 1472–76 AD</div>
+          <div class="work"><a href="https://commons.wikimedia.org/wiki/File:Leonardo_da_Vinci_-_Annunciation_-_WGA12677.jpg">Annunciation</a></div>
+          <div class="byline">Leonardo da Vinci — Uffizi Gallery, Florence</div>
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Leonardo_da_Vinci_-_Annunciation_-_WGA12677.jpg?width=640" alt="Leonardo da Vinci, Annunciation, Uffizi Gallery, Florence" loading="lazy">
+          <div class="caption">Image via <a href="https://commons.wikimedia.org/wiki/File:Leonardo_da_Vinci_-_Annunciation_-_WGA12677.jpg">Wikimedia Commons</a></div>
+          <p class="note">Leonardo’s Gabriel kneels in a garden with meticulously observed wings — the angel naturalised into a Renaissance court.</p>
+        </li>
+        <li class="tl">
+          <div class="era">Modern</div>
+          <div class="date">1898 AD</div>
+          <div class="work"><a href="https://commons.wikimedia.org/wiki/File:Henry_Ossawa_Tanner_-_The_Annunciation.jpg">The Annunciation</a></div>
+          <div class="byline">Henry Ossawa Tanner — Philadelphia Museum of Art</div>
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Henry_Ossawa_Tanner_-_The_Annunciation.jpg?width=640" alt="Henry Ossawa Tanner, The Annunciation, showing Gabriel as a luminous form before Mary" loading="lazy">
+          <div class="caption">Image via <a href="https://commons.wikimedia.org/wiki/File:Henry_Ossawa_Tanner_-_The_Annunciation.jpg">Wikimedia Commons</a></div>
+          <p class="note"><b>Modern.</b> Tanner, an African-American painter working in Paris, strips Gabriel down to a column of swirling luminous form — no face, no wings, no feathers. After 1,500 years of polite courtiers, the angel becomes light again.</p>
+        </li>
+      </ol>
+      <p class="arc"><span class="arc-label">How it changed:</span> <b>from messenger to gentleman to light.</b> The earliest Gabriel is a plain robed figure; the Renaissance turns him into a kneeling courtier; and Tanner’s modern Gabriel abandons the body altogether. Each age paints the annunciation with whatever it believes a divine visitation would look like.</p>
+    </div>
+  </section>
+
+  <section class="creature" id="serpent-of-eden">
+    <h2><span class="num">VI.</span>The serpent of Eden</h2>
+    <div class="inbible">
+      <div class="ib-title">In the Bible</div>
+      <div class="verse">
+        <div class="ref"><a href="https://www.biblegateway.com/passage/?search=Genesis+3&version=KJV" target="_blank" rel="noopener" title="Read the full chapter">Genesis 3:1&nbsp;↗</a></div>
+        <div class="vtabs" role="tablist" aria-label="Bible version for Genesis 3:1"><button type="button" class="vtab active" data-version="kjv">KJV</button><button type="button" class="vtab" data-version="niv">NIV</button></div>
+        <div class="text" data-version="kjv">“Now the serpent was more subtil than any beast of the field which the LORD God had made. And he said unto the woman, Yea, hath God said, Ye shall not eat of every tree of the garden?”</div>
+        <div class="text other" data-version="niv">“Now the serpent was more crafty than any of the wild animals the Lord God had made. He said to the woman, ‘Did God really say, ‘You must not eat from any tree in the garden’?’”</div>
+      </div>
+      <div class="verse">
+        <div class="ref"><a href="https://www.biblegateway.com/passage/?search=Genesis+3&version=KJV" target="_blank" rel="noopener" title="Read the full chapter">Genesis 3:14&nbsp;↗</a></div>
+        <div class="vtabs" role="tablist" aria-label="Bible version for Genesis 3:14"><button type="button" class="vtab active" data-version="kjv">KJV</button><button type="button" class="vtab" data-version="niv">NIV</button></div>
+        <div class="text" data-version="kjv">“And the LORD God said unto the serpent, Because thou hast done this, thou art cursed above all cattle, and above every beast of the field; upon thy belly shalt thou go, and dust shalt thou eat all the days of thy life:”</div>
+        <div class="text other" data-version="niv">“So the Lord God said to the serpent, ‘Because you have done this, “Cursed are you above all livestock and all wild animals! You will crawl on your belly and you will eat dust all the days of your life.”’</div>
+      </div>
+    </div>
+    <div class="inart">
+      <div class="ia-title">In art — oldest to newest</div>
+      <ol class="timeline">
+        <li class="tl">
+          <div class="era">Early Christian</div>
+          <div class="date">c. 359 AD</div>
+          <div class="work"><a href="https://commons.wikimedia.org/wiki/File:Adam_and_Eve,_Sarcophagus_of_Junius_Bassus_-_Vanderbilt_ACT_-_DSC00280.jpg">Adam and Eve, Sarcophagus of Junius Bassus</a></div>
+          <div class="byline">Rome — now in the Museo Petriano under St Peter’s Basilica</div>
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Adam_and_Eve,_Sarcophagus_of_Junius_Bassus_-_Vanderbilt_ACT_-_DSC00280.jpg?width=640" alt="The Adam and Eve panel of the Sarcophagus of Junius Bassus, Rome" loading="lazy">
+          <div class="caption">Image via <a href="https://commons.wikimedia.org/wiki/File:Adam_and_Eve,_Sarcophagus_of_Junius_Bassus_-_Vanderbilt_ACT_-_DSC00280.jpg">Wikimedia Commons</a></div>
+          <p class="note"><b>The oldest.</b> Carved on a Roman senator’s marble coffin: the serpent is a small snake coiled up beside the trees, present and blameable but no monster at all.</p>
+        </li>
+        <li class="tl">
+          <div class="era">Northern Renaissance</div>
+          <div class="date">c. 1470 AD</div>
+          <div class="work"><a href="https://commons.wikimedia.org/wiki/File:Hugo_van_der_Goes_-_The_Fall_-_WGA9650.jpg">The Fall of Man</a></div>
+          <div class="byline">Hugo van der Goes — Kunsthistorisches Museum, Vienna</div>
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Hugo_van_der_Goes_-_The_Fall_-_WGA9650.jpg?width=640" alt="Hugo van der Goes, The Fall of Man, Kunsthistorisches Museum, Vienna" loading="lazy">
+          <div class="caption">Image via <a href="https://commons.wikimedia.org/wiki/File:Hugo_van_der_Goes_-_The_Fall_-_WGA9650.jpg">Wikimedia Commons</a></div>
+          <p class="note">The serpent has grown a hairy, half-human body — a creature between beast and demon, whispering at Eve’s ear.</p>
+        </li>
+        <li class="tl">
+          <div class="era">Renaissance</div>
+          <div class="date">1508–12 AD</div>
+          <div class="work"><a href="https://commons.wikimedia.org/wiki/File:Michelangelo,_Fall_and_Expulsion_from_Garden_of_Eden_06.jpg">Original Sin and Expulsion, Sistine Chapel ceiling</a></div>
+          <div class="byline">Michelangelo — Vatican</div>
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Michelangelo,_Fall_and_Expulsion_from_Garden_of_Eden_06.jpg?width=640" alt="Michelangelo, Fall and Expulsion from the Garden of Eden, Sistine Chapel ceiling" loading="lazy">
+          <div class="caption">Image via <a href="https://commons.wikimedia.org/wiki/File:Michelangelo,_Fall_and_Expulsion_from_Garden_of_Eden_06.jpg">Wikimedia Commons</a></div>
+          <p class="note"><b>Most notable.</b> The famous woman-torsoed serpent coiled around the tree, handing the fruit down — the single most influential image of the creature, even though the Bible says nothing of the kind.</p>
+        </li>
+        <li class="tl">
+          <div class="era">Victorian</div>
+          <div class="date">1866 AD</div>
+          <div class="work"><a href="https://commons.wikimedia.org/w/index.php?search=Gustave+Dore+Paradise+Lost+serpent">Illustrations to Milton’s <em>Paradise Lost</em></a></div>
+          <div class="byline">Gustave Doré — engraved for the London edition</div>
+          <p class="note"><b>Modern.</b> Doré shows Satan entering and possessing the serpent before the Fall — the snake becomes a puppet for the devil, the reading most Christians absorb even today.</p>
+        </li>
+      </ol>
+      <p class="arc"><span class="arc-label">How it changed:</span> <b>from snake to monster and back to snake.</b> Early art keeps the Bible’s plain reptile; the Middle Ages and Renaissance give it human features to make temptation personal (culminating in Michelangelo’s serpent-woman); Doré’s Victorian Satan merges the two creatures entirely; and modern depictions usually settle for a plain snake, occasionally with a knowing face.</p>
+    </div>
+  </section>
+
+  <section class="creature" id="fiery-serpents">
+    <h2><span class="num">VII.</span>The fiery serpents</h2>
+    <div class="inbible">
+      <div class="ib-title">In the Bible</div>
+      <div class="verse">
+        <div class="ref"><a href="https://www.biblegateway.com/passage/?search=Numbers+21&version=KJV" target="_blank" rel="noopener" title="Read the full chapter">Numbers 21:6&nbsp;↗</a></div>
+        <div class="vtabs" role="tablist" aria-label="Bible version for Numbers 21:6"><button type="button" class="vtab active" data-version="kjv">KJV</button><button type="button" class="vtab" data-version="niv">NIV</button></div>
+        <div class="text" data-version="kjv">“And the LORD sent fiery serpents among the people, and they bit the people; and much people of Israel died.”</div>
+        <div class="text other" data-version="niv">“Then the Lord sent venomous snakes among them; they bit the people and many Israelites died.”</div>
+      </div>
+      <div class="verse">
+        <div class="ref"><a href="https://www.biblegateway.com/passage/?search=Numbers+21&version=KJV" target="_blank" rel="noopener" title="Read the full chapter">Numbers 21:8&nbsp;↗</a></div>
+        <div class="vtabs" role="tablist" aria-label="Bible version for Numbers 21:8"><button type="button" class="vtab active" data-version="kjv">KJV</button><button type="button" class="vtab" data-version="niv">NIV</button></div>
+        <div class="text" data-version="kjv">“And the LORD said unto Moses, Make thee a fiery serpent, and set it upon a pole: and it shall come to pass, that every one that is bitten, when he looketh upon it, shall live.”</div>
+        <div class="text other" data-version="niv">“The Lord said to Moses, ‘Make a snake and put it up on a pole; anyone who is bitten can look at it and live.’”</div>
+      </div>
+      <div class="verse">
+        <div class="ref"><a href="https://www.biblegateway.com/passage/?search=Numbers+21&version=KJV" target="_blank" rel="noopener" title="Read the full chapter">Numbers 21:9&nbsp;↗</a></div>
+        <div class="vtabs" role="tablist" aria-label="Bible version for Numbers 21:9"><button type="button" class="vtab active" data-version="kjv">KJV</button><button type="button" class="vtab" data-version="niv">NIV</button></div>
+        <div class="text" data-version="kjv">“And Moses made a serpent of brass, and put it upon a pole, and it came to pass, that if a serpent had bitten any man, when he beheld the serpent of brass, he lived.”</div>
+        <div class="text other" data-version="niv">“So Moses made a bronze snake and put it up on a pole. Then when anyone was bitten by a snake and looked at the bronze snake, they lived.”</div>
+      </div>
+    </div>
+    <div class="inart">
+      <div class="ia-title">In art — oldest to newest</div>
+      <ol class="timeline">
+        <li class="tl">
+          <div class="era">Antiquity</div>
+          <div class="date">before 1500 AD</div>
+          <p class="honest"><b>No ancient depiction survives securely identified.</b> Unlike the Eden serpent, this plague-and-cure scene apparently enters art with the Renaissance — the creatures themselves (vipers, and Moses’ brass effigy) have almost no surviving old depictions.</p>
+        </li>
+        <li class="tl">
+          <div class="era">Renaissance</div>
+          <div class="date">1511 AD</div>
+          <div class="work"><a href="https://commons.wikimedia.org/wiki/File:Michelangelo,_Brazen_Serpent_03.jpg">The Brazen Serpent</a></div>
+          <div class="byline">Michelangelo — pendentive of the Sistine Chapel ceiling, Vatican</div>
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Michelangelo,_Brazen_Serpent_03.jpg?width=640" alt="Michelangelo, The Brazen Serpent, Sistine Chapel pendentive" loading="lazy">
+          <div class="caption">Image via <a href="https://commons.wikimedia.org/wiki/File:Michelangelo,_Brazen_Serpent_03.jpg">Wikimedia Commons</a></div>
+          <p class="note"><b>Most notable.</b> The brass serpent writhes on its pole above a knot of bodies — the plague rendered as pure mass and strain on a curving ceiling vault.</p>
+        </li>
+        <li class="tl">
+          <div class="era">Renaissance</div>
+          <div class="date">c. 1575–76 AD</div>
+          <div class="work"><a href="https://commons.wikimedia.org/wiki/File:Podniesienie_w%C4%99%C5%BCa.jpg">The Brazen Serpent</a></div>
+          <div class="byline">Tintoretto — Scuola Grande di San Rocco, Venice</div>
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Podniesienie_w%C4%99%C5%BCa.jpg?width=640" alt="Tintoretto, The Brazen Serpent, Scuola Grande di San Rocco, Venice" loading="lazy">
+          <div class="caption">Image via <a href="https://commons.wikimedia.org/wiki/File:Podniesienie_w%C4%99%C5%BCa.jpg">Wikimedia Commons</a></div>
+          <p class="note">Tintoretto spins the whole scene around the pole in violent foreshortening — serpents underfoot everywhere, survivors straining to look up.</p>
+        </li>
+        <li class="tl">
+          <div class="era">Baroque</div>
+          <div class="date">c. 1635–40 AD</div>
+          <div class="work"><a href="https://commons.wikimedia.org/wiki/File:The_Brazen_Serpent_(Rubens_-_NG59).jpg">The Brazen Serpent</a></div>
+          <div class="byline">Peter Paul Rubens — National Gallery, London</div>
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/The_Brazen_Serpent_(Rubens_-_NG59).jpg?width=640" alt="Rubens, The Brazen Serpent, National Gallery, London" loading="lazy">
+          <div class="caption">Image via <a href="https://commons.wikimedia.org/wiki/File:The_Brazen_Serpent_(Rubens_-_NG59).jpg">Wikimedia Commons</a></div>
+          <p class="note"><b>Modern (Baroque).</b> Rubens crowds the canvas with the dying and the saved, Moses raising the brass serpent at the centre like a standard in battle.</p>
+        </li>
+      </ol>
+      <p class="arc"><span class="arc-label">How it changed:</span> <b>from an emblem to an emergency.</b> The Bible’s image is almost medical — one serpent on a pole, look and live — and Renaissance and Baroque artists inflated it into catastrophes of writhing bodies. The pole-and-serpent itself outlived them all: it lives on every medical insignia that echoes the serpent-on-a-staff.</p>
+    </div>
+  </section>
+
+  <section class="creature" id="leviathan">
+    <h2><span class="num">VIII.</span>Leviathan</h2>
+    <div class="inbible">
+      <div class="ib-title">In the Bible</div>
+      <div class="verse">
+        <div class="ref"><a href="https://www.biblegateway.com/passage/?search=Job+41&version=KJV" target="_blank" rel="noopener" title="Read the full chapter">Job 41:1&nbsp;↗</a></div>
+        <div class="vtabs" role="tablist" aria-label="Bible version for Job 41:1"><button type="button" class="vtab active" data-version="kjv">KJV</button><button type="button" class="vtab" data-version="niv">NIV</button></div>
+        <div class="text" data-version="kjv">“Canst thou draw out leviathan with an hook? or his tongue with a cord which thou lettest down?”</div>
+        <div class="text other" data-version="niv">“Can you pull in Leviathan with a fishhook or tie down its tongue with a rope?”</div>
+      </div>
+      <div class="verse">
+        <div class="ref"><a href="https://www.biblegateway.com/passage/?search=Psalm+74&version=KJV" target="_blank" rel="noopener" title="Read the full chapter">Psalm 74:14&nbsp;↗</a></div>
+        <div class="vtabs" role="tablist" aria-label="Bible version for Psalm 74:14"><button type="button" class="vtab active" data-version="kjv">KJV</button><button type="button" class="vtab" data-version="niv">NIV</button></div>
+        <div class="text" data-version="kjv">“Thou brakest the heads of leviathan in pieces, and gavest him to be meat to the people inhabiting the wilderness.”</div>
+        <div class="text other" data-version="niv">“It was you who crushed the heads of Leviathan and gave it as food to the creatures of the desert.”</div>
+      </div>
+      <div class="verse">
+        <div class="ref"><a href="https://www.biblegateway.com/passage/?search=Isaiah+27&version=KJV" target="_blank" rel="noopener" title="Read the full chapter">Isaiah 27:1&nbsp;↗</a></div>
+        <div class="vtabs" role="tablist" aria-label="Bible version for Isaiah 27:1"><button type="button" class="vtab active" data-version="kjv">KJV</button><button type="button" class="vtab" data-version="niv">NIV</button></div>
+        <div class="text" data-version="kjv">“In that day the LORD with his sore and great and strong sword shall punish leviathan the piercing serpent, even leviathan that crooked serpent; and he shall slay the dragon that is in the sea.”</div>
+        <div class="text other" data-version="niv">“In that day, the Lord will punish with his sword—his fierce, great and powerful sword—Leviathan the gliding serpent, Leviathan the coiling serpent; he will slay the monster of the sea.”</div>
+      </div>
+    </div>
+    <div class="inart">
+      <div class="ia-title">In art — oldest to newest</div>
+      <ol class="timeline">
+        <li class="tl">
+          <div class="era">Antiquity</div>
+          <div class="date">before 1800 AD</div>
+          <p class="honest"><b>Leviathan is strangely rare in old art.</b> No surviving ancient or medieval depiction can be confidently pointed to as “the” Leviathan — a sea chaos-monster appears in general contexts, but the creature from Job gets almost no images for most of history. Artists finally reach it when printed illustration makes Job a subject.</p>
+        </li>
+        <li class="tl">
+          <div class="era">Romantic</div>
+          <div class="date">1825–26 AD</div>
+          <div class="work"><a href="https://commons.wikimedia.org/wiki/File:William_Blake_-_Book_of_Job,_Plate_15,_Behemoth_and_Leviathan_-_B1978.43.1517_-_Yale_Center_for_British_Art.jpg">Behemoth and Leviathan (plate 15 of the <em>Book of Job</em> series)</a></div>
+          <div class="byline">William Blake — engraved and printed in London</div>
+          <p class="note"><b>Most notable.</b> God’s tour of the two untameable beasts: Leviathan as a coiling dragon of the deep, drawn in Blake’s sinuous line and printed alongside Job’s text.</p>
+        </li>
+        <li class="tl">
+          <div class="era">Victorian</div>
+          <div class="date">1865 AD</div>
+          <div class="work"><a href="https://commons.wikimedia.org/wiki/File:Destruction_of_Leviathan.png">The Destruction of Leviathan</a></div>
+          <div class="byline">Gustave Doré — wood engraving for <em>La Sainte Bible</em>, Tours</div>
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Destruction_of_Leviathan.png?width=640" alt="Gustave Doré, The Destruction of Leviathan, engraving" loading="lazy">
+          <div class="caption">Image via <a href="https://commons.wikimedia.org/wiki/File:Destruction_of_Leviathan.png">Wikimedia Commons</a></div>
+          <p class="note"><b>Modern.</b> Isaiah’s prophecy at last illustrated: a radiant sword of God splits a mountainous sea-dragon, the engraving that fixed in the popular mind what Leviathan “looks like”.</p>
+        </li>
+      </ol>
+      <p class="arc"><span class="arc-label">How it changed:</span> <b>from word to whale.</b> For most of history Leviathan lived only in text; Blake gave it a body made of curves, Doré gave it a spectacular death, and modern culture took the name for anything enormous in the sea — whales, submarines, and the occasional film monster.</p>
+    </div>
+  </section>
+
+  <section class="creature" id="behemoth">
+    <h2><span class="num">IX.</span>Behemoth</h2>
+    <div class="inbible">
+      <div class="ib-title">In the Bible</div>
+      <div class="verse">
+        <div class="ref"><a href="https://www.biblegateway.com/passage/?search=Job+40&version=KJV" target="_blank" rel="noopener" title="Read the full chapter">Job 40:15&nbsp;↗</a></div>
+        <div class="vtabs" role="tablist" aria-label="Bible version for Job 40:15"><button type="button" class="vtab active" data-version="kjv">KJV</button><button type="button" class="vtab" data-version="niv">NIV</button></div>
+        <div class="text" data-version="kjv">“Behold now behemoth, which I made with thee; he eateth grass as an ox.”</div>
+        <div class="text other" data-version="niv">“Look at Behemoth, which I made along with you and which feeds on grass like an ox.”</div>
+      </div>
+      <div class="verse">
+        <div class="ref"><a href="https://www.biblegateway.com/passage/?search=Job+40&version=KJV" target="_blank" rel="noopener" title="Read the full chapter">Job 40:17&nbsp;↗</a></div>
+        <div class="vtabs" role="tablist" aria-label="Bible version for Job 40:17"><button type="button" class="vtab active" data-version="kjv">KJV</button><button type="button" class="vtab" data-version="niv">NIV</button></div>
+        <div class="text" data-version="kjv">“He moveth his tail like a cedar: the sinews of his stones are wrapped together.”</div>
+        <div class="text other" data-version="niv">“Its tail sways like a cedar; the sinews of its thighs are close-knit.”</div>
+      </div>
+      <div class="verse">
+        <div class="ref"><a href="https://www.biblegateway.com/passage/?search=Job+40&version=KJV" target="_blank" rel="noopener" title="Read the full chapter">Job 40:23&nbsp;↗</a></div>
+        <div class="vtabs" role="tablist" aria-label="Bible version for Job 40:23"><button type="button" class="vtab active" data-version="kjv">KJV</button><button type="button" class="vtab" data-version="niv">NIV</button></div>
+        <div class="text" data-version="kjv">“Behold, he drinketh up a river, and hasteth not: he trusteth that he can draw up Jordan into his mouth.”</div>
+        <div class="text other" data-version="niv">“A raging river does not alarm it; it is secure, though the Jordan should surge against its mouth.”</div>
+      </div>
+    </div>
+    <div class="inart">
+      <div class="ia-title">In art — oldest to newest</div>
+      <ol class="timeline">
+        <li class="tl">
+          <div class="era">Antiquity</div>
+          <div class="date">before 1825 AD</div>
+          <p class="honest"><b>Like Leviathan, almost undepicted for most of history.</b> Medieval readers thought of an elephant or an ox, but no surviving ancient depiction of “Behemoth” as such is securely identified; the creature’s visual history effectively begins in the 1820s.</p>
+        </li>
+        <li class="tl">
+          <div class="era">Romantic</div>
+          <div class="date">1825–26 AD</div>
+          <div class="work"><a href="https://commons.wikimedia.org/wiki/File:William_Blake_-_Book_of_Job,_Plate_15,_Behemoth_and_Leviathan_-_B1978.43.1517_-_Yale_Center_for_British_Art.jpg">Behemoth and Leviathan (plate 15 of the <em>Book of Job</em> series)</a></div>
+          <div class="byline">William Blake — engraved and printed in London</div>
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/William_Blake_-_Book_of_Job,_Plate_15,_Behemoth_and_Leviathan_-_B1978.43.1517_-_Yale_Center_for_British_Art.jpg?width=640" alt="Blake's engraving of Behemoth among the reeds and Leviathan in the deep, from the Book of Job" loading="lazy">
+          <div class="caption">Image via <a href="https://commons.wikimedia.org/wiki/File:William_Blake_-_Book_of_Job,_Plate_15,_Behemoth_and_Leviathan_-_B1978.43.1517_-_Yale_Center_for_British_Art.jpg">Wikimedia Commons</a></div>
+          <p class="note"><b>Most notable and effectively the oldest.</b> Blake paints Behemoth as an elephantine grass-eater crouched among reeds “under the shady trees”, a river rolling past — the first famous picture of the creature, paired with Leviathan in the deep.</p>
+        </li>
+        <li class="tl">
+          <div class="era">Modern</div>
+          <div class="date">20th–21st century AD</div>
+          <div class="work"><a href="https://commons.wikimedia.org/w/index.php?search=behemoth+dinosaur+creationist+illustration">Behemoth as a sauropod dinosaur</a></div>
+          <div class="byline">Young-earth creationist illustration — creation museums and tracts</div>
+          <p class="note"><b>Modern.</b> Because Job 40:17 says “he moveth his tail like a cedar”, a whole genre of modern artwork paints Behemoth as a Brachiosaurus-like sauropod grazing beside a river — an interpretive leap that would have baffled Blake, and the clearest example on this page of art serving a modern reading of the text.</p>
+        </li>
+      </ol>
+      <p class="arc"><span class="arc-label">How it changed:</span> <b>from ox to elephant to dinosaur.</b> Tradition guessed ox or elephant; Blake drew the elephant; and the 20th century, armed with dinosaurs, redraws him as a sauropod. No creature on this page shows more clearly how the artist’s world decides what the verse must mean.</p>
+    </div>
+  </section>
+
+  <section class="creature" id="great-red-dragon">
+    <h2><span class="num">X.</span>The great red dragon</h2>
+    <div class="inbible">
+      <div class="ib-title">In the Bible</div>
+      <div class="verse">
+        <div class="ref"><a href="https://www.biblegateway.com/passage/?search=Revelation+12&version=KJV" target="_blank" rel="noopener" title="Read the full chapter">Revelation 12:3&nbsp;↗</a></div>
+        <div class="vtabs" role="tablist" aria-label="Bible version for Revelation 12:3"><button type="button" class="vtab active" data-version="kjv">KJV</button><button type="button" class="vtab" data-version="niv">NIV</button></div>
+        <div class="text" data-version="kjv">“And there appeared another wonder in heaven; and behold a great red dragon, having seven heads and ten horns, and seven crowns upon his heads.”</div>
+        <div class="text other" data-version="niv">“Then another sign appeared in heaven: an enormous red dragon with seven heads and ten horns and seven crowns on its heads.”</div>
+      </div>
+      <div class="verse">
+        <div class="ref"><a href="https://www.biblegateway.com/passage/?search=Revelation+12&version=KJV" target="_blank" rel="noopener" title="Read the full chapter">Revelation 12:4&nbsp;↗</a></div>
+        <div class="vtabs" role="tablist" aria-label="Bible version for Revelation 12:4"><button type="button" class="vtab active" data-version="kjv">KJV</button><button type="button" class="vtab" data-version="niv">NIV</button></div>
+        <div class="text" data-version="kjv">“And his tail drew the third part of the stars of heaven, and did cast them to the earth: and the dragon stood before the woman which was ready to be delivered, for to devour her child as soon as it was born.”</div>
+        <div class="text other" data-version="niv">“Its tail swept a third of the stars out of the sky and flung them to the earth. The dragon stood in front of the woman who was about to give birth, so that it might devour her child the moment he was born.”</div>
+      </div>
+    </div>
+    <div class="inart">
+      <div class="ia-title">In art — oldest to newest</div>
+      <ol class="timeline">
+        <li class="tl">
+          <div class="era">Medieval</div>
+          <div class="date">10th–11th century AD</div>
+          <div class="work"><a href="https://commons.wikimedia.org/wiki/File:Saint-Sever_Beatus_f._206v_-_Dragon,_Beast_and_false_prophet_cast_into_Hell.jpg">Beatus manuscripts — the Dragon cast into hell</a></div>
+          <div class="byline">Monastic scriptoria of Spain — e.g. the Saint-Sever Beatus, c. 1050</div>
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Saint-Sever_Beatus_f._206v_-_Dragon,_Beast_and_false_prophet_cast_into_Hell.jpg?width=640" alt="A page of the Saint-Sever Beatus showing the dragon and the beast cast into hell" loading="lazy">
+          <div class="caption">Image via <a href="https://commons.wikimedia.org/wiki/File:Saint-Sever_Beatus_f._206v_-_Dragon,_Beast_and_false_prophet_cast_into_Hell.jpg">Wikimedia Commons</a></div>
+          <p class="note"><b>The oldest.</b> The Beatus commentary manuscripts of Spain carry the oldest surviving Apocalypse illustrations, from the 10th century onward: here the dragon is a brightly coloured, multi-headed beast painted flat, its heads a decorative ring.</p>
+        </li>
+        <li class="tl">
+          <div class="era">Medieval</div>
+          <div class="date">c. 1377–82 AD</div>
+          <div class="work"><a href="https://commons.wikimedia.org/w/index.php?search=Apocalypse+Tapestry+Angers+dragon">The Apocalypse Tapestry</a></div>
+          <div class="byline">Jean de Bruges (designer), Nicolas Bataille (weaver) — Château d’Angers, France</div>
+          <p class="note"><b>Most notable (medieval).</b> A 100-metre woven Apocalypse, the largest medieval tapestry cycle: the red dragon appears scene after scene in full courtly colour.</p>
+        </li>
+        <li class="tl">
+          <div class="era">Renaissance</div>
+          <div class="date">1498 AD</div>
+          <div class="work"><a href="https://commons.wikimedia.org/wiki/File:Albrecht_D%C3%BCrer,_Apocalypse_of_St_John,_The_Dragon_with_the_Seven_Heads.JPG">The Dragon with the Seven Heads (Apocalypse woodcuts)</a></div>
+          <div class="byline">Albrecht Dürer — woodcut, Nuremberg</div>
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Albrecht_D%C3%BCrer,_Apocalypse_of_St_John,_The_Dragon_with_the_Seven_Heads.JPG?width=640" alt="Albrecht Dürer, The Dragon with the Seven Heads, Apocalypse woodcut series" loading="lazy">
+          <div class="caption">Image via <a href="https://commons.wikimedia.org/wiki/File:Albrecht_D%C3%BCrer,_Apocalypse_of_St_John,_The_Dragon_with_the_Seven_Heads.JPG">Wikimedia Commons</a></div>
+          <p class="note">Dürer’s dragon becomes a proper Western dragon — winged, scaly, coiling through the sky in woodcut line — and the printed Apocalypse spread that image across Europe.</p>
+        </li>
+        <li class="tl">
+          <div class="era">Romantic</div>
+          <div class="date">c. 1805–10 AD</div>
+          <div class="work"><a href="https://commons.wikimedia.org/wiki/File:Brooklyn_Museum_-_The_Great_Red_Dragon_and_the_Woman_Clothed_with_the_Sun_(Rev._12_1-4)_-_William_Blake.jpg">The Great Red Dragon and the Woman Clothed with the Sun</a></div>
+          <div class="byline">William Blake — Brooklyn Museum, New York (watercolour series)</div>
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Brooklyn_Museum_-_The_Great_Red_Dragon_and_the_Woman_Clothed_with_the_Sun_(Rev._12_1-4)_-_William_Blake.jpg?width=640" alt="Blake's watercolour of the great red dragon towering over the woman clothed with the sun" loading="lazy">
+          <div class="caption">Image via <a href="https://commons.wikimedia.org/wiki/File:Brooklyn_Museum_-_The_Great_Red_Dragon_and_the_Woman_Clothed_with_the_Sun_(Rev._12_1-4)_-_William_Blake.jpg">Wikimedia Commons</a></div>
+          <p class="note"><b>Modern (Romantic).</b> Blake keeps every number in Revelation — seven heads, ten horns, seven crowns — and stretches the dragon to the top of the page like a bat-winged skyscraper over the tiny woman. It is the most famous single depiction of any creature on this list.</p>
+        </li>
+      </ol>
+      <p class="arc"><span class="arc-label">How it changed:</span> <b>from ornament to anatomy.</b> The Beatus dragon is heads and colour, Dürer’s is a scaly animal with correct musculature, Blake’s is a sublime architectural monster — and modern fantasy dragons (from Smaug to the red dragon on the flag of Wales) descend from Dürer and Blake’s version far more than from the flat beasts of the manuscripts.</p>
+    </div>
+  </section>
+
+  <section class="creature" id="beast-from-the-sea">
+    <h2><span class="num">XI.</span>The beast from the sea</h2>
+    <div class="inbible">
+      <div class="ib-title">In the Bible</div>
+      <div class="verse">
+        <div class="ref"><a href="https://www.biblegateway.com/passage/?search=Revelation+13&version=KJV" target="_blank" rel="noopener" title="Read the full chapter">Revelation 13:1&nbsp;↗</a></div>
+        <div class="vtabs" role="tablist" aria-label="Bible version for Revelation 13:1"><button type="button" class="vtab active" data-version="kjv">KJV</button><button type="button" class="vtab" data-version="niv">NIV</button></div>
+        <div class="text" data-version="kjv">“And I stood upon the sand of the sea, and saw a beast rise up out of the sea, having seven heads and ten horns, and upon his horns ten crowns, and upon his heads the name of blasphemy.”</div>
+        <div class="text other" data-version="niv">“The dragon stood on the shore of the sea. And I saw a beast coming out of the sea. It had ten horns and seven heads, with ten crowns on its horns, and on each head a blasphemous name.”</div>
+      </div>
+      <div class="verse">
+        <div class="ref"><a href="https://www.biblegateway.com/passage/?search=Revelation+13&version=KJV" target="_blank" rel="noopener" title="Read the full chapter">Revelation 13:2&nbsp;↗</a></div>
+        <div class="vtabs" role="tablist" aria-label="Bible version for Revelation 13:2"><button type="button" class="vtab active" data-version="kjv">KJV</button><button type="button" class="vtab" data-version="niv">NIV</button></div>
+        <div class="text" data-version="kjv">“And the beast which I saw was like unto a leopard, and his feet were as the feet of a bear, and his mouth as the mouth of a lion: and the dragon gave him his power, and his seat, and great authority.”</div>
+        <div class="text other" data-version="niv">“The beast I saw resembled a leopard, but had feet like those of a bear and a mouth like that of a lion. The dragon gave the beast his power and his throne and great authority.”</div>
+      </div>
+    </div>
+    <div class="inart">
+      <div class="ia-title">In art — oldest to newest</div>
+      <ol class="timeline">
+        <li class="tl">
+          <div class="era">Medieval</div>
+          <div class="date">c. 970 AD</div>
+          <div class="work"><a href="https://commons.wikimedia.org/wiki/File:Valcavado_Beatus_f._135r_-_Beast_from_the_Sea.jpg">Beatus of Valladolid, folio 135r — the Beast from the sea</a></div>
+          <div class="byline">Spanish monastic scriptorium — Biblioteca Universitaria, Valladolid</div>
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Valcavado_Beatus_f._135r_-_Beast_from_the_Sea.jpg?width=640" alt="A Beatus manuscript illumination of the beast rising from the sea" loading="lazy">
+          <div class="caption">Image via <a href="https://commons.wikimedia.org/wiki/File:Valcavado_Beatus_f._135r_-_Beast_from_the_Sea.jpg">Wikimedia Commons</a></div>
+          <p class="note"><b>The oldest.</b> Among the earliest surviving pictures of Revelation 13 specifically: the beast stands half-risen from the sea, seven heads spread like a fan, painted in manuscript colour a thousand years ago.</p>
+        </li>
+        <li class="tl">
+          <div class="era">Medieval</div>
+          <div class="date">c. 1377–82 AD</div>
+          <div class="work"><a href="https://commons.wikimedia.org/w/index.php?search=Apocalypse+Tapestry+Angers+beast+seven+heads">The Apocalypse Tapestry</a></div>
+          <div class="byline">Jean de Bruges (designer), Nicolas Bataille (weaver) — Château d’Angers, France</div>
+          <p class="note"><b>Most notable (medieval).</b> The woven beast at Angers wears its ten crowns like a courtly king — medieval viewers read it as empire and persecuting power, which is exactly the political allegory it was.</p>
+        </li>
+        <li class="tl">
+          <div class="era">Renaissance</div>
+          <div class="date">1498 AD</div>
+          <div class="work"><a href="https://commons.wikimedia.org/w/index.php?search=D%C3%BCrer+Apocalypse+beast+sea+woodcut">Dürer’s Apocalypse woodcuts</a></div>
+          <div class="byline">Albrecht Dürer — Nuremberg</div>
+          <p class="note">Dürer gives the composite leopard-bear-lion animal plausible anatomy and a printed audience; from his woodcuts the beast walks into centuries of political cartoons.</p>
+        </li>
+      </ol>
+      <p class="arc"><span class="arc-label">How it changed:</span> <b>from puzzle-creature to political cartoon.</b> Early artists assembled the parts faithfully (leopard body, bear feet, lion mouth, seven heads); the Middle Ages dressed it in crowns; and since Dürer the beast has been endlessly re-cast as whichever empire each artist feared most — making it the most politically reused creature in the Bible.</p>
+    </div>
+  </section>
+
+  <section class="creature" id="locusts-of-the-abyss">
+    <h2><span class="num">XII.</span>The locusts of the abyss</h2>
+    <div class="inbible">
+      <div class="ib-title">In the Bible</div>
+      <div class="verse">
+        <div class="ref"><a href="https://www.biblegateway.com/passage/?search=Revelation+9&version=KJV" target="_blank" rel="noopener" title="Read the full chapter">Revelation 9:7&nbsp;↗</a></div>
+        <div class="vtabs" role="tablist" aria-label="Bible version for Revelation 9:7"><button type="button" class="vtab active" data-version="kjv">KJV</button><button type="button" class="vtab" data-version="niv">NIV</button></div>
+        <div class="text" data-version="kjv">“And the shapes of the locusts were like unto horses prepared unto battle; and on their heads were as it were crowns like gold, and their faces were as the faces of men.”</div>
+        <div class="text other" data-version="niv">“The locusts looked like horses prepared for battle. On their heads they wore something like crowns of gold, and their faces resembled human faces.”</div>
+      </div>
+      <div class="verse">
+        <div class="ref"><a href="https://www.biblegateway.com/passage/?search=Revelation+9&version=KJV" target="_blank" rel="noopener" title="Read the full chapter">Revelation 9:10&nbsp;↗</a></div>
+        <div class="vtabs" role="tablist" aria-label="Bible version for Revelation 9:10"><button type="button" class="vtab active" data-version="kjv">KJV</button><button type="button" class="vtab" data-version="niv">NIV</button></div>
+        <div class="text" data-version="kjv">“And they had tails like unto scorpions, and there were stings in their tails: and their power was to hurt men five months.”</div>
+        <div class="text other" data-version="niv">“They had tails with stingers, like scorpions, and in their tails they had power to torment people for five months.”</div>
+      </div>
+    </div>
+    <div class="inart">
+      <div class="ia-title">In art — oldest to newest</div>
+      <ol class="timeline">
+        <li class="tl">
+          <div class="era">Medieval</div>
+          <div class="date">10th century AD onward</div>
+          <div class="work"><a href="https://commons.wikimedia.org/w/index.php?search=Beatus+apocalypse+locusts+fifth+trumpet">Beatus manuscripts</a></div>
+          <div class="byline">Spanish monastic scriptoria — e.g. Girona and Saint-Sever Beatus manuscripts</div>
+          <p class="note"><b>The oldest.</b> The Beatus Apocalypse cycle includes the sounding of the fifth trumpet: man-faced, horse-bodied, scorpion-tailed locusts crawling out of the smoke — the strangest parts of Revelation 9 taken literally in paint.</p>
+        </li>
+        <li class="tl">
+          <div class="era">Medieval</div>
+          <div class="date">c. 1377–82 AD</div>
+          <div class="work"><a href="https://commons.wikimedia.org/w/index.php?search=Apocalypse+Tapestry+Angers+locusts">The Apocalypse Tapestry</a></div>
+          <div class="byline">Jean de Bruges (designer), Nicolas Bataille (weaver) — Château d’Angers, France</div>
+          <p class="note"><b>Most notable (medieval).</b> The locusts woven into the Angers cycle keep their human faces and scorpion tails — courtly, elegant, and horrifying all at once.</p>
+        </li>
+        <li class="tl">
+          <div class="era">Renaissance</div>
+          <div class="date">1498 AD</div>
+          <div class="work"><a href="https://commons.wikimedia.org/w/index.php?search=D%C3%BCrer+Apocalypse+fifth+trumpet+woodcut">The Opening of the Fifth and Sixth Trumpets (Apocalypse woodcuts)</a></div>
+          <div class="byline">Albrecht Dürer — woodcut, Nuremberg</div>
+          <p class="note">Dürer crowds the woodcut with armoured horse-locusts raining down on fleeing people — the printed image that most modern readers subconsciously picture.</p>
+        </li>
+      </ol>
+      <p class="arc"><span class="arc-label">How it changed:</span> <b>from hybrid to horror-movie swarm.</b> The medieval literal hybrids (man faces, horse bodies, scorpion tails) gave way in modern illustration to something closer to reality’s nightmare: vast swarming clouds. The old hybrids survive mainly in manuscripts and metal albums; the fear is unchanged.</p>
+    </div>
+  </section>
+
+  <section class="creature" id="nephilim">
+    <h2><span class="num">XIII.</span>The Nephilim</h2>
+    <div class="inbible">
+      <div class="ib-title">In the Bible</div>
+      <div class="verse">
+        <div class="ref"><a href="https://www.biblegateway.com/passage/?search=Genesis+6&version=KJV" target="_blank" rel="noopener" title="Read the full chapter">Genesis 6:4&nbsp;↗</a></div>
+        <div class="vtabs" role="tablist" aria-label="Bible version for Genesis 6:4"><button type="button" class="vtab active" data-version="kjv">KJV</button><button type="button" class="vtab" data-version="niv">NIV</button></div>
+        <div class="text" data-version="kjv">“There were giants in the earth in those days; and also after that, when the sons of God came in unto the daughters of men, and they bare children to them, the same became mighty men which were of old, men of renown.”</div>
+        <div class="text other" data-version="niv">“The Nephilim were on the earth in those days—and also afterward—when the sons of God went to the daughters of humans and had children by them. They were the heroes of old, men of renown.”</div>
+      </div>
+      <div class="verse">
+        <div class="ref"><a href="https://www.biblegateway.com/passage/?search=Numbers+13&version=KJV" target="_blank" rel="noopener" title="Read the full chapter">Numbers 13:33&nbsp;↗</a></div>
+        <div class="vtabs" role="tablist" aria-label="Bible version for Numbers 13:33"><button type="button" class="vtab active" data-version="kjv">KJV</button><button type="button" class="vtab" data-version="niv">NIV</button></div>
+        <div class="text" data-version="kjv">“And there we saw the giants, the sons of Anak, which come of the giants: and we were in our own sight as grasshoppers, and so we were in their sight.”</div>
+        <div class="text other" data-version="niv">“We saw the Nephilim there (the descendants of Anak come from the Nephilim). We seemed like grasshoppers in our own eyes, and we looked the same to them.”</div>
+      </div>
+    </div>
+    <div class="inart">
+      <div class="ia-title">In art — oldest to newest</div>
+      <ol class="timeline">
+        <li class="tl">
+          <div class="era">Antiquity</div>
+          <div class="date">before 1800 AD</div>
+          <p class="honest"><b>I can’t confidently name a major canonical artwork depicting the Nephilim specifically</b>, so I won’t list one. Giant-descended peoples appear incidentally in old art, but the Nephilim of Genesis 6 as a subject is barely painted before modernity.</p>
+        </li>
+        <li class="tl">
+          <div class="era">Modern</div>
+          <div class="date">20th–21st century AD</div>
+          <div class="work"><a href="https://commons.wikimedia.org/w/index.php?search=nephilim+giants+illustration">Nephilim in modern fantasy art</a></div>
+          <div class="byline">Book covers, tabletop games, and film concept art</div>
+          <p class="note"><b>Modern.</b> The Nephilim finally got pictures — in fiction. Modern fantasy renders them as towering humanoids, often half-angel, an image that comes from popular books and games rather than any tradition of biblical illustration.</p>
+        </li>
+      </ol>
+      <p class="arc"><span class="arc-label">How it changed:</span> <b>from a verse to a franchise.</b> For most of history the Nephilim were left to commentary; the modern era, hungry for giants, gave them a consistent pop-culture body. This is a creature whose depictions are essentially invented after 1900.</p>
+    </div>
+  </section>
+
+  <section class="creature" id="satan">
+    <h2><span class="num">XIV.</span>Satan</h2>
+    <div class="inbible">
+      <div class="ib-title">In the Bible</div>
+      <div class="verse">
+        <div class="ref"><a href="https://www.biblegateway.com/passage/?search=Job+1&version=KJV" target="_blank" rel="noopener" title="Read the full chapter">Job 1:6&nbsp;↗</a></div>
+        <div class="vtabs" role="tablist" aria-label="Bible version for Job 1:6"><button type="button" class="vtab active" data-version="kjv">KJV</button><button type="button" class="vtab" data-version="niv">NIV</button></div>
+        <div class="text" data-version="kjv">“Now there was a day when the sons of God came to present themselves before the LORD, and Satan came also among them.”</div>
+        <div class="text other" data-version="niv">“One day the angels came to present themselves before the Lord, and Satan also came with them.”</div>
+      </div>
+      <div class="verse">
+        <div class="ref"><a href="https://www.biblegateway.com/passage/?search=Zechariah+3&version=KJV" target="_blank" rel="noopener" title="Read the full chapter">Zechariah 3:1&nbsp;↗</a></div>
+        <div class="vtabs" role="tablist" aria-label="Bible version for Zechariah 3:1"><button type="button" class="vtab active" data-version="kjv">KJV</button><button type="button" class="vtab" data-version="niv">NIV</button></div>
+        <div class="text" data-version="kjv">“And he shewed me Joshua the high priest standing before the angel of the LORD, and Satan standing at his right hand to resist him.”</div>
+        <div class="text other" data-version="niv">“Then he showed me Joshua the high priest standing before the angel of the Lord, and Satan standing at his right side to accuse him.”</div>
+      </div>
+    </div>
+    <div class="inart">
+      <div class="ia-title">In art — oldest to newest</div>
+      <ol class="timeline">
+        <li class="tl">
+          <div class="era">Antiquity</div>
+          <div class="date">before 1800 AD</div>
+          <p class="honest"><b>Satan’s oldest depictions are hard to name securely.</b> Early art shows the devil tempting Christ, but no single “Job’s Satan in the heavenly court” image survives from antiquity that I can confidently cite. In the Bible itself he is a prosecuting accuser among the “sons of God” — not the horned creature of later art.</p>
+        </li>
+        <li class="tl">
+          <div class="era">Romantic</div>
+          <div class="date">1825–26 AD</div>
+          <div class="work"><a href="https://commons.wikimedia.org/wiki/File:William_Blake_-_Book_of_Job,_Plate_2,_Satan_before_the_Throne_of_God_-_B1978.43.1504_-_Yale_Center_for_British_Art.jpg">Satan before the Throne of God (plate 2 of the <em>Book of Job</em> series)</a></div>
+          <div class="byline">William Blake — engraved and printed in London</div>
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/William_Blake_-_Book_of_Job,_Plate_2,_Satan_before_the_Throne_of_God_-_B1978.43.1504_-_Yale_Center_for_British_Art.jpg?width=640" alt="Blake's engraving of Satan standing before God's throne among the sons of God" loading="lazy">
+          <div class="caption">Image via <a href="https://commons.wikimedia.org/wiki/File:William_Blake_-_Book_of_Job,_Plate_2,_Satan_before_the_Throne_of_God_-_B1978.43.1504_-_Yale_Center_for_British_Art.jpg">Wikimedia Commons</a></div>
+          <p class="note"><b>Most notable.</b> Blake restores Job’s original: Satan as a beautiful, upright figure presenting himself before God’s throne — no horns, no bat wings, no red. The accuser is back on the celestial payroll.</p>
+        </li>
+        <li class="tl">
+          <div class="era">Romantic</div>
+          <div class="date">1827 AD</div>
+          <div class="work"><a href="https://commons.wikimedia.org/w/index.php?search=John+Martin+Paradise+Lost+mezzotint+Satan">Illustrations to Milton’s <em>Paradise Lost</em></a></div>
+          <div class="byline">John Martin — mezzotints published in London</div>
+          <p class="note">Martin’s Satan broods over vast apocalyptic architecture — the Miltonic fallen angel as sublime landscape, the image that dominates 19th-century imagination of the devil.</p>
+        </li>
+        <li class="tl">
+          <div class="era">Victorian</div>
+          <div class="date">1866 AD</div>
+          <div class="work"><a href="https://commons.wikimedia.org/w/index.php?search=Gustave+Dore+Paradise+Lost+Satan">Illustrations to Milton’s <em>Paradise Lost</em></a></div>
+          <div class="byline">Gustave Doré — engraved for the London edition</div>
+          <p class="note"><b>Modern.</b> Doré’s dark, feathered, dramatic Satan completes the Miltonic tradition — a tragic antihero, which is a long way from Zechariah’s courtroom adversary, and the ancestor of most modern “devil” imagery.</p>
+        </li>
+      </ol>
+      <p class="arc"><span class="arc-label">How it changed:</span> <b>from accuser to fallen angel to cartoon devil.</b> The Bible’s Satan is an official in God’s court; Milton and Blake made him a tragic hero; Doré made him operatic; and popular culture flattened him into the horned red figure — a shape the Bible never describes. Blake’s plate 2 is the rare major artwork that paints the actual Job passage.</p>
+    </div>
+  </section>
+
+  <section class="creature" id="talking-donkey">
+    <h2><span class="num">XV.</span>Balaam’s talking donkey</h2>
+    <div class="inbible">
+      <div class="ib-title">In the Bible</div>
+      <div class="verse">
+        <div class="ref"><a href="https://www.biblegateway.com/passage/?search=Numbers+22&version=KJV" target="_blank" rel="noopener" title="Read the full chapter">Numbers 22:28&nbsp;↗</a></div>
+        <div class="vtabs" role="tablist" aria-label="Bible version for Numbers 22:28"><button type="button" class="vtab active" data-version="kjv">KJV</button><button type="button" class="vtab" data-version="niv">NIV</button></div>
+        <div class="text" data-version="kjv">“And the LORD opened the mouth of the ass, and she said unto Balaam, What have I done unto thee, that thou hast smitten me these three times?”</div>
+        <div class="text other" data-version="niv">“Then the Lord opened the donkey’s mouth, and it said to Balaam, ‘What have I done to you to make you beat me these three times?’”</div>
+      </div>
+      <div class="verse">
+        <div class="ref"><a href="https://www.biblegateway.com/passage/?search=Numbers+22&version=KJV" target="_blank" rel="noopener" title="Read the full chapter">Numbers 22:30&nbsp;↗</a></div>
+        <div class="vtabs" role="tablist" aria-label="Bible version for Numbers 22:30"><button type="button" class="vtab active" data-version="kjv">KJV</button><button type="button" class="vtab" data-version="niv">NIV</button></div>
+        <div class="text" data-version="kjv">“And the ass said unto Balaam, Am not I thine ass, upon which thou hast ridden ever since I was thine unto this day? was I ever wont to do so unto thee? And he said, Nay.”</div>
+        <div class="text other" data-version="niv">“The donkey said to Balaam, ‘Am I not your own donkey, which you have always ridden, to this day? Have I been in the habit of doing this to you?’ ‘No,’ he said.”</div>
+      </div>
+    </div>
+    <div class="inart">
+      <div class="ia-title">In art — oldest to newest</div>
+      <ol class="timeline">
+        <li class="tl">
+          <div class="era">Early Jewish</div>
+          <div class="date">c. 244 AD</div>
+          <div class="work"><a href="https://commons.wikimedia.org/wiki/File:The_entire_west_wall_of_the_Dura-Europos_synagogue.png">Wall paintings of the synagogue at Dura-Europos</a></div>
+          <div class="byline">Dura-Europos, Syria — panels now conserved at Yale University Art Gallery</div>
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/The_entire_west_wall_of_the_Dura-Europos_synagogue.png?width=640" alt="The west wall paintings of the Dura-Europos synagogue, which include the Balaam panels" loading="lazy">
+          <div class="caption">Image via <a href="https://commons.wikimedia.org/wiki/File:The_entire_west_wall_of_the_Dura-Europos_synagogue.png">Wikimedia Commons</a></div>
+          <p class="note"><b>The oldest.</b> The 3rd-century synagogue wall paintings include panels of Balaam, his donkey and the blocking angel — among the earliest surviving narrative paintings of any Hebrew Bible story, anywhere.</p>
+        </li>
+        <li class="tl">
+          <div class="era">Baroque</div>
+          <div class="date">1626 AD</div>
+          <div class="work"><a href="https://commons.wikimedia.org/wiki/File:P1150002_Cognacq-Jay_Rembrandt_anesse_de_Balaam_rwk.jpg">Balaam and the Ass</a></div>
+          <div class="byline">Rembrandt — Musée Cognacq-Jay, Paris</div>
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/P1150002_Cognacq-Jay_Rembrandt_anesse_de_Balaam_rwk.jpg?width=640" alt="Rembrandt's early painting of Balaam and the Ass" loading="lazy">
+          <div class="caption">Image via <a href="https://commons.wikimedia.org/wiki/File:P1150002_Cognacq-Jay_Rembrandt_anesse_de_Balaam_rwk.jpg">Wikimedia Commons</a></div>
+          <p class="note"><b>Most notable.</b> Rembrandt, aged about 20, makes the panic the subject: the donkey cringes under the raised angel’s sword while Balaam thrashes, the comic terror of Numbers 22 in one early canvas.</p>
+        </li>
+      </ol>
+      <p class="arc"><span class="arc-label">How it changed:</span> <b>from a wall panel to a comic scene.</b> At Dura-Europos the donkey is a small element in a big prophetic composition; Rembrandt builds the whole picture around the animal’s fright; and modern depictions are rare — the scene is simply too odd for most art after the 17th century.</p>
+    </div>
+  </section>
+
+  <section class="creature" id="unicorn">
+    <h2><span class="num">XVI.</span>The unicorn (re’em)</h2>
+    <div class="inbible">
+      <div class="ib-title">In the Bible</div>
+      <div class="verse">
+        <div class="ref"><a href="https://www.biblegateway.com/passage/?search=Numbers+23&version=KJV" target="_blank" rel="noopener" title="Read the full chapter">Numbers 23:22&nbsp;↗</a></div>
+        <div class="vtabs" role="tablist" aria-label="Bible version for Numbers 23:22"><button type="button" class="vtab active" data-version="kjv">KJV</button><button type="button" class="vtab" data-version="niv">NIV</button></div>
+        <div class="text" data-version="kjv">“God brought them out of Egypt; he hath as it were the strength of an unicorn.”</div>
+        <div class="text other" data-version="niv">“God brought them out of Egypt; they have the strength of a wild ox.”</div>
+      </div>
+      <div class="verse">
+        <div class="ref"><a href="https://www.biblegateway.com/passage/?search=Job+39&version=KJV" target="_blank" rel="noopener" title="Read the full chapter">Job 39:9&nbsp;↗</a></div>
+        <div class="vtabs" role="tablist" aria-label="Bible version for Job 39:9"><button type="button" class="vtab active" data-version="kjv">KJV</button><button type="button" class="vtab" data-version="niv">NIV</button></div>
+        <div class="text" data-version="kjv">“Will the unicorn be willing to serve thee, or abide by thy crib?”</div>
+        <div class="text other" data-version="niv">“Will the wild ox consent to serve you? Will it stay by your manger at night?”</div>
+      </div>
+      <div class="verse">
+        <div class="ref"><a href="https://www.biblegateway.com/passage/?search=Job+39&version=KJV" target="_blank" rel="noopener" title="Read the full chapter">Job 39:10&nbsp;↗</a></div>
+        <div class="vtabs" role="tablist" aria-label="Bible version for Job 39:10"><button type="button" class="vtab active" data-version="kjv">KJV</button><button type="button" class="vtab" data-version="niv">NIV</button></div>
+        <div class="text" data-version="kjv">“Canst thou bind the unicorn with his band in the furrow? or will he harrow the valleys after thee?”</div>
+        <div class="text other" data-version="niv">“Can you hold it to the furrow with a harness? Will it till the valleys behind you?”</div>
+      </div>
+      <div class="verse">
+        <div class="ref"><a href="https://www.biblegateway.com/passage/?search=Psalm+92&version=KJV" target="_blank" rel="noopener" title="Read the full chapter">Psalm 92:10&nbsp;↗</a></div>
+        <div class="vtabs" role="tablist" aria-label="Bible version for Psalm 92:10"><button type="button" class="vtab active" data-version="kjv">KJV</button><button type="button" class="vtab" data-version="niv">NIV</button></div>
+        <div class="text" data-version="kjv">“But my horn shalt thou exalt like the horn of an unicorn: I shall be anointed with fresh oil.”</div>
+        <div class="text other" data-version="niv">“You have exalted my horn like that of a wild ox; fine oils have been poured on me.”</div>
+      </div>
+      <p class="trans-note"><b>A note on translation:</b> the Hebrew word here is <em>re’em</em>, which most modern Bibles render “wild ox”. The “unicorn” is a KJV rendering, so this creature is half translation and half animal.</p>
+    </div>
+    <div class="inart">
+      <div class="ia-title">In art — oldest to newest</div>
+      <ol class="timeline">
+        <li class="tl">
+          <div class="era">Medieval</div>
+          <div class="date">c. 1200 AD</div>
+          <div class="work"><a href="https://commons.wikimedia.org/wiki/File:F15r-aberdeen-best-detail.jpg">The unicorn in the Aberdeen Bestiary</a></div>
+          <div class="byline">English or French workshop — folio 15r, now University of Aberdeen</div>
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/F15r-aberdeen-best-detail.jpg?width=640" alt="Detail of the unicorn page of the Aberdeen Bestiary" loading="lazy">
+          <div class="caption">Image via <a href="https://commons.wikimedia.org/wiki/File:F15r-aberdeen-best-detail.jpg">Wikimedia Commons</a></div>
+          <p class="note"><b>The oldest.</b> Medieval bestiaries turn the KJV’s unicorn (and the Latin <em>monoceros</em> behind it) into a fierce one-horned beast that can only be tamed by a maiden — an allegory of Christ and the Virgin, painted in the margins of learned books.</p>
+        </li>
+        <li class="tl">
+          <div class="era">Medieval</div>
+          <div class="date">c. 1495–1505 AD</div>
+          <div class="work"><a href="https://commons.wikimedia.org/wiki/File:The_Unicorn_in_Captivity_(from_the_Unicorn_Tapestries)_MET_DP118991.jpg">The Unicorn Tapestries — “The Unicorn in Captivity”</a></div>
+          <div class="byline">South Netherlandish workshops — The Met Cloisters, New York</div>
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/The_Unicorn_in_Captivity_(from_the_Unicorn_Tapestries)_MET_DP118991.jpg?width=640" alt="The Unicorn in Captivity, one of the Unicorn Tapestries at the Met Cloisters" loading="lazy">
+          <div class="caption">Image via <a href="https://commons.wikimedia.org/wiki/File:The_Unicorn_in_Captivity_(from_the_Unicorn_Tapestries)_MET_DP118991.jpg">Wikimedia Commons</a></div>
+          <p class="note"><b>Most notable.</b> The chained unicorn in the flower-filled pen is the last panel of the famous tapestry cycle — an allegory of the tamed and devoted creature, and the picture that made the unicorn iconic.</p>
+        </li>
+      </ol>
+      <p class="arc"><span class="arc-label">How it changed:</span> <b>from a strong ox to a tamed myth to a mascot.</b> Job’s untameable one-horned beast became, through medieval allegory, a captured Christ-symbol, then a heraldic animal, and finally the pink rainbow mascot of children’s products. Virtually none of the modern unicorn’s meaning survives from the verses that put the word in the KJV.</p>
+    </div>
+  </section>
+
+  <section class="creature" id="satyrs">
+    <h2><span class="num">XVII.</span>The satyrs (se’irim)</h2>
+    <div class="inbible">
+      <div class="ib-title">In the Bible</div>
+      <div class="verse">
+        <div class="ref"><a href="https://www.biblegateway.com/passage/?search=Leviticus+17&version=KJV" target="_blank" rel="noopener" title="Read the full chapter">Leviticus 17:7&nbsp;↗</a></div>
+        <div class="vtabs" role="tablist" aria-label="Bible version for Leviticus 17:7"><button type="button" class="vtab active" data-version="kjv">KJV</button><button type="button" class="vtab" data-version="niv">NIV</button></div>
+        <div class="text" data-version="kjv">“And they shall no more offer their sacrifices unto devils, after whom they have gone a whoring. This shall be a statute for ever unto them throughout their generations.”</div>
+        <div class="text other" data-version="niv">“They must no longer offer any of their sacrifices to the goat idols to whom they prostitute themselves. This is to be a lasting ordinance for them and for the generations to come.”</div>
+      </div>
+      <div class="verse">
+        <div class="ref"><a href="https://www.biblegateway.com/passage/?search=Isaiah+13&version=KJV" target="_blank" rel="noopener" title="Read the full chapter">Isaiah 13:21&nbsp;↗</a></div>
+        <div class="vtabs" role="tablist" aria-label="Bible version for Isaiah 13:21"><button type="button" class="vtab active" data-version="kjv">KJV</button><button type="button" class="vtab" data-version="niv">NIV</button></div>
+        <div class="text" data-version="kjv">“But wild beasts of the desert shall lie there; and their houses shall be full of doleful creatures; and owls shall dwell there, and satyrs shall dance there.”</div>
+        <div class="text other" data-version="niv">“But desert creatures will lie there, jackals will fill her houses; there the owls will dwell, and there the wild goats will leap about.”</div>
+      </div>
+      <div class="verse">
+        <div class="ref"><a href="https://www.biblegateway.com/passage/?search=Isaiah+34&version=KJV" target="_blank" rel="noopener" title="Read the full chapter">Isaiah 34:14&nbsp;↗</a></div>
+        <div class="vtabs" role="tablist" aria-label="Bible version for Isaiah 34:14"><button type="button" class="vtab active" data-version="kjv">KJV</button><button type="button" class="vtab" data-version="niv">NIV</button></div>
+        <div class="text" data-version="kjv">“The wild beasts of the desert shall also meet with the wild beasts of the island, and the satyr shall cry to his fellow; the screech owl also shall rest there, and find for herself a place of rest.”</div>
+        <div class="text other" data-version="niv">“Desert creatures will meet with hyenas, and wild goats will bleat to each other; there the night creatures will also lie down and find for themselves places of rest.”</div>
+      </div>
+      <p class="trans-note"><b>A note on translation:</b> the Hebrew word here is <em>se’irim</em> — “hairy ones”, goat-demons in most modern translations. The KJV’s “satyrs” borrows a creature from Greek myth that the Hebrew text likely never meant.</p>
+    </div>
+    <div class="inart">
+      <div class="ia-title">In art — oldest to newest</div>
+      <ol class="timeline">
+        <li class="tl">
+          <div class="era">Antiquity</div>
+          <div class="date">—</div>
+          <p class="honest"><b>I can’t confidently name a major canonical artwork depicting the biblical satyrs specifically</b>, so I won’t list one rather than guess. Greek satyrs fill ancient art, but that is a different creature wearing the KJV’s borrowed name.</p>
+        </li>
+      </ol>
+      <p class="arc"><span class="arc-label">How it changed:</span> <b>from goat-demon to translation accident.</b> Whatever the se’irim were (goat-demons, or shaggy wild goats), they were essentially never depicted as such — the KJV’s Greek label sent English readers imagining Pan’s followers in a ruined Babylon. It is the clearest case on this page of a creature created by translation rather than by art.</p>
+    </div>
+  </section>
+
+  <h2 class="plain">Gaps and cautions</h2>
+  <hr class="rule-double">
+  <p><b>Honest gaps.</b> Where I could not confidently name a genuine depiction (the Nephilim and the satyrs; ancient depictions of Leviathan, Behemoth and Satan), I said so instead of inventing one.</p>
+  <p><b>Dates.</b> Several are approximate (“c.”), dating conventions for manuscripts and excavated walls vary, and museum holdings change — the works get loaned and moved, so treat locations as current-as-of-writing.</p>
+  <p><b>Translation.</b> The unicorn and the satyrs are KJV renderings; most modern Bibles read <em>re’em</em> as “wild ox” and <em>se’irim</em> as “goat-demons” — two of the creatures above depend on the translation you quote.</p>
+  <p><b>Images.</b> Every embedded image points at a Wikimedia Commons file page that I verified returns HTTP 200. Where no verified file exists, the work title links to a Commons search rather than a broken guess.</p>
+  <p><b>Scope.</b> Jonah’s great fish is a natural animal, and the four horsemen and Gog and Magog are not creatures in the same sense — but I can add them.</p>
+
+  <footer>
+    <p class="sources"><b>Sources.</b> KJV text is public domain. NIV quotations are from the Holy Bible, New International Version® (NIV®), © 1973, 1978, 1984, 2011 by Biblica, Inc.™, used by permission. Chapter links point to BibleGateway.</p>
+    <a href="/blog/">← back to blog</a>
+  </footer>
+</div>
+
+<script>
+(function () {
+  document.addEventListener('click', function (e) {
+    var tab = e.target.closest ? e.target.closest('.vtab') : null;
+    if (!tab) return;
+    var verse = tab.closest('.verse');
+    if (!verse) return;
+    var want = tab.getAttribute('data-version');
+    var tabs = verse.querySelectorAll('.vtab');
+    for (var i = 0; i < tabs.length; i++) {
+      tabs[i].classList.toggle('active', tabs[i] === tab);
+    }
+    var texts = verse.querySelectorAll('.text');
+    for (var j = 0; j < texts.length; j++) {
+      texts[j].classList.toggle('other', texts[j].getAttribute('data-version') !== want);
+    }
+  });
+})();
+</script>
+</body>
+</html>
