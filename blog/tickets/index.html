@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tickets & the Ticket Loop | jamesfeldmayer.com</title>
+<title>Tickets | jamesfeldmayer.com</title>
 <meta name="description" content="Tickets page on jamesfeldmayer.com, and documentation of the autonomous ticket loop that resolves GitHub issues automatically.">
 <style>
   :root {
@@ -28,7 +28,7 @@
   .prompt { color: var(--dim); font-size: 0.9rem; }
   .prompt b { color: var(--accent); font-weight: normal; }
   h1 { font-size: clamp(1.8rem, 5vw, 2.6rem); font-weight: 600; margin: 0.75rem 0 0.5rem; }
-  .tagline { color: var(--dim); margin-bottom: 2.5rem; }
+  .meta { color: var(--dim); margin-bottom: 2.5rem; }
   section { margin-bottom: 2.5rem; }
   h2 { font-size: 1rem; font-weight: 600; color: var(--accent); margin-bottom: 1rem; letter-spacing: 0.04em; text-transform: uppercase; }
   h2::before { content: "// "; color: var(--dim); }
@@ -52,7 +52,7 @@
 <div class="wrap">
   <div class="prompt">james@feldmayer:~$ <b>./tickets.sh --docs</b></div>
   <h1>Tickets</h1>
-  <p class="tagline">GitHub issues get resolved automatically on this box. Here's how the loop works.</p>
+  <p class="meta">October 25, 2026 — GitHub issues get resolved automatically on this box. Here's how the loop works.</p>
 
   <section>
     <h2>Status</h2>
@@ -61,7 +61,8 @@
       <pre><span class="g">james@feldmayer:~$</span> tickets --list
 <span class="c">// no open tickets right now — the queue is empty</span>
 <span class="c">// file one at github.com/James-Feldmayer0/Adsplosion/issues</span>
-<span class="c">// it gets picked up within ~30 seconds</span></pre>
+<span class="c">// label it “read” — it gets picked up within ~30 seconds</span>
+<span class="c">// tickets in “backlog” are filed but left alone by the loop</span></pre>
     </div>
   </section>
 
@@ -70,7 +71,7 @@
     <div class="grid">
       <div class="card">
         <h3>The poller <span>— ticket-daemon.sh</span></h3>
-        <p>A systemd service (<code>ticket-loop.service</code>) runs a bash loop that wakes every <b>30 seconds</b>, lists open issues on <code>James-Feldmayer0/Adsplosion</code> via the GitHub API, and skips anything that's a PR. No new tickets → one cheap API call, zero tokens, back to sleep.</p>
+        <p>A systemd service (<code>ticket-loop.service</code>) runs a bash loop that wakes every <b>30 seconds</b>, lists open issues on <code>James-Feldmayer0/Adsplosion</code> via the GitHub API, and skips anything that's a PR — or anything <b>not labeled <code>read</code></b>. Tickets filed in <code>backlog</code> sit untouched until a human triages them. No new tickets → one cheap API call, zero tokens, back to sleep.</p>
       </div>
       <div class="card">
         <h3>The dispatcher <span>— headless pi</span></h3>
@@ -81,15 +82,28 @@
   </section>
 
   <section>
-    <h2>The Flow</h2>
+    <h2>The Workflow</h2>
+    <div class="term">
+      <div class="term-bar">ticket lifecycle — GitHub labels</div>
+      <pre><span class="v">backlog</span>      <span class="c">filed, not triaged — the loop will not touch it</span>
+<span class="g">  │ human triages</span>
+<span class="v">read</span>         <span class="c">ready — the loop picks these up, nothing else</span>
+<span class="g">  │ loop</span>
+<span class="v">in progress</span>  <span class="c">agent is working on it (fresh context per ticket)</span>
+<span class="g">  │ agent, after live verification</span>
+<span class="v">review</span>       <span class="c">done &amp; verified by the agent — still open, waiting on a human</span>
+<span class="g">  │ human closes</span>
+<span class="v">done</span></pre>
+    </div>
     <div class="term">
       <div class="term-bar">ticket-loop.sh — poll cycle</div>
       <pre><span class="c"># every 30 seconds:</span>
-<span class="g">1. fetch</span>  <span class="v">GET /issues?state=open</span>   <span class="c">(PRs filtered out)</span>
+<span class="g">1. fetch</span>  <span class="v">GET /issues?state=open</span>   <span class="c">(PRs + non-“read” filtered out)</span>
 <span class="g">2. guard</span>  flock — a slow run never overlaps the next poll
-<span class="g">3. dispatch</span> pi -p <span class="c">(one agent session per ticket, fresh context each run)</span>
-<span class="g">4. agent</span>   implement → verify live → comment on the issue
-<span class="g">5. close</span>   state=closed, state_reason=completed <span class="c">— only if verified</span></pre>
+<span class="g">3. label</span>  read → in progress
+<span class="g">4. dispatch</span> pi -p <span class="c">(one agent session per ticket, fresh context each run)</span>
+<span class="g">5. agent</span>   implement → verify live → comment on the issue
+<span class="g">6. label</span>   in progress → review <span class="c">— only if verified; a human closes it</span></pre>
     </div>
   </section>
 
@@ -97,12 +111,12 @@
     <h2>Guardrails</h2>
     <div class="grid">
       <div class="card">
-        <h3>Verify before close</h3>
-        <p>The agent must check its own work — <code>curl</code> the live site or run the app — before a ticket may be closed. No "edited the file, done."</p>
+        <h3>Verify before review</h3>
+        <p>The agent must check its own work — <code>curl</code> the live site or run the app — before a ticket may move to <code>review</code>. No "edited the file, done." And it never closes tickets: closing is the human's call.</p>
       </div>
       <div class="card">
         <h3>Never guesses</h3>
-        <p>Ambiguous ticket? The agent posts a comment asking for clarification and stops — it does not close, and it does not improvise a guess.</p>
+        <p>Ambiguous ticket? The agent posts a comment asking for clarification and stops — labels stay on <code>in progress</code> and it does not improvise a guess.</p>
       </div>
       <div class="card">
         <h3>Attempt cap</h3>
@@ -116,6 +130,17 @@
   </section>
 
   <section>
+    <h2>The Consistency Check</h2>
+    <p style="color: var(--dim); font-size: 0.88rem; margin-bottom: 1rem;">A headless <code>pi</code> agent audits the whole site. It starts with a deterministic scanner — pure python, no deps: index card titles vs post <code>&lt;h1&gt;</code>s, CSS classes used but never defined (the bug that made one blog card render in the wrong colour), missing dates, broken internal links, duplicate <code>&lt;h1&gt;</code>s — then reads the site the way a human would, looking for what rules can't catch: styling drift between pages, inconsistent date formats, docs that contradict the code they describe. It knows which paths Caddy proxies or redirects, so those aren't false positives, and it parses HTML with a real parser so escaped markup inside rendered transcripts can't fool it. The agent never fixes anything — it files a <code>backlog</code> ticket, deduplicated so a rerun updates the existing ticket instead of opening a new one. Nothing found → no ticket, no noise. Runs on demand or on a schedule, controlled from a private admin page on this box.</p>
+    <div class="term">
+      <div class="term-bar">bash — 80×24</div>
+      <pre><span class="g">james@feldmayer:~$</span> /root/consistency-check.py
+<span class="c">// (silent — exit 0, site is consistent)</span>
+<span class="c">// findings print as: SEVERITY | file | description</span></pre>
+    </div>
+  </section>
+
+  <section>
     <h2>Ops</h2>
     <div class="term">
       <div class="term-bar">bash — 80×24</div>
@@ -125,6 +150,9 @@
 <span class="v">/etc/systemd/system/ticket-loop.service</span>
 <span class="v">/root/ticket-loop.log</span>     <span class="c"># poll feed (auto-trimmed)</span>
 <span class="v">/root/ticket-loop/issue-N.log</span> <span class="c"># full agent transcript per ticket</span>
+<span class="v">/root/consistency-check.py</span>  <span class="c"># rule-based baseline scan</span>
+<span class="v">/root/consistency-check.sh</span>  <span class="c"># dispatches the pi agent + files backlog tickets</span>
+<span class="v">/root/consistency-ctl.py</span>    <span class="c"># helper daemon: spawns runs, schedule (crontab)</span>
 
 <span class="c"># commands</span>
 <span class="g">systemctl status ticket-loop</span>   <span class="c"># is it alive?</span>
@@ -141,7 +169,7 @@
   </section>
 
   <footer>
-    <a href="/blog/">← back to blog index</a> · queue: <a class="link" href="https://github.com/James-Feldmayer0/Adsplosion/issues">github.com/James-Feldmayer0/Adsplosion/issues</a>
+    <a href="/blog/">← back to blog</a> · queue: <a class="link" href="https://github.com/James-Feldmayer0/Adsplosion/issues">github.com/James-Feldmayer0/Adsplosion/issues</a>
   </footer>
 </div>
 </body>

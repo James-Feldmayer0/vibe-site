@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Consistency Check | jamesfeldmayer.com</title>
+<meta name="robots" content="noindex">
+<style>
+  :root {
+    --bg: #0a0e14;
+    --fg: #d6e2f0;
+    --dim: #6b7a8d;
+    --accent: #5eead4;
+    --accent2: #a78bfa;
+    --card: #111823;
+    --border: #1e293b;
+    --ok: #34d399;
+    --warn: #f87171;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg); color: var(--fg); min-height: 100vh;
+    font-family: "SF Mono", "Cascadia Code", "JetBrains Mono", Menlo, Consolas, monospace;
+    line-height: 1.7;
+    background-image:
+      radial-gradient(600px 400px at 15% 10%, rgba(94,234,212,0.06), transparent 60%),
+      radial-gradient(700px 500px at 85% 90%, rgba(167,139,250,0.06), transparent 60%);
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 4rem 1.5rem 5rem; }
+  .prompt { color: var(--dim); font-size: 0.9rem; }
+  .prompt b { color: var(--accent); font-weight: normal; }
+  h1 { font-size: clamp(1.8rem, 5vw, 2.6rem); font-weight: 600; margin: 0.75rem 0 0.5rem; }
+  .meta { color: var(--dim); margin-bottom: 2.5rem; }
+  section { margin-bottom: 2.5rem; }
+  h2 { font-size: 1rem; font-weight: 600; color: var(--accent); margin-bottom: 1rem; letter-spacing: 0.04em; text-transform: uppercase; }
+  h2::before { content: "// "; color: var(--dim); }
+  .term { background: #05080c; border: 1px solid var(--border); border-radius: 10px; font-size: 0.85rem; overflow: hidden; }
+  .term-bar { background: #0d1420; padding: 0.5rem 1rem; color: var(--dim); font-size: 0.75rem; border-bottom: 1px solid var(--border); }
+  .term pre { padding: 1.2rem 1.4rem; overflow-x: auto; white-space: pre-wrap; word-break: break-word; }
+  .c { color: var(--dim); } .g { color: var(--accent); } .v { color: var(--accent2); } .r { color: var(--warn); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 1.2rem 1.4rem; }
+  .card h3 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.35rem; }
+  .card p { color: var(--dim); font-size: 0.88rem; }
+  a.link { color: var(--accent); text-decoration: none; border-bottom: 1px dotted var(--accent); }
+  a.link:hover { border-bottom-style: solid; }
+  footer { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border); color: var(--dim); font-size: 0.85rem; }
+  footer a { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="prompt">james@feldmayer:~$ <b>consistency --docs</b></div>
+  <h1>Consistency Check</h1>
+  <p class="meta">October 25, 2026 — the auditor that reads the site and files tickets about it</p>
+
+  <section>
+    <h2>How it works</h2>
+    <p style="color: var(--dim); font-size: 0.88rem; margin-bottom: 1rem;">Two layers. First a deterministic scanner runs — pure python, no deps, catches the mechanical stuff exactly the same way every time. Then a headless <code>pi</code> agent reads the site the way a human would and looks for what rules can't catch. The agent is read-only by instruction; it never fixes anything, it only reports, and the wrapper files the ticket. The cards below describe both layers.</p>
+    <div class="grid">
+      <div class="card">
+        <h3>Judgment checks <span class="c">— the pi agent</span></h3>
+        <p>Styling drift between similar pages, inconsistent date or title formats, pages missing from (or duplicated in) the blog index, navigation/footers/meta tags that don't match, and docs that contradict the code they describe. The agent runs the scanner first as its baseline, then adds what a human eye would notice. Runs get a fresh context every time — no memory, no drift in how it judges.</p>
+      </div>
+      <div class="card">
+        <h3>Card titles vs post headings</h3>
+        <p>Every card on the blog index must match the <code>&lt;h1&gt;</code> of the post it links to — including capitalisation. This catches posts whose index card says something the post itself doesn't.</p>
+      </div>
+      <div class="card">
+        <h3>Undefined CSS classes</h3>
+        <p>Any class used in markup must be defined in the page's stylesheet. This is the bug that made the medieval-animals card render in body colour instead of the purple title colour: someone renamed a card's <code>class="title"</code> to a <code>.cmd</code> class that was never styled.</p>
+      </div>
+      <div class="card">
+        <h3>Missing dates</h3>
+        <p>Blog index cards should carry a date. A card without one breaks the pattern of every other card on the page.</p>
+      </div>
+      <div class="card">
+        <h3>Broken internal links</h3>
+        <p>Every internal <code>href</code>/<code>src</code> must resolve to a real file. Paths that Caddy proxies or redirects elsewhere (like <code>/adsplosion</code> or <code>/tickets</code>) are excluded so they don't cause false positives.</p>
+      </div>
+      <div class="card">
+        <h3>Heading structure</h3>
+        <p>Exactly one <code>&lt;h1&gt;</code> per page — two means a page has two "titles", which usually means something was pasted in twice.</p>
+      </div>
+      <div class="card">
+        <h3>False-positive defence</h3>
+        <p>The scanner parses HTML with a real parser (not string matching), so escaped markup inside rendered agent transcripts — like <code>&amp;lt;span class="cmd"&amp;gt;</code> in the logs page — is never mistaken for real markup.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>What happens on a finding</h2>
+    <div class="term">
+      <div class="term-bar">bash — 80×24</div>
+      <pre><span class="g">findings</span> <span class="c">→</span> <span class="v">GitHub ticket, label: backlog</span>   <span class="c">(deduplicated — a rerun updates the existing ticket)</span>
+<span class="g">backlog</span>  <span class="c">→ you triage:</span> <span class="v">read</span>   <span class="c">→ the ticket loop picks it up and fixes it</span>
+<span class="g">review</span>   <span class="c">→ you close it:</span> <span class="v">done</span></pre>
+    </div>
+    <p style="color: var(--dim); font-size: 0.88rem; margin-top: 0.8rem;">The agent never fixes anything itself — it only reports. Full ticket workflow: <a class="link" href="/blog/tickets/">the ticket loop</a>.</p>
+  </section>
+
+  <section>
+    <h2>When it runs</h2>
+    <p style="color: var(--dim); font-size: 0.88rem;">On a schedule, plus on demand — runs are controlled from the server itself and from the private admin pages, not from this public page. Results always land the same way: as a <code>backlog</code> ticket on <a class="link" href="https://github.com/James-Feldmayer0/Adsplosion/issues">GitHub</a>, so every finding has an audit trail. Nothing found → no ticket, no noise.</p>
+  </section>
+
+  <footer>
+    <a href="/blog/">← back to blog</a> · <a href="/">← site index</a>
+  </footer>
+</div>
+</body>
+</html>
