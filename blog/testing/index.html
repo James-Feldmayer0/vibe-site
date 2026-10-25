@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Testing: from "does it work" to "who fixes it when it doesn't" | jamesfeldmayer.com</title>
+<meta name="description" content="Unit tests vs continuous health checks, why clicking around isn't a QA strategy, and a proposal for a logs + agents self-triage loop that fixes downed services without me at the keyboard.">
+<style>
+  :root {
+    --bg: #0a0e14;
+    --fg: #d6e2f0;
+    --dim: #6b7a8d;
+    --accent: #5eead4;
+    --accent2: #a78bfa;
+    --card: #111823;
+    --border: #1e293b;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg); color: var(--fg); min-height: 100vh;
+    font-family: "SF Mono", "Cascadia Code", "JetBrains Mono", Menlo, Consolas, monospace;
+    line-height: 1.7;
+    background-image:
+      radial-gradient(600px 400px at 15% 10%, rgba(94,234,212,0.06), transparent 60%),
+      radial-gradient(700px 500px at 85% 90%, rgba(167,139,250,0.06), transparent 60%);
+  }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 4rem 1.5rem 5rem; }
+  .prompt { color: var(--dim); font-size: 0.9rem; }
+  .prompt b { color: var(--accent); font-weight: normal; }
+  h1 { font-size: clamp(1.8rem, 5vw, 2.4rem); font-weight: 600; margin: 0.75rem 0 0.5rem; line-height: 1.25; }
+  .meta { color: var(--dim); font-size: 0.85rem; margin-bottom: 2.5rem; }
+  .meta a { color: var(--accent); text-decoration: none; }
+  .meta a:hover { text-decoration: underline; }
+  h2 { font-size: 1.05rem; font-weight: 600; color: var(--accent); margin: 2.5rem 0 0.75rem; letter-spacing: 0.03em; }
+  h2::before { content: "// "; color: var(--dim); }
+  p { margin-bottom: 1.1rem; }
+  p b { color: var(--accent2); font-weight: 600; }
+  ul, ol { margin: 0 0 1.1rem 1.2rem; }
+  li { margin-bottom: 0.5rem; }
+  ul ul { margin: 0.5rem 0 0.2rem 1.2rem; }
+  ul ul li { color: var(--dim); }
+  pre {
+    background: var(--card); border: 1px solid var(--border); border-radius: 10px;
+    padding: 1.2rem 1.4rem; margin: 1.5rem 0; overflow-x: auto;
+    font-size: 0.85rem; line-height: 1.6; color: var(--fg);
+    white-space: pre;
+  }
+  code {
+    background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+    padding: 0.1rem 0.45rem; font-size: 0.85rem; color: var(--accent2);
+  }
+  footer { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border); color: var(--dim); font-size: 0.85rem; }
+  footer a { color: var(--accent); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="prompt">james@feldmayer:~$ <b>cat ~/blog/testing.md</b></div>
+  <h1>Testing: from "does it work" to "who fixes it when it doesn't"</h1>
+  <p class="meta">October 25, 2026 — ops notes on <a href="/adsplosion/">/adsplosion</a></p>
+
+  <p>I wrote a post-mortem about Adsplosion a few days ago, and in it I mentioned testing as a lesson learned. This post is the follow-up I promised myself: what testing actually means for a solo side project, why the version of it I had was a lie, and a proposal for what I'm building instead — because checking the site and finding it down <em>again</em> is not a QA strategy, it's a hobby with extra steps.</p>
+
+  <h2>The test I had was: I clicked around</h2>
+  <p>Let me be honest about what my "test suite" looked like until recently. I'd open the site, click a few buttons, watch an ad-parody fruit explode, and think: shipped. Maybe I'd check the server response code. That was it.</p>
+
+  <p>And it worked — for about the first hour of Adsplosion's life. Because in the first hour, the bugs are the loud kind. The merge animation doesn't fire. The board doesn't reset. You find them immediately because they're the bugs you were half-expecting.</p>
+
+  <p>Then the loud bugs are gone and what's left is the quiet kind:</p>
+  <ul>
+    <li><b>Integration bugs.</b> The game works alone, but the thing it <em>depends on</em> is broken. An ad SDK that fails silently. An API route that returns a 200 with an empty body instead of data.</li>
+    <li><b>Environmental bugs.</b> Works on my machine, dies in production. A port collision, a missing env var, a container that starts but the process inside is wedged.</li>
+    <li><b>Time-dependent bugs.</b> It works until the first session expires, until the cache fills up, until the log file hits its rotation limit. Nobody clicks around on day three at 3am.</li>
+  </ul>
+
+  <p>Here's the thing I keep rediscovering: <b>I don't actually check Adsplosion very often.</b> I check it when I remember it exists. And the moment I remember is <em>precisely when it's most likely to be down</em> — because everything that breaks, breaks slowly and in the background, and my memory of "I should check on that" is the only monitoring it has. Unit tests can't save you from this. You cannot unit test "is the server still alive three days later."</p>
+
+  <h2>What unit tests are actually for</h2>
+  <p>So let's be precise about the layers, because people (me included) like to say "add tests" like it's one thing. It isn't.</p>
+
+  <p><b>Unit tests</b> test logic in isolation. <code>mergeFruits(apple, apple)</code> returns <code>pear</code>. The scoring function handles zero and negative values. The input parser doesn't crash on garbage. These are cheap, fast, run in milliseconds, and they exist to answer one question: <em>did the code I just wrote do what I meant?</em> Their superpower is the <b>regression</b> — once the test exists, a bug you fixed can never silently come back.</p>
+
+  <p><b>Integration tests</b> test components wired together. The API route, real (or realistic) storage, real request objects. They answer: <em>do the pieces I built actually agree with each other?</em> Most of my production bugs live here — the game and the server each working fine while speaking slightly different languages to each other.</p>
+
+  <p><b>Health tests</b> (the ones I didn't have) test the <em>deployment</em>, not the code. Is the process listening? Does <code>GET /</code> return something other than a hung connection? Does the container pass its own healthcheck? These don't run in CI, they run <em>forever</em>, in production, on a schedule.</p>
+
+  <p>I had unit-test-shaped confidence and production-shaped problems.</p>
+
+  <h2>Continuous testing: the loop I actually needed</h2>
+  <p>Continuous testing isn't a fancy pipeline stage. For a solo project it's one idea: <b>the site checks itself, and tells me when it's wrong, without me having to ask.</b> The minimal viable version:</p>
+
+  <ol>
+    <li><b>A heartbeat.</b> Every minute or five, a script hits the real URL with a real request and asserts: status 200, response under N seconds, body contains the thing that means "this is actually Adsplosion and not a default error page."</li>
+    <li><b>Depth levels.</b> A shallow check (is the port alive) every minute; a deep check (does the core flow work — can I actually play a merge?) every 15 minutes. Cheap checks are frequent; expensive checks are rare.</li>
+    <li><b>Structured logs.</b> Every check writes a line — timestamp, check name, pass/fail, latency, and on failure, <em>the evidence</em>: response body snippet, container status, last 20 log lines. The evidence is the important part.</li>
+    <li><b>Alerting with a brain.</b> A failure alerts once, not per-minute, and not for a 3-second blip. "Down for 3 consecutive checks" is an incident; "one failed check at 4am" is noise.</li>
+    <li><b>A status page.</b> The check results get rendered somewhere I actually look — which, for me, is now the <code>/hidden/logs</code> page on this very site. You're reading the monitoring of a site on the site.</li>
+  </ol>
+
+  <p>The embarrassing realization was how much of this I already had. Caddy logs every request to disk. Docker knows whether the container is healthy. The logs page exists. None of it was connected into a loop that <em>decides</em> anything. I had sensors with no nervous system.</p>
+
+  <h2>The proposal: logs + agents = a self-triage loop</h2>
+  <p>Here's the actual proposal. Monitoring alone just moves the work: instead of discovering the outage, I get a push notification and <em>I</em> do the debugging at whatever hour it breaks. For a one-person operation, the debugging is the expensive part — not because I can't do it, but because I'm rarely at a keyboard and it interrupts whatever I was actually doing.</p>
+
+  <p>The insight from watching agents work: <b>most incidents have a boring shape.</b> Restart the container. Roll back the last deploy. Kill the log file eating the disk. Bounce the port. An agent doesn't need to be brilliant; it needs to be <em>brave about the boring fixes and humble about everything else</em>. So:</p>
+
+  <p><b>The loop has four roles:</b></p>
+<pre>
+┌─────────┐    every 60s    ┌──────────┐   failure    ┌───────────┐
+│ MONITOR │ ──────────────▶ │ TRIAGE   │ ──────────▶  │ FIXER     │
+│ (dumb)  │                 │ (agent)  │              │ (agent)   │
+└─────────┘                 └──────────┘   safe fix   └───────────┘
+     ▲                            │  + verdict         │
+     │        runs deep check     │  + root cause      ▼
+     └────────────────────────────┴────────────  ┌───────────┐
+                    verifies the fix             │ REPORTER  │
+                                                 │ (writes)  │
+                                                 └───────────┘
+</pre>
+
+  <p><b>1. The Monitor</b> is deliberately dumb. A bash script with no opinions: run the checks, append JSON lines to a log, and on N consecutive failures, wake the triage agent. No LLM in the hot path — it should cost nothing and never fail.</p>
+
+  <p><b>2. The Triage agent</b> gets one prompt and one input: <em>"Here is the incident bundle. Classify it."</em> The bundle is everything a human would look at: the failing check's evidence, last 100 lines of container logs, <code>docker ps</code>, disk/memory, the access log around the failure window, and the git log of recent deploys. Its output is a structured verdict: root cause hypothesis, severity, and a fix plan drawn from a <b>fixed menu</b>:</p>
+
+  <ul>
+    <li><b>Tier 1 (auto-fix):</b> restart service, clear cache, rotate a full disk. Reversible, low-risk, has happened before.</li>
+    <li><b>Tier 2 (fix + report):</b> same actions plus a written explanation, because "it worked" isn't a root cause.</li>
+    <li><b>Tier 3 (page me):</b> anything involving data loss, auth, money, or a cause it can't name. No autonomous heroics past this line.</li>
+  </ul>
+
+  <p><b>3. The Fixer</b> executes only pre-approved playbooks — not freeform shell commands. A playbook is a tested script with a verification step and a rollback. <code>restart-container</code> runs, then the <em>Monitor</em> (not the agent, the dumb one) confirms recovery within 5 minutes. If it doesn't recover, escalate. The agent never verifies its own work; the heartbeat does. That's the same principle as unit tests — assertion separate from action.</p>
+
+  <p><b>4. The Reporter</b> writes the incident report the way I'd write it for myself: what broke, when, root cause, what was done, and whether it needs a real fix. It lands on the <code>/hidden/logs</code> page and gets linked in the next post-mortem. Over time this becomes a searchable incident history — which is how playbooks get written: every Tier 3 that a human solves once gets encoded as a Tier 1 playbook, and the agent's jurisdiction slowly grows.</p>
+
+  <p><b>The two rules that make it safe:</b></p>
+
+  <ul>
+    <li><b>The agent can only act through playbooks.</b> Never raw shell, never "creative" fixes. A playbook that isn't written doesn't exist.</li>
+    <li><b>Every fix is verified by a dumb check, not the agent's own claim.</b> Trust the sensor, not the narrator.</li>
+  </ul>
+
+  <h2>What I'd actually be doing instead</h2>
+  <p>Here's the part that motivated this whole post. The time spent checking whether Adsplosion is up, poking the container, reading logs to re-diagnose the same wedge for the fourth time — that's maybe 30 minutes a week, but it's <em>30 minutes of the worst kind: context-switching, low-grade dread, no learning.</em> And the thing it produces is a service that's down between checks anyway.</p>
+
+  <p>The honest alternative to agentic ops isn't "I'll just check more diligently." It's:</p>
+
+  <ul>
+    <li><b>Write the ten boring unit tests</b> I've been avoiding, so regressions die in CI instead of in production</li>
+    <li><b>Make the deploy boring</b> — one command, healthchecked, auto-rollback on failed healthcheck</li>
+    <li><b>Let the loop handle tier one</b> so my only involvement is reading the reports and deciding what deserves a real fix</li>
+  </ul>
+
+  <p>The dream isn't a server that never goes down — that's not on offer for a side project running on a $5 VPS. The dream is a server that goes down, fixes itself in five minutes with a report written by the time I look, and only wakes me when the problem is genuinely a human problem. That's a reasonable use of an agent: not to be clever, but to be the diligent one at 3am so I don't have to be.</p>
+
+  <p>The monitoring loop I can build tonight. The agent that triages it is the next post — if it works, I'll write up the incident that proved it. If it doesn't, that's a post-mortem too, and honestly probably a funnier one.</p>
+
+  <footer>
+    <a href="/blog/">← back to blog index</a>
+  </footer>
+</div>
+</body>
+</html>

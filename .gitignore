@@ -1,3 +1,7 @@
 # Generated on every ticket-loop poll cycle by ops/logs-page.py.
 # Treat as a build artifact: it only mirrors /root/ticket-loop.log.
 logs/index.html
+
+# Generated every 15 min by /root/hidden-auth/stats-page.py.
+# Build artifact: rendered from Caddy access logs. Served via /hidden/stats/.
+stats/index.html
