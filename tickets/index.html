@@ -75,6 +75,7 @@
       <div class="card">
         <h3>The dispatcher <span>— headless pi</span></h3>
         <p>Each new issue is handed to a headless <code>pi -p</code> run: an AI agent with shell access, the site files, the repo, and the GitHub token. It reads the ticket, makes the change, and talks back to the issue it came from.</p>
+        <p><b>Fresh context per ticket:</b> every run starts with <code>--no-session</code>, so each ticket gets a clean, empty context — nothing carries over from previous tickets. This keeps prompts small and saves tokens: the agent only ever pays for its own ticket, never the history of every run before it.</p>
       </div>
     </div>
   </section>
@@ -86,7 +87,7 @@
       <pre><span class="c"># every 30 seconds:</span>
 <span class="g">1. fetch</span>  <span class="v">GET /issues?state=open</span>   <span class="c">(PRs filtered out)</span>
 <span class="g">2. guard</span>  flock — a slow run never overlaps the next poll
-<span class="g">3. dispatch</span> pi -p <span class="c">(one agent session per ticket, with rules)</span>
+<span class="g">3. dispatch</span> pi -p <span class="c">(one agent session per ticket, fresh context each run)</span>
 <span class="g">4. agent</span>   implement → verify live → comment on the issue
 <span class="g">5. close</span>   state=closed, state_reason=completed <span class="c">— only if verified</span></pre>
     </div>

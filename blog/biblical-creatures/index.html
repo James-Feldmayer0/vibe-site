@@ -3,51 +3,48 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Exploring Artistic Depictions of Biblical Creatures | jamesfeldmayer.com</title>
-<meta name="description" content="A chronology of biblical creatures: every King James description of each creature (with KJV/NIV tabs and a link to the full chapter), then a timeline of its depictions from the ancient Near East (BC) to modern art (AD).">
+<title>Angels, Beasts &amp; Monsters: A Visual History of Scripture's Creatures | jamesfeldmayer.com</title>
+<meta name="description" content="A visual history of scripture's creatures — from Assyrian lamassu (c. 880 BC) to modern art — tracing how artists have imagined angels, monsters, and beasts through the ages.">
 <style>
   :root {
-    --parchment: #f4ecd9;
-    --parchment-deep: #ece1c4;
-    --card: #faf4e4;
-    --ink: #38291c;
-    --ink-soft: #5c4a37;
-    --rubric: #8a2318;
-    --gold: #94742a;
-    --gold-soft: #c2a45c;
-    --border: #c8b58a;
-    --border-soft: #ddd0ae;
+    --parchment: #ffffff;
+    --parchment-deep: #f4f4f4;
+    --card: #fafafa;
+    --ink: #222222;
+    --ink-soft: #555555;
+    --rubric: #c0392b;
+    --gold: #0044cc;
+    --gold-soft: #e0e7ff;
+    --border: #dddddd;
+    --border-soft: #eeeeee;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body {
     background: var(--parchment);
-    background-image:
-      radial-gradient(1200px 500px at 20% 0%, rgba(255,252,240,0.55), transparent 65%),
-      radial-gradient(900px 600px at 90% 100%, rgba(148,116,42,0.10), transparent 60%);
     color: var(--ink);
     min-height: 100vh;
-    font-family: Georgia, "Iowan Old Style", "Palatino Linotype", "Book Antiqua", "Times New Roman", serif;
-    line-height: 1.75;
+    font-family: "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif;
+    line-height: 1.7;
   }
   .wrap { max-width: 760px; margin: 0 auto; padding: 3.5rem 1.5rem 4.5rem; }
   .rule-double { border: none; border-top: 3px double var(--border); margin: 0 0 1.6rem; }
   h1 {
-    font-size: clamp(1.9rem, 5vw, 2.7rem); font-weight: 700; line-height: 1.2;
-    color: var(--rubric); font-variant: small-caps; letter-spacing: 0.02em;
+    font-size: clamp(2rem, 5.5vw, 3rem); font-weight: 800; line-height: 1.15;
+    color: var(--ink); letter-spacing: -0.02em;
     margin-bottom: 0.6rem;
   }
   .meta { color: var(--ink-soft); font-style: italic; margin-bottom: 1.8rem; }
   .meta a { color: var(--gold); text-decoration: none; }
   .meta a:hover { text-decoration: underline; }
   p { margin-bottom: 1.1rem; }
-  p b { color: var(--rubric); font-weight: 700; }
+  p b { color: var(--ink); font-weight: 700; }
   a { color: var(--rubric); }
-  h2.plain { font-size: 1.1rem; font-variant: small-caps; color: var(--rubric); letter-spacing: 0.06em; margin: 2.2rem 0 0.9rem; }
+  h2.plain { font-size: 1.1rem; text-transform: uppercase; color: var(--rubric); letter-spacing: 0.08em; margin: 2.2rem 0 0.9rem; }
 
   /* Table of contents */
   .toc { background: var(--card); border: 1px solid var(--border); border-radius: 4px; padding: 1.2rem 1.4rem; margin: 2rem 0 3rem; box-shadow: 0 2px 6px rgba(90,66,24,0.08); }
-  .toc .toc-title { color: var(--rubric); font-variant: small-caps; letter-spacing: 0.06em; font-size: 1rem; font-weight: 700; text-align: center; margin-bottom: 0.7rem; }
+  .toc .toc-title { color: var(--rubric); text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.85rem; font-weight: 700; text-align: left; margin-bottom: 0.7rem; }
   .toc ul { margin: 0; padding: 0; list-style: none; columns: 2; column-gap: 2rem; }
   .toc li { margin-bottom: 0.25rem; font-size: 0.92rem; break-inside: avoid; }
   .toc li .num { color: var(--gold); font-weight: 700; display: inline-block; min-width: 2.1rem; }
@@ -57,9 +54,9 @@
   /* Creature sections */
   .creature { margin-bottom: 3.2rem; }
   .creature h2 {
-    font-size: clamp(1.35rem, 3.5vw, 1.7rem); font-weight: 700; color: var(--ink);
-    font-variant: small-caps; letter-spacing: 0.03em; line-height: 1.25;
-    border-bottom: 3px double var(--border); padding-bottom: 0.45rem; margin-bottom: 1rem;
+    font-size: clamp(1.4rem, 3.5vw, 1.8rem); font-weight: 800; color: var(--ink);
+    letter-spacing: -0.01em; line-height: 1.25;
+    border-bottom: 2px solid var(--border); padding-bottom: 0.45rem; margin-bottom: 1rem;
     scroll-margin-top: 1rem;
   }
   .creature h2 .num {
@@ -69,11 +66,11 @@
   }
 
   /* In the Bible */
-  .inbible { background: var(--card); border: 1px solid var(--border); border-left: 5px solid var(--rubric); border-radius: 4px; padding: 1.05rem 1.3rem; margin-bottom: 1.8rem; box-shadow: 0 2px 6px rgba(90,66,24,0.08); }
-  .inbible .ib-title, .inart .ia-title { color: var(--rubric); font-variant: small-caps; letter-spacing: 0.08em; font-weight: 700; font-size: 1rem; margin-bottom: 0.6rem; }
+  .inbible { background: var(--card); border: 1px solid var(--border); border-left: 4px solid var(--rubric); border-radius: 4px; padding: 1.05rem 1.3rem; margin-bottom: 1.8rem; box-shadow: 0 2px 6px rgba(0,0,0,0.05); }
+  .inbible .ib-title, .inart .ia-title { color: var(--rubric); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; font-size: 0.85rem; margin-bottom: 0.6rem; }
   .verse { margin-bottom: 0.85rem; }
   .verse:last-child { margin-bottom: 0; }
-  .verse .ref { color: var(--gold); font-weight: 700; font-size: 0.88rem; letter-spacing: 0.04em; font-variant: small-caps; }
+  .verse .ref { color: var(--gold); font-weight: 700; font-size: 0.85rem; letter-spacing: 0.04em; text-transform: uppercase; }
   .verse .text { font-size: 0.97rem; margin-top: 0.1rem; }
 
   /* Timeline */
@@ -86,8 +83,8 @@
     background: var(--gold-soft); border: 2px solid var(--gold);
     box-shadow: 0 0 0 3px var(--parchment);
   }
-  .tl .era { display: inline-block; color: var(--parchment); background: var(--rubric); font-variant: small-caps; letter-spacing: 0.07em; font-size: 0.76rem; padding: 0.06rem 0.55rem; border-radius: 3px; margin-bottom: 0.2rem; }
-  .tl .date { color: var(--gold); font-weight: 700; font-size: 0.95rem; margin-bottom: 0.15rem; }
+  .tl .era { display: inline-block; color: var(--parchment); background: var(--ink); text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.72rem; padding: 0.06rem 0.55rem; border-radius: 3px; margin-bottom: 0.2rem; }
+  .tl .date { color: var(--rubric); font-weight: 700; font-size: 0.9rem; margin-bottom: 0.15rem; }
   .tl .work { font-size: 1.02rem; font-weight: 700; margin-bottom: 0.1rem; }
   .tl .work a { color: var(--ink); text-decoration: none; border-bottom: 1px dotted var(--gold); }
   .tl .work a:hover { color: var(--rubric); border-bottom-color: var(--rubric); }
@@ -101,9 +98,10 @@
 
   .arc { font-style: italic; color: var(--ink-soft); border-left: 4px solid var(--gold-soft); padding-left: 0.9rem; margin-top: 1.4rem; }
   .arc b { color: var(--rubric); font-style: normal; }
-  .arc .arc-label { color: var(--gold); font-style: normal; font-weight: 700; font-variant: small-caps; letter-spacing: 0.06em; }
+  .arc .arc-label { color: var(--rubric); font-style: normal; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; font-size: 0.85rem; }
 
   .honest { background: var(--parchment-deep); border: 1px dashed var(--border); border-radius: 4px; padding: 0.85rem 1.1rem; margin-bottom: 0.2rem; font-size: 0.94rem; color: var(--ink-soft); }
+  .honest b { color: var(--ink); }
   .trans-note { margin-top: 0.7rem; }
   .sources { margin-top: 1.2rem; }
 
@@ -146,11 +144,11 @@
 </head>
 <body>
 <div class="wrap">
-  <h1>Exploring Artistic Depictions of Biblical Creatures</h1>
+  <h1>Angels, Beasts &amp; Monsters: A Visual History of Scripture's Creatures</h1>
   <p class="meta">October 24, 2026 — a chronology, from the oldest depictions to the modern ones</p>
   <hr class="rule-double">
 
-  <p>This page is a <b>creature-by-creature chronology</b>. For each creature you get every description the <b>King James Version</b> gives — each verse has <b>KJV / NIV tabs</b> and a link to the <b>full chapter</b> — and then a timeline of how artists have depicted that creature, ordered <b>oldest first</b>, through the most notable works, and on to the modern ones. Dates use <b>BC</b> and <b>AD</b>.</p>
+  <p>This is a <b>visual history</b>, not a Bible study. For each creature, you get the source verses (with KJV/NIV tabs for reference) and then the <b>art history</b>: a timeline of how artists have imagined that creature, ordered <b>oldest first</b>, through the most notable works, and on to the modern ones. Dates use <b>BC</b> and <b>AD</b>.</p>
   <p>The dates tell the real story: some creatures were being painted almost as soon as art survives (the cherubim’s ancestors date to the 9th century BC), while others barely get an image until the printing press. Images come from <b>Wikimedia Commons</b>; where I could not verify a specific image file, the work title links to a Commons search instead of a guess.</p>
 
   <div class="toc">
@@ -270,6 +268,15 @@
           <p class="note"><b>Most notable.</b> The cherub is here only as a tiny red angel waving the flaming sword above Adam and Eve — the terrifying guardian reduced to a punctuation mark at the garden gate.</p>
         </li>
         <li class="tl">
+          <div class="era">Post-Byzantine</div>
+          <div class="date">16th century AD</div>
+          <div class="work"><a href="https://commons.wikimedia.org/wiki/File:Tetramorph_meteora.jpg">The tetramorph (Cherub of Ezekiel’s vision)</a></div>
+          <div class="byline">Metéora monasteries, Greece — in the tradition of Theophanes the Cretan’s workshop</div>
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Tetramorph_meteora.jpg?width=640" alt="A post-Byzantine fresco of the tetramorph cherub — a many-winged figure with four faces (man, lion, ox and eagle) holding Gospel books — from the Metéora monasteries" loading="lazy">
+          <div class="caption">Image via <a href="https://commons.wikimedia.org/wiki/File:Tetramorph_meteora.jpg">Wikimedia Commons</a></div>
+          <p class="note"><b>The tetramorph.</b> While it is painted in the distinctive post-Byzantine monastic tradition of the famous Cretan School of Painting—a style heavily popularized in the Metéora region during this era by masters like Theophanes the Cretan—historical records have not preserved the name of the exact iconographer responsible for this specific piece.</p>
+        </li>
+        <li class="tl">
           <div class="era">Renaissance</div>
           <div class="date">c. 1512–13 AD</div>
           <div class="work"><a href="https://commons.wikimedia.org/wiki/File:Raphael-cherubini.jpg">The putti of the Sistine Madonna</a></div>
@@ -306,11 +313,11 @@
         <li class="tl">
           <div class="era">Early Christian</div>
           <div class="date">c. 425 AD</div>
-          <div class="work"><a href="https://commons.wikimedia.org/wiki/File:Mausoleum_of_Galla_Placidia_ceiling_mosaics.jpg">Mosaics of the Mausoleum of Galla Placidia</a></div>
-          <div class="byline">Ravenna, Italy — the four pendentives of the dome</div>
-          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Mausoleum_of_Galla_Placidia_ceiling_mosaics.jpg?width=640" alt="The glowing 5th-century ceiling mosaics of the Mausoleum of Galla Placidia, Ravenna" loading="lazy">
-          <div class="caption">Image via <a href="https://commons.wikimedia.org/wiki/File:Mausoleum_of_Galla_Placidia_ceiling_mosaics.jpg">Wikimedia Commons</a></div>
-          <p class="note"><b>The oldest.</b> Among the earliest surviving depictions of the four creatures as the symbols of the four Evangelists — man, lion, ox and eagle — set into the four pendentives holding up the dome, where they have looked down for some sixteen centuries.</p>
+          <div class="work"><a href="https://commons.wikimedia.org/wiki/File:Mausoleum_of_Galla_Placidia_(Ravenna)_-_Dome_interior.jpg">Dome mosaics of the Mausoleum of Galla Placidia</a></div>
+          <div class="byline">Ravenna, Italy — the dome and pendentives of the mausoleum</div>
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Mausoleum_of_Galla_Placidia_(Ravenna)_-_Dome_interior.jpg?width=640" alt="The dome of the Mausoleum of Galla Placidia, Ravenna — a starry sky mosaic with a jewelled cross and the four Evangelist symbols in the pendentive corners" loading="lazy">
+          <div class="caption">Image via <a href="https://commons.wikimedia.org/wiki/File:Mausoleum_of_Galla_Placidia_(Ravenna)_-_Dome_interior.jpg">Wikimedia Commons</a></div>
+          <p class="note"><b>The oldest.</b> The dome unfolds as a garden-like night sky of golden stars around a jewelled cross — the paradise the creatures guard — while the four pendentives supporting it hold the four creatures as the symbols of the Evangelists — man, lion, ox and eagle — among the earliest surviving set-piece depictions, looking down over the garden for some sixteen centuries.</p>
         </li>
         <li class="tl">
           <div class="era">Medieval</div>
